@@ -1,1 +1,4 @@
-export enum MaterialType {}
+export enum MaterialType {
+  NumberCard = 1,
+  StarCard
+}
