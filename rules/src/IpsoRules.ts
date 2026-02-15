@@ -1,4 +1,4 @@
-import { MaterialGame, MaterialMove, MaterialRules, TimeLimit } from '@gamepark/rules-api'
+import { FillGapStrategy, HiddenMaterialRules, hideItemId, MaterialGame, MaterialMove, PositiveSequenceStrategy, TimeLimit } from '@gamepark/rules-api'
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
 import { PlayerId } from './PlayerId'
@@ -10,11 +10,24 @@ import { RuleId } from './rules/RuleId'
  * It must follow Game Park "Rules" API so that the Game Park server can enforce the rules.
  */
 export class IpsoRules
-  extends MaterialRules<PlayerId, MaterialType, LocationType>
+  extends HiddenMaterialRules<PlayerId, MaterialType, LocationType>
   implements TimeLimit<MaterialGame<PlayerId, MaterialType, LocationType>, MaterialMove<PlayerId, MaterialType, LocationType>, PlayerId>
 {
   rules = {
     [RuleId.TheFirstStep]: TheFirstStepRule
+  }
+
+  locationsStrategies = {
+    [MaterialType.NumberCard]: {
+      [LocationType.DrawPile]: new PositiveSequenceStrategy(),
+      [LocationType.CardDisplay]: new FillGapStrategy()
+    }
+  }
+
+  hidingStrategies = {
+    [MaterialType.NumberCard]: {
+      [LocationType.DrawPile]: hideItemId
+    }
   }
 
   giveTime(): number {

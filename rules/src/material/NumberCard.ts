@@ -1,13 +1,5 @@
 import { getEnumValues } from '@gamepark/rules-api';
 
-export enum NumberCardColor {
-  Magenta = 1,
-  Yellow,
-  Green,
-  Blue,
-  Orange
-}
-
 export enum NumberCard {
   NumberCard1 = 1,
   NumberCard2,

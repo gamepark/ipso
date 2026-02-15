@@ -1,6 +1,6 @@
 export enum LocationType {
   DrawPile = 1,
-  FaceupCardDisplay,
+  CardDisplay,
   Pyramid,
   PyrmaidCardSpot
 }

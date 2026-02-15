@@ -1,6 +1,11 @@
 import { LocationType } from '@gamepark/ipso/material/LocationType'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
-import { PlayerColor } from '@gamepark/ipso/PlayerColor'
+import { PlayerId } from '@gamepark/ipso/PlayerId'
 import { Locator } from '@gamepark/react-game'
+import { drawPileLocator } from './DrawPileLocator'
+import { cardDisplayLocator } from './CardDisplayLocator'
 
-export const Locators: Partial<Record<LocationType, Locator<PlayerColor, MaterialType, LocationType>>> = {}
+export const Locators: Partial<Record<LocationType, Locator<PlayerId, MaterialType, LocationType>>> = {
+  [LocationType.DrawPile]: drawPileLocator,
+  [LocationType.CardDisplay]: cardDisplayLocator
+}
