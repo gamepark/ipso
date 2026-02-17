@@ -27,7 +27,8 @@ export class IpsoRules
 
   hidingStrategies = {
     [MaterialType.NumberCard]: {
-      [LocationType.DrawPile]: hideItemId
+      [LocationType.DrawPile]: hideItemId,
+      [LocationType.Pyramid]: hideItemId
     }
   }
 
