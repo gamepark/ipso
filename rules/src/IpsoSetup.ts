@@ -16,6 +16,7 @@ export class IpsoSetup extends MaterialGameSetup<PlayerId, MaterialType, Locatio
   setupMaterial(_options: IpsoOptions) {
     this.setupDrawPile()
     this.setupCardDisplay()
+    this.setupPlayerPyramids()
   }
 
   setupDrawPile() {
@@ -35,6 +36,32 @@ export class IpsoSetup extends MaterialGameSetup<PlayerId, MaterialType, Locatio
     drawPile.dealAtOnce({
       type: LocationType.CardDisplay
     }, 2)
+  }
+
+  setupPlayerPyramids() {
+    for (const player of this.players) {
+      this.setupPlayerPyramid(player)
+      this.setupPlayerStarCard(player)
+    }
+  }
+
+  setupPlayerPyramid(player: PlayerId) {
+    const drawPile = this.getDrawPile()
+    drawPile.dealAtOnce({
+      type: LocationType.Pyramid,
+      player: player
+    }, 14)
+  }
+
+  setupPlayerStarCard(player: PlayerId) {
+    this.material(MaterialType.StarCard).createItem({
+      id: player,
+      location: {
+        type: LocationType.Pyramid,
+        player: player,
+        x: 14
+      }
+    })
   }
 
   getDrawPile() {
