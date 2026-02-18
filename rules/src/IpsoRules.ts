@@ -1,4 +1,4 @@
-import { FillGapStrategy, HiddenMaterialRules, hideItemId, MaterialGame, MaterialMove, PositiveSequenceStrategy, TimeLimit } from '@gamepark/rules-api'
+import { FillGapStrategy, HiddenMaterialRules, hideItemId, MaterialGame, MaterialItem, MaterialMove, PositiveSequenceStrategy, TimeLimit } from '@gamepark/rules-api'
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
 import { PlayerId } from './PlayerId'
@@ -21,14 +21,14 @@ export class IpsoRules
     [MaterialType.NumberCard]: {
       [LocationType.DrawPile]: new PositiveSequenceStrategy(),
       [LocationType.CardDisplay]: new FillGapStrategy(),
-      [LocationType.Pyramid]: new FillGapStrategy(),
+      [LocationType.Pyramid]: new FillGapStrategy()
     }
   }
 
   hidingStrategies = {
     [MaterialType.NumberCard]: {
       [LocationType.DrawPile]: hideItemId,
-      [LocationType.Pyramid]: hideItemId
+      [LocationType.Pyramid]: (item: MaterialItem) => (!item.location.rotation ? [] : ['id'])
     }
   }
 

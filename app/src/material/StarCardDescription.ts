@@ -11,7 +11,6 @@ export class StarCardDescription extends CardDescription<PlayerId, MaterialType,
   borderRadius = 0.3
 
   image = StarCard
-  backImage = StarCard
 }
 
 export const starCardDescription = new StarCardDescription()

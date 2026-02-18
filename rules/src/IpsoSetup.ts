@@ -49,7 +49,8 @@ export class IpsoSetup extends MaterialGameSetup<PlayerId, MaterialType, Locatio
     const drawPile = this.getDrawPile()
     drawPile.dealAtOnce({
       type: LocationType.Pyramid,
-      player: player
+      player: player,
+      rotation: true
     }, 14)
   }
 
