@@ -8,11 +8,13 @@ export enum Position {
   TopRight,
   BottomLeft,
   BottomCenter,
-  BottomRight
+  BottomRight,
+  TwoPlayerLeft,
+  TwoPlayerRight
 }
 
 export const playerPositions = [
-  [Position.BottomLeft, Position.BottomRight], // 2 Players
+  [Position.TwoPlayerLeft, Position.TwoPlayerRight], // 2 Players
   [Position.BottomLeft, Position.TopCenter, Position.BottomRight], // 3 Players
   [Position.BottomLeft, Position.TopLeft, Position.TopRight, Position.BottomRight], // 4 Players
   [Position.BottomLeft, Position.TopLeft, Position.TopCenter, Position.TopRight, Position.BottomRight], // 5 Players
@@ -32,11 +34,16 @@ class PyramidLocator extends Locator {
       case Position.TopRight:
         return { x: 24, y: -10 }
       case Position.BottomLeft:
-        return playerCount === 2 ? { x: -30, y: 7.5 } : { x: -40, y: 25 }
+        return { x: -40, y: 25 }
       case Position.BottomCenter:
         return { x: -8, y: 25 }
       case Position.BottomRight:
-        return playerCount === 2 ? { x: 15, y: 7.5 } : { x: 24, y: 25 }
+        return { x: 24, y: 25 }
+      case Position.TwoPlayerLeft:
+        return { x: -30, y: 7.5 }
+      case Position.TwoPlayerRight: {
+        return { x: 15, y: 7.5 }
+      }
     }
   }
 
