@@ -16,7 +16,7 @@ Adaptation of Ipso for [Game Park](https://game-park.com/).
 
 ```bash
 yarn install
-yarn start
+yarn dev
 ```
 
 The game opens at http://localhost:3000.
