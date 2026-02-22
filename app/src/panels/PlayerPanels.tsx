@@ -13,16 +13,57 @@ export const PlayerPanels = () => {
   return createPortal(
     <>
       {players.map((player, index) => (
-        <StyledPlayerPanel key={player.id} player={player} css={panelPosition(index)} activeRing />
+        <StyledPlayerPanel key={player.id} player={player} css={panelPosition(players.length, index)} activeRing />
       ))}
     </>,
     root
   )
 }
 
-const panelPosition = (index: number) => css`
-  position: absolute;
-  right: 1em;
-  top: ${8.5 + index * 16}em;
-  width: 28em;
+const panelPosition = (players: number, index: number) => {
+  const panelCss = positionCss[players -2][index]
+  return css`
+   position: absolute;
+   ${panelCss}
+  `
+}
+
+const topLeft = css`
+  left: 1em;
+  top: 8.5em;
 `
+
+const topCenter = css`
+  left: 50%;
+  transform: translateX(-50%);
+  top: 8.5em;
+`
+
+const topRight = css`
+  right: 1em;
+  top: 8.5em;
+`
+
+const bottomLeft = css`
+  left: 1em;
+  bottom: 1em;
+`
+
+const bottomCenter = css`
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1em;
+`
+
+const bottomRight = css`
+  right: 1em;
+  bottom: 1em;
+`
+
+const positionCss = [
+  [topLeft, topRight], // 2 players
+  [bottomLeft, topCenter, bottomRight], // 3 players
+  [bottomLeft, topLeft, topRight, bottomRight], // 4 players
+  [bottomLeft, topLeft, topCenter, topRight, bottomRight], // 5 players
+  [bottomLeft, topLeft, topCenter, topRight, bottomRight, bottomCenter] // 6 players
+]

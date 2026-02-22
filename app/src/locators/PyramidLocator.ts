@@ -28,21 +28,21 @@ class PyramidLocator extends Locator {
     const position = playerPositions[playerCount - 2][playerIndex]
     switch (position) {
       case Position.TopLeft:
-        return { x: -40, y: -10 }
+        return { x: -45, y: -5 }
       case Position.TopCenter:
-        return { x: -8, y: -10 }
+        return { x: -5, y: -5 }
       case Position.TopRight:
-        return { x: 24, y: -10 }
+        return { x: 30, y: -5 }
       case Position.BottomLeft:
-        return { x: -40, y: 25 }
+        return { x: -45, y: 22 }
       case Position.BottomCenter:
-        return { x: -8, y: 25 }
+        return { x: -5, y: 22 }
       case Position.BottomRight:
-        return { x: 24, y: 25 }
+        return { x: 30, y: 22 }
       case Position.TwoPlayerLeft:
-        return { x: -30, y: 7.5 }
+        return { x: -15, y: 7.5 }
       case Position.TwoPlayerRight: {
-        return { x: 15, y: 7.5 }
+        return { x: 20, y: 7.5 }
       }
     }
   }

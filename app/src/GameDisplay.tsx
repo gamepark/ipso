@@ -7,12 +7,16 @@ export function GameDisplay() {
   return (
     <>
       <GameTable xMin={-50} xMax={50} yMin={-30} yMax={30} margin={margin} css={process.env.NODE_ENV === 'development' && tableBorder}>
-        <GameTableNavigation />
+        <GameTableNavigation css={navCss} />
         <PlayerPanels />
       </GameTable>
     </>
   )
 }
+
+const navCss = css `
+  top: 18em;
+`
 
 const tableBorder = css`
   border: 1px solid white;
