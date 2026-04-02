@@ -2,7 +2,7 @@ import { CardDescription } from '@gamepark/react-game'
 import { PlayerId } from '@gamepark/ipso/PlayerId'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { LocationType } from '@gamepark/ipso/material/LocationType'
-import { NumberCard } from '../../../rules/src/material/NumberCard';
+import { NumberCard } from '@gamepark/ipso/material/NumberCard'
 
 import NumberCard1 from '../images/NumberCard1.jpg'
 import NumberCard2 from '../images/NumberCard2.jpg'
