@@ -1,1 +1,29 @@
-{}
+{
+  "header.play-card.you": "Vous devez choisir une carte et la placer dans votre pyramide",
+  "header.play-card.player": "{player} doit choisir une carte et la placer dans sa pyramide",
+  "header.use-star-card.you": "Vous pouvez utiliser votre carte étoile pour piocher la première carte de la pioche et remplacer une carte ou <pass>passer</pass>",
+  "header.use-star-card.player": "{player} peut utiliser sa carte étoile pour piocher la première carte de la pioche et remplacer une de ses cartes",
+  "header.discard-non-ascending-lines": "Suppression des lignes non croissantes",
+
+  "help.number-card.title": "Carte Numérotée",
+  "help.number-card.description": "Chaque carte porte un <bold>numéro de 1 à 90</bold> et une <bold>couleur</bold> parmi cinq. Certaines cartes comportent également des <bold>étoiles</bold> (1 ou 2) qui rapportent des points bonus.",
+  "help.number-card.colors": "Il existe <bold>5 couleurs</bold> : rose, jaune, vert, cyan et orange.",
+  "help.number-card.pyramid.title": "La pyramide",
+  "help.number-card.pyramid.description": "Chaque joueur construit une pyramide de <bold>14 cartes</bold> organisée en 4 lignes. Au début de la partie, toutes les cartes sont cachées. À chaque tour, vous choisissez une carte visible dans l'étalage et venez la placer dans votre pyramide face visible, en échangeant avec une carte cachée.",
+  "help.number-card.scoring.title": "Score",
+  "help.number-card.scoring.description": "À la fin de la partie, chaque ligne de votre pyramide rapporte des points si ses cartes sont en <bold>ordre croissant</bold> de gauche à droite :",
+  "help.number-card.scoring.line1": "<bold>Ligne 1</bold> — 5 cartes : jusqu'à 10 points",
+  "help.number-card.scoring.line2": "<bold>Ligne 2</bold> — 4 cartes : jusqu'à 8 points",
+  "help.number-card.scoring.line3": "<bold>Ligne 3</bold> — 3 cartes : jusqu'à 6 points",
+  "help.number-card.scoring.line4": "<bold>Ligne 4</bold> — 2 cartes : jusqu'à 4 points",
+  "help.number-card.scoring.same-color": "Une ligne croissante rapporte <bold>1 point par carte</bold>. Si toutes les cartes sont de la <bold>même couleur</bold>, elle rapporte <bold>2 points par carte</bold>. Une ligne non croissante est supprimée et ne rapporte rien.",
+  "help.number-card.stars.title": "Étoiles",
+  "help.number-card.stars.description": "Chaque étoile visible sur vos cartes en fin de partie rapporte <bold>1 point supplémentaire</bold>.",
+
+  "help.star-card.title": "Carte Étoile",
+  "help.star-card.description": "Chaque joueur possède <bold>une carte étoile</bold>, placée dans le sommet de sa pyramide au début de la partie.",
+  "help.star-card.use.title": "Utilisation",
+  "help.star-card.use.description": "Une fois que les <bold>14 cartes de votre pyramide sont toutes découvertes</bold>, vous pouvez défausser votre carte étoile pour piocher la première carte de la pioche et remplacer n'importe quelle carte de votre pyramide. Vous pouvez aussi choisir de <bold>passer</bold> et conserver votre carte étoile.",
+  "help.star-card.bonus.title": "Bonus de fin de partie",
+  "help.star-card.bonus.description": "Si votre carte étoile est toujours dans votre pyramide à la fin de la partie, elle vous rapporte <bold>3 points</bold> supplémentaires."
+}

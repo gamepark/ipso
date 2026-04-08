@@ -24,7 +24,8 @@ export class IpsoSetup extends MaterialGameSetup<PlayerId, MaterialType, Locatio
       numberCards.map((numberCard) => ({
         id: numberCard,
         location: {
-          type: LocationType.DrawPile
+          type: LocationType.DrawPile,
+          rotation: true
         }
       }))
     )
@@ -34,7 +35,8 @@ export class IpsoSetup extends MaterialGameSetup<PlayerId, MaterialType, Locatio
   setupCardDisplay() {
     const drawPile = this.getDrawPile()
     drawPile.dealAtOnce({
-      type: LocationType.CardDisplay
+      type: LocationType.CardDisplay,
+      rotation: false
     }, 2)
   }
 
@@ -70,6 +72,6 @@ export class IpsoSetup extends MaterialGameSetup<PlayerId, MaterialType, Locatio
   }
 
   start() {
-    this.startPlayerTurn(RuleId.TheFirstStep, this.players[0])
+    this.startPlayerTurn(RuleId.PlayCard, this.players[0])
   }
 }

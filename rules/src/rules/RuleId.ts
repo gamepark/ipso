@@ -1,3 +1,5 @@
 export enum RuleId {
-  TheFirstStep = 1
+  PlayCard = 1,
+  UseStarCard,
+  DiscardNonAscendigLines,
 }
