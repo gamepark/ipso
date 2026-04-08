@@ -3,6 +3,7 @@ import { PlayerId } from '@gamepark/ipso/PlayerId'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { LocationType } from '@gamepark/ipso/material/LocationType'
 import { NumberCard } from '@gamepark/ipso/material/NumberCard'
+import { NumberCardHelp } from './help/NumberCardHelp'
 
 import NumberCard1 from '../images/NumberCard1.jpg'
 import NumberCard2 from '../images/NumberCard2.jpg'
@@ -100,6 +101,8 @@ export class NumberCardDescription extends CardDescription<PlayerId, MaterialTyp
   width = 3
   height = 3
   borderRadius = 0.3
+
+  help = NumberCardHelp
 
   images = {
     [NumberCard.NumberCard1]: NumberCard1,
