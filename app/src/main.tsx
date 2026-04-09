@@ -6,6 +6,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { gameAnimations } from './animations/GameAnimations'
 import { App } from './App'
+import { IpsoLogDescription } from './logs/IpsoLogDescription'
 import { Locators } from './locators/Locators'
 import { Material } from './material/Material'
 import { IpsoScoring } from './scoring/IpsoScoring.tsx'
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')!).render(
       locators={Locators}
       animations={gameAnimations}
       scoring={new IpsoScoring()}
+      logs={new IpsoLogDescription()}
     >
       <App />
     </GameProvider>

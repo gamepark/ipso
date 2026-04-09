@@ -1,0 +1,16 @@
+import { MoveComponentProps, usePlayerName } from '@gamepark/react-game'
+import { MaterialMove } from '@gamepark/rules-api'
+import { FC } from 'react'
+import { Trans } from 'react-i18next'
+
+export const UseStarCardLog: FC<MoveComponentProps<MaterialMove>> = ({ context }) => {
+  const playerName = usePlayerName(context.game.rule?.player)
+
+  return (
+    <Trans
+      defaults="{player} a utilisé sa carte étoile"
+      i18nKey="log.use-star-card"
+      values={{ player: playerName }}
+    />
+  )
+}

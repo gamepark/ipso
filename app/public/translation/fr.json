@@ -1,4 +1,10 @@
 {
+  "log.play-card": "{player} a joué la carte {number} dans sa pyramide",
+  "log.use-star-card": "{player} a utilisé sa carte étoile",
+  "log.place-from-pile": "{player} a placé la carte {number} dans sa pyramide",
+  "log.discard-from-pile": "{player} a défaussé la carte {number}",
+  "log.pass": "{player} a passé",
+
   "header.play-card.you": "Vous devez choisir une carte et la placer dans votre pyramide",
   "header.play-card.player": "{player} doit choisir une carte et la placer dans sa pyramide",
   "header.use-star-card.you": "Vous pouvez utiliser votre carte étoile pour piocher la première carte de la pioche et remplacer une carte ou <pass>passer</pass>",
