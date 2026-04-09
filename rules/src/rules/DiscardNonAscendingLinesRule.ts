@@ -34,7 +34,6 @@ export class DiscardNonAscendingLinesRule extends MaterialRulesPart {
   }
 
   private isAscending(numbers: number[]): boolean {
-    console.log(numbers)
     return numbers.every((n, i) => i === 0 || n > numbers[i - 1])
   }
 
