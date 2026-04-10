@@ -13,7 +13,7 @@ export const PlayerPanels = () => {
   return createPortal(
     <>
       {players.map((player, index) => (
-        <StyledPlayerPanel key={player.id} player={player} css={panelPosition(players.length, index)} activeRing />
+        <StyledPlayerPanel key={player.id} player={player} css={panelPosition(players.length, index)} color={"#000000"} activeRing />
       ))}
     </>,
     root
@@ -25,6 +25,7 @@ const panelPosition = (players: number, index: number) => {
   return css`
    position: absolute;
    ${panelCss}
+   ${backgrounds[index]}
   `
 }
 
@@ -67,3 +68,12 @@ const positionCss = [
   [bottomLeft, topLeft, topCenter, topRight, bottomRight], // 5 players
   [bottomLeft, topLeft, topCenter, topRight, bottomRight, bottomCenter] // 6 players
 ]
+
+const pink = css`background: linear-gradient(135deg, white 0%, #fb49c5 80%)`
+const red = css`background: linear-gradient(135deg, white 0%, #ff5c25 80%)`
+const blue = css`background: linear-gradient(135deg, white 0%, #009ace 80%)`
+const green = css`background: linear-gradient(135deg, white 0%, #44d62d 80%)`
+const yellow = css`background: linear-gradient(135deg, white 0%, #ffe900 80%)`
+const purple = css`background: linear-gradient(135deg, white 0%, #9900ff 80%)`
+
+const backgrounds = [pink, red, blue, green, yellow, purple]
