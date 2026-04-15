@@ -45,7 +45,6 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
       popup: {
         text: () => (
           <Trans
-            defaults="Bienvenue dans <bold>Ipso</bold> ! Votre objectif : remplir votre pyramide de cartes numérotées et marquer le plus de points possible. Choisissez une carte dans l'étalage et cliquez sur une case cachée de votre pyramide pour la placer."
             i18nKey="tuto.step.1"
             components={BaseComponents}
           />
@@ -74,7 +73,6 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
       popup: {
         text: () => (
           <Trans
-            defaults="La carte 3 est en place en début de ligne ! Votre objectif : former des <bold>lignes croissantes</bold> de gauche à droite. La ligne du bas a 5 cartes — si elles vont de la plus petite à la plus grande, elles rapportent <bold>1 point par carte</bold>. Toutes de la <bold>même couleur</bold> ? Les points sont <bold>doublés</bold> !"
             i18nKey="tuto.step.2"
             components={BaseComponents}
           />
@@ -109,7 +107,6 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
       popup: {
         text: () => (
           <Trans
-            defaults="À votre tour ! Placez maintenant la carte <bold>7</bold> au début de la deuxième ligne de votre pyramide."
             i18nKey="tuto.step.3"
             components={BaseComponents}
           />
@@ -139,7 +136,6 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
       popup: {
         text: () => (
           <Trans
-            defaults="Certaines cartes portent des <bold>étoiles</bold> — chaque étoile visible sur vos cartes en fin de partie rapporte <bold>1 point supplémentaire</bold> !"
             i18nKey="tuto.step.4"
             components={BaseComponents}
           />
@@ -161,7 +157,6 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
       popup: {
         text: () => (
           <Trans
-            defaults="Continuez à remplir votre pyramide tour après tour ! Une fois toutes vos <bold>14 cartes</bold> révélées, vous pouvez utiliser votre <bold>carte étoile</bold> pour piocher la première carte de la pioche et remplacer une carte. Ou gardez-la pour <bold>3 points bonus</bold> en fin de partie."
             i18nKey="tuto.step.5"
             components={BaseComponents}
           />
@@ -183,7 +178,6 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
       popup: {
         text: () => (
           <Trans
-            defaults="En fin de partie, les lignes dont les numéros ne sont pas en ordre croissant sont <bold>supprimées</bold> et ne rapportent rien. Les autres marquent 1 ou 2 points par carte selon la couleur. Bonne chance !"
             i18nKey="tuto.step.6"
             components={BaseComponents}
           />

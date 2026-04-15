@@ -8,7 +8,6 @@ export const PassLog: FC<MoveComponentProps<MaterialMove>> = ({ context }) => {
 
   return (
     <Trans
-      defaults="{player} a passé"
       i18nKey="log.pass"
       values={{ player: playerName }}
     />

@@ -1,7 +1,8 @@
-import { MaterialGame, MaterialRulesPart } from '@gamepark/rules-api'
+import { MaterialGame, MaterialItem, MaterialRulesPart } from '@gamepark/rules-api'
 import { LocationType } from '../../material/LocationType'
 import { MaterialType } from '../../material/MaterialType'
 import { Colors, NumberCard, numberCardData } from '../../material/NumberCard'
+import { MemoryType } from '../MemoryType'
 
 const firstLineX = [0, 1, 2, 3, 4]
 const secondLineX = [5, 6, 7, 8]
@@ -53,8 +54,23 @@ export class ScoreHelper extends MaterialRulesPart {
     if(lineCards.length === 0) return 0
     if(lineCards.some(card => card.id === undefined)) return 0
     if(!this.isAscending(lineCards.map(card => numberCardData[card.id as NumberCard].number))) return 0
-    const pointsByCard = this.isSameColor(lineCards.map(card => numberCardData[card.id as NumberCard].color)) ? 2 : 1
+    const pointsByCard = this.getPointsByCard(lineCards)
     return lineCards.length * pointsByCard
+  }
+
+  private getPointsByCard(lineCards: MaterialItem[]) {
+    let basePoints = 1
+    const colors = lineCards.map(card => numberCardData[card.id as NumberCard].color)
+    if (this.isSameColor(colors)) {
+      basePoints += 1
+    }
+    if(this.remind(MemoryType.OddOrEvenOptionEnabled)) {
+      const numbers = lineCards.map(card => numberCardData[card.id as NumberCard].number)
+      if (this.isEven(numbers) || this.isOdd(numbers)) {
+        basePoints += 1
+      }
+    }
+    return basePoints
   }
 
   private isAscending(numbers: number[]): boolean {
@@ -63,6 +79,14 @@ export class ScoreHelper extends MaterialRulesPart {
 
   private isSameColor(colors: Colors[]): boolean {
     return colors.every((n) => n === colors[0])
+  }
+
+  private isEven(numbers: number[]): boolean {
+    return numbers.every((n) => n%2 === 0)
+  }
+
+  private isOdd(numbers: number[]): boolean {
+    return numbers.every((n) => n%2 !== 0)
   }
 
   private getPlayerCards(player: number) {

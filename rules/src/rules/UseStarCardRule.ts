@@ -7,7 +7,7 @@ import {
   Location,
   MaterialMove,
   PlayerTurnRule,
-  PlayMoveContext
+  PlayMoveContext, RuleMove, RuleStep
 } from '@gamepark/rules-api'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
@@ -16,6 +16,14 @@ import { PyramidHelper } from './helper/PyramidHelper'
 import { RuleId } from './RuleId'
 
 export class UseStarCardRule extends PlayerTurnRule {
+  onRuleStart(_move: RuleMove<number, number>, _previousRule?: RuleStep, _context?: PlayMoveContext): MaterialMove<number, number, number, number, number>[] {
+    if(this.player === this.game.players[0]) {
+      const maxX = this.material(MaterialType.NumberCard).location(LocationType.DrawPile).maxBy(it => it.location.x ?? 0).getItem()?.location.x ?? 0
+      return this.material(MaterialType.NumberCard).location(LocationType.CardDisplay).moveItems({type: LocationType.DrawPile, x: maxX - 10, rotation: true})
+    }
+    return []
+  }
+
   getPlayerMoves(): MaterialMove<number, number, number, number, number>[] {
     if(this.starCard.length) {
       const moves: MaterialMove[] = [this.starCard.moveItem({ type: LocationType.DiscardPile })]

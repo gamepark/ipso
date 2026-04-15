@@ -3,6 +3,7 @@ import { IpsoOptions } from './IpsoOptions'
 import { IpsoRules } from './IpsoRules'
 import { LocationType } from './material/LocationType'
 import { MaterialType } from './material/MaterialType'
+import { MemoryType } from './rules/MemoryType'
 import { RuleId } from './rules/RuleId'
 import { PlayerId } from './PlayerId';
 import { numberCards } from './material/NumberCard'
@@ -13,7 +14,8 @@ import { numberCards } from './material/NumberCard'
 export class IpsoSetup extends MaterialGameSetup<PlayerId, MaterialType, LocationType, IpsoOptions> {
   Rules = IpsoRules
 
-  setupMaterial(_options: IpsoOptions) {
+  setupMaterial(options: IpsoOptions) {
+    this.memorize(MemoryType.OddOrEvenOptionEnabled, options.oddOrEven)
     this.setupDrawPile()
     this.setupCardDisplay()
     this.setupPlayerPyramids()

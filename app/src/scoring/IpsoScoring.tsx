@@ -13,12 +13,12 @@ import StarCard from '../images/StarCard.jpg'
 import StarIcon from '../images/starIcon.png'
 
 enum ScoringKeys {
-  FirstLine,
-  SecondLine,
-  ThirdLine,
-  FourthLine,
-  Stars,
   StarCard,
+  FourthLine,
+  ThirdLine,
+  SecondLine,
+  FirstLine,
+  Stars,
   Total
 }
 
@@ -33,7 +33,6 @@ export class IpsoScoring implements ScoringDescription {
         return (
           <Trans
             i18nKey="game-over.score.type.line"
-            defaults="<line/>"
             components={{
               line: <Picture src={FirstLine} css={pictureCss} />
             }}
@@ -43,7 +42,6 @@ export class IpsoScoring implements ScoringDescription {
         return (
           <Trans
             i18nKey="game-over.score.type.line"
-            defaults="<line/>"
             components={{
               line: <Picture src={SecondLine} css={pictureCss} />
             }}
@@ -53,7 +51,6 @@ export class IpsoScoring implements ScoringDescription {
         return (
           <Trans
             i18nKey="game-over.score.type.line"
-            defaults="<line/>"
             components={{
               line: <Picture src={ThirdLine} css={pictureCss} />
             }}
@@ -63,7 +60,6 @@ export class IpsoScoring implements ScoringDescription {
         return (
           <Trans
             i18nKey="game-over.score.type.line"
-            defaults="<line/>"
             components={{
               line: <Picture src={FourthLine} css={pictureCss} />
             }}
@@ -73,7 +69,6 @@ export class IpsoScoring implements ScoringDescription {
         return (
           <Trans
             i18nKey="game-over.score.type.stars"
-            defaults="<stars/>"
             components={{
               stars: <Picture src={StarIcon} css={pictureCss} />
             }}
@@ -83,7 +78,6 @@ export class IpsoScoring implements ScoringDescription {
         return (
           <Trans
             i18nKey="game-over.score.type.star-card"
-            defaults="<starcard/>"
             components={{
               starcard: <Picture src={StarCard} css={pictureCss} />
             }}
@@ -92,7 +86,7 @@ export class IpsoScoring implements ScoringDescription {
       case ScoringKeys.Total:
         return (
           <div css={bold}>
-            <Trans i18nKey="game-over.score.type.total" defaults="Total"/>
+            <Trans i18nKey="game-over.score.type.total"/>
           </div>
         )
     }
@@ -105,7 +99,6 @@ export class IpsoScoring implements ScoringDescription {
         return (
           <Trans
             i18nKey="game-over.score.points"
-            defaults="{points, plural, one{# point} other{# points}}"
             values={{
               points: scoreHelper.getFirstLine(player)
             }}
@@ -115,7 +108,6 @@ export class IpsoScoring implements ScoringDescription {
         return (
           <Trans
             i18nKey="game-over.score.points"
-            defaults="{points, plural, one{# point} other{# points}}"
             values={{
               points: scoreHelper.getSecondLine(player)
             }}
@@ -125,7 +117,6 @@ export class IpsoScoring implements ScoringDescription {
         return (
           <Trans
             i18nKey="game-over.score.points"
-            defaults="{points, plural, one{# point} other{# points}}"
             values={{
               points: scoreHelper.getThirdLine(player)
             }}
@@ -135,7 +126,6 @@ export class IpsoScoring implements ScoringDescription {
         return (
           <Trans
             i18nKey="game-over.score.points"
-            defaults="{points, plural, one{# point} other{# points}}"
             values={{
               points: scoreHelper.getFourthLine(player)
             }}
@@ -145,7 +135,6 @@ export class IpsoScoring implements ScoringDescription {
         return (
           <Trans
             i18nKey="game-over.score.points"
-            defaults="{points, plural, one{# point} other{# points}}"
             values={{
               points: scoreHelper.getStars(player)
             }}
@@ -155,7 +144,6 @@ export class IpsoScoring implements ScoringDescription {
         return (
           <Trans
             i18nKey="game-over.score.points"
-            defaults="{points, plural, one{# point} other{# points}}"
             values={{
               points: scoreHelper.getStarCard(player)
             }}
@@ -166,7 +154,6 @@ export class IpsoScoring implements ScoringDescription {
           <div css={bold}>
             <Trans
               i18nKey="game-over.score.points"
-              defaults="{points, plural, one{# point} other{# points}}"
               values={{
                 points: scoreHelper.calculateScore(player)
               }}

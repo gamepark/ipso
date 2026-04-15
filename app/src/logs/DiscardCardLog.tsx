@@ -17,7 +17,6 @@ export const DiscardCardLog: FC<MoveComponentProps<MaterialMove>> = ({ move, con
 
   return (
     <Trans
-      defaults="{player} a défaussé la <card>carte {number}</card>"
       i18nKey="log.discard-from-pile"
       values={{ player: playerName, number }}
       components={{

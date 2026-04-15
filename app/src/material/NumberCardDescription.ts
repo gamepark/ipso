@@ -1,8 +1,9 @@
-import { CardDescription } from '@gamepark/react-game'
+import { CardDescription, ItemContext } from '@gamepark/react-game'
 import { PlayerId } from '@gamepark/ipso/PlayerId'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { LocationType } from '@gamepark/ipso/material/LocationType'
 import { NumberCard } from '@gamepark/ipso/material/NumberCard'
+import { isMoveItemType, MaterialMove } from '@gamepark/rules-api'
 import { NumberCardHelp } from './help/NumberCardHelp'
 
 import NumberCard1 from '../images/NumberCard1.jpg'
@@ -198,6 +199,10 @@ export class NumberCardDescription extends CardDescription<PlayerId, MaterialTyp
   }
 
   backImage = NumberCardBack
+
+  canShortClick(move: MaterialMove<PlayerId, MaterialType, LocationType, number, number>, context: ItemContext<PlayerId, MaterialType, LocationType, number, number>): boolean {
+    return isMoveItemType(MaterialType.NumberCard)(move) && move.location.type === LocationType.Pyramid && move.location.player === context.player && move.itemIndex === context.index
+  }
 
 }
 

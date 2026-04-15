@@ -1,7 +1,9 @@
 import { IpsoRules } from '@gamepark/ipso/IpsoRules.ts'
+import { LocationType } from '@gamepark/ipso/material/LocationType.ts'
+import { MaterialType } from '@gamepark/ipso/material/MaterialType.ts'
 import { CustomMoveType } from '@gamepark/ipso/rules/CustomMoveType.ts'
 import { PlayMoveButton, useLegalMove, usePlayerId, usePlayerName, useRules } from '@gamepark/react-game'
-import { isCustomMoveType } from "@gamepark/rules-api"
+import { isCustomMoveType, isMoveItemType } from '@gamepark/rules-api'
 import { Trans } from 'react-i18next'
 
 export const UseStarCardHeader = () => {
@@ -10,14 +12,15 @@ export const UseStarCardHeader = () => {
   const activePlayer = rules.game.rule?.player
   const itsMe = player && activePlayer === player
   const pass = useLegalMove(isCustomMoveType(CustomMoveType.Pass))
+  const use = useLegalMove(move => isMoveItemType(MaterialType.StarCard)(move) && move.location.type === LocationType.DiscardPile)
   const name = usePlayerName(activePlayer)
 
   if (itsMe) {
     return <Trans
       i18nKey="header.use-star-card.you"
-      defaults="Vous pouvez utiliser votre carte étoile ou <pass>passer</pass>"
       components={{
-        pass: <PlayMoveButton move={pass}/>
+        pass: <PlayMoveButton move={pass}/>,
+        use: <PlayMoveButton move={use}/>
       }}
     />
   }

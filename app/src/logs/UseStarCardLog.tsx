@@ -8,7 +8,6 @@ export const UseStarCardLog: FC<MoveComponentProps<MaterialMove>> = ({ context }
 
   return (
     <Trans
-      defaults="{player} a utilisé sa carte étoile"
       i18nKey="log.use-star-card"
       values={{ player: playerName }}
     />

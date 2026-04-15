@@ -17,7 +17,6 @@ export const PlayCardLog: FC<MoveComponentProps<MaterialMove>> = ({ move, contex
 
   return (
     <Trans
-      defaults="{player} a joué la <card>carte {number}</card> dans sa pyramide"
       i18nKey="log.play-card"
       values={{ player: playerName, number }}
       components={{

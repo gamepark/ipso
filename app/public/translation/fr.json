@@ -1,5 +1,5 @@
 {
-  "tuto.step.1": "Bienvenue dans <bold>Ipso</bold> ! Votre objectif : remplir votre pyramide de cartes numérotées et marquer le plus de points possible. Choisissez une carte dans l'étalage et cliquez sur une case cachée de votre pyramide pour la placer.",
+  "tuto.step.1": "Bienvenue dans <bold>Ipso</bold> ! Votre objectif : remplir votre pyramide de cartes numérotées et marquer le plus de points possible. Cliquez sur la carte <bold>3</bold> dans l'étalage, puis sur l'emplacement mis en évidence dans votre pyramide.",
   "tuto.step.2": "La carte 3 est en place ! Votre objectif : former des <bold>lignes croissantes</bold> dans votre pyramide. La ligne du bas a 5 cartes — si elles vont de la plus petite à la plus grande, elles rapportent <bold>1 point par carte</bold>. Toutes de la <bold>même couleur</bold> ? Les points sont <bold>doublés</bold> !",
   "tuto.step.3": "À vous de jouer ! Placez maintenant la carte <bold>7</bold> dans votre pyramide.",
   "tuto.step.4": "Certaines cartes portent des <bold>étoiles</bold> — chaque étoile visible sur vos cartes en fin de partie rapporte <bold>1 point supplémentaire</bold> !",
@@ -14,7 +14,7 @@
 
   "header.play-card.you": "Vous devez choisir une carte et la placer dans votre pyramide",
   "header.play-card.player": "{player} doit choisir une carte et la placer dans sa pyramide",
-  "header.use-star-card.you": "Vous pouvez utiliser votre carte étoile pour piocher la première carte de la pioche et remplacer une carte ou <pass>passer</pass>",
+  "header.use-star-card.you": "Vous pouvez <use>utiliser votre carte étoile</use> ou <pass>passer</pass>",
   "header.use-star-card.player": "{player} peut utiliser sa carte étoile pour piocher la première carte de la pioche et remplacer une de ses cartes",
   "header.discard-non-ascending-lines": "Suppression des lignes non croissantes",
 
@@ -38,5 +38,14 @@
   "help.star-card.use.title": "Utilisation",
   "help.star-card.use.description": "Une fois que les <bold>14 cartes de votre pyramide sont toutes découvertes</bold>, vous pouvez défausser votre carte étoile pour piocher la première carte de la pioche et remplacer n'importe quelle carte de votre pyramide. Vous pouvez aussi choisir de <bold>passer</bold> et conserver votre carte étoile.",
   "help.star-card.bonus.title": "Bonus de fin de partie",
-  "help.star-card.bonus.description": "Si votre carte étoile est toujours dans votre pyramide à la fin de la partie, elle vous rapporte <bold>3 points</bold> supplémentaires."
+  "help.star-card.bonus.description": "Si votre carte étoile est toujours dans votre pyramide à la fin de la partie, elle vous rapporte <bold>3 points</bold> supplémentaires.",
+
+  "oddOrEven": "Ligne pair ou impaire",
+  "oddOrEven.help": "Les règles restent inchangées. Après le décompte de points habituel, ajoutez 1 point par carte si une ligne est composée uniquement de cartes paires ou uniquement de cartes impaires.",
+
+  "game-over.score.type.line": "<line/>",
+  "game-over.score.type.stars": "<stars/>",
+  "game-over.score.type.star-card": "<starcard/>",
+  "game-over.score.type.total": "Total",
+  "game-over.score.points": "{points, plural, one{# point} other{# points}}"
 }
