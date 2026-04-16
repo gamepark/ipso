@@ -1,7 +1,8 @@
 import { PyramidHelper } from '@gamepark/ipso/rules/helper/PyramidHelper.ts'
-import { getRelativePlayerIndex, ItemContext, Locator, MaterialContext } from '@gamepark/react-game'
+import { ItemContext, Locator, MaterialContext } from '@gamepark/react-game'
 import { Location, MaterialItem } from '@gamepark/rules-api'
 import { numberCardDescription } from '../material/NumberCardDescription'
+import { getSides } from './ViewHelper'
 
 export enum Position {
   TopLeft = 1,
@@ -24,40 +25,33 @@ export const playerPositions = [
 
 class PyramidLocator extends Locator {
   getPyramidBase(location: Location, context: MaterialContext) {
-    const playerIndex = getRelativePlayerIndex(context, location.player)
-    const playerCount = context.rules.players.length
-    const position = playerPositions[playerCount - 2][playerIndex]
-    switch (position) {
-      case Position.TopLeft:
-        return { x: -45, y: -5 }
-      case Position.TopCenter:
-        return { x: -5, y: -5 }
-      case Position.TopRight:
-        return { x: 30, y: -5 }
-      case Position.BottomLeft:
-        return { x: -45, y: 22 }
-      case Position.BottomCenter:
-        return { x: -5, y: 22 }
-      case Position.BottomRight:
-        return { x: 30, y: 22 }
-      case Position.TwoPlayerLeft:
-        return { x: -15, y: 7.5 }
-      case Position.TwoPlayerRight:
-        return { x: 20, y: 7.5 }
+    const { left, right } = getSides(context)
+    const player = location.player
+    if (player === left) {
+      return { x: -17, y: 22 }
     }
-    return { x: 0, y: 0 }
+    if (player === right) {
+      return { x: 4.4, y: 22 }
+    }
+    // Not currently viewed — off-screen
+    return { x: -200, y: -200 }
+  }
+
+  ignore(item: MaterialItem, context: ItemContext) {
+    const { left, right } = getSides(context)
+    return item.location.player !== left && item.location.player !== right
   }
 
   getCoordinates(location: Location, context: MaterialContext) {
     const base = this.getPyramidBase(location, context)
     if (location.x !== undefined) {
-      const baseGap = numberCardDescription.width + 1
+      const baseGap = numberCardDescription.width + 0.3
       const itemRow = this.getItemRow(location.x)
       const itemPosition = this.getItemPosition(location.x, itemRow)
       const leftMargin = itemRow * baseGap / 2
       return {
         x: base.x + leftMargin + (itemPosition * baseGap),
-        y: base.y - (numberCardDescription.height + 1) * itemRow
+        y: base.y - (numberCardDescription.height + 0.3) * itemRow
       }
     }
     return base
@@ -72,7 +66,7 @@ class PyramidLocator extends Locator {
   getItemX(item: MaterialItem, context: ItemContext) {
     const pyramidCoordinates = this.getPyramidBase(item.location, context)
     const pyramidLeft = pyramidCoordinates.x!
-    const baseGap = numberCardDescription.width + 1
+    const baseGap = numberCardDescription.width + 0.3
 
     const itemIndex = item.location.x!
     const itemRow = this.getItemRow(itemIndex)
@@ -87,7 +81,7 @@ class PyramidLocator extends Locator {
     const pyramidTop = pyramidCoordinates.y!
 
     const itemRow = this.getItemRow(item.location.x!)
-    const rowGap = (numberCardDescription.height + 1) * itemRow
+    const rowGap = (numberCardDescription.height + 0.3) * itemRow
 
     return pyramidTop - rowGap
   }
@@ -126,7 +120,5 @@ class PyramidLocator extends Locator {
     return new PyramidHelper(context.rules.game).possibleLocations(true)
   }
 }
-
-
 
 export const pyramidLocator = new PyramidLocator()

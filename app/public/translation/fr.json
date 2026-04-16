@@ -47,5 +47,9 @@
   "game-over.score.type.stars": "<stars/>",
   "game-over.score.type.star-card": "<starcard/>",
   "game-over.score.type.total": "Total",
-  "game-over.score.points": "{points, plural, one{# point} other{# points}}"
+  "game-over.score.points": "{points, plural, one{# point} other{# points}}",
+
+  "view.display-at": "Afficher à",
+  "view.left": "Gauche",
+  "view.right": "Droite"
 }

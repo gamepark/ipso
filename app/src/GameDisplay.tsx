@@ -3,13 +3,13 @@ import { DevToolsHub, GameTable, GameTableNavigation } from '@gamepark/react-gam
 import { PlayerPanels } from './panels/PlayerPanels'
 
 export function GameDisplay() {
-  const margin = { top: 7, left: 0, right: 30, bottom: 0 }
+  const margin = { top: 7, left: 0, right: 0, bottom: 0 }
   return (
     <>
-      <GameTable xMin={-50} xMax={50} yMin={-30} yMax={30} margin={margin} css={process.env.NODE_ENV === 'development' && tableBorder}>
+      <GameTable xMin={-23} xMax={23} yMin={3} yMax={25} margin={margin} css={process.env.NODE_ENV === 'development' && tableBorder} verticalCenter>
         <GameTableNavigation css={navCss} />
         <PlayerPanels />
-        {process.env.NODE_ENV === 'development' && <DevToolsHub fabBottom="calc(1em + 6em * 1.7)" />}
+        {process.env.NODE_ENV === 'development' && <DevToolsHub fabBottom="1em" />}
       </GameTable>
     </>
   )
