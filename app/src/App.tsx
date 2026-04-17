@@ -1,3 +1,4 @@
+import { css, Global } from '@emotion/react'
 import { FailuresDialog, FullscreenDialog, LoadingScreen, MaterialGameSounds, MaterialHeader, MaterialImageLoader, Menu, useGame } from '@gamepark/react-game'
 import { MaterialGame } from '@gamepark/rules-api'
 import { useEffect, useState } from 'react'
@@ -14,6 +15,7 @@ export function App() {
   const loading = !game || isJustDisplayed || isImagesLoading
   return (
     <>
+      <Global styles={backgroundGradient} />
       {!!game && <GameDisplay />}
       <LoadingScreen display={loading} />
       <MaterialHeader rulesStepsHeaders={Headers} loading={loading} />
@@ -25,3 +27,9 @@ export function App() {
     </>
   )
 }
+
+const backgroundGradient = css`
+  #root {
+    background: radial-gradient(ellipse at top left, #0A6BC5 0%, #153A8E 45%, #1A2E70 100%) !important;
+  }
+`
