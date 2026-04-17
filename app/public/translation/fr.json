@@ -1,7 +1,7 @@
 {
-  "tuto.step.1": "Bienvenue dans <bold>Ipso</bold> ! Votre objectif : remplir votre pyramide de cartes numérotées et marquer le plus de points possible. Cliquez sur la carte <bold>3</bold> dans l'étalage, puis sur l'emplacement mis en évidence dans votre pyramide.",
+  "tuto.step.1": "Bienvenue dans <bold>Ipso</bold> ! Votre objectif : remplir votre pyramide de cartes numérotées et marquer le plus de points possible. Cliquez sur la carte <bold>3</bold> dans l'étalage, afin de la placer dans l'emplacement en bas à gauche de la pyramide.",
   "tuto.step.2": "La carte 3 est en place ! Votre objectif : former des <bold>lignes croissantes</bold> dans votre pyramide. La ligne du bas a 5 cartes — si elles vont de la plus petite à la plus grande, elles rapportent <bold>1 point par carte</bold>. Toutes de la <bold>même couleur</bold> ? Les points sont <bold>doublés</bold> !",
-  "tuto.step.3": "À vous de jouer ! Placez maintenant la carte <bold>7</bold> dans votre pyramide.",
+  "tuto.step.3": "À vous de jouer ! Placez maintenant la carte <bold>7</bold> dans l'emplacement en bas à gauche de la deuxième ligne.",
   "tuto.step.4": "Certaines cartes portent des <bold>étoiles</bold> — chaque étoile visible sur vos cartes en fin de partie rapporte <bold>1 point supplémentaire</bold> !",
   "tuto.step.5": "Continuez à remplir votre pyramide tour après tour ! Une fois toutes vos <bold>14 cartes</bold> révélées, vous pouvez utiliser votre <bold>carte étoile</bold> pour piocher la première carte de la pioche et remplacer une carte. Ou gardez-la pour <bold>3 points bonus</bold> en fin de partie.",
   "tuto.step.6": "En fin de partie, les lignes dont les numéros ne sont pas en ordre croissant sont <bold>supprimées</bold> et ne rapportent rien. Les autres marquent 1 ou 2 points par carte selon la couleur. Bonne chance !",

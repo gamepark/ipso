@@ -49,15 +49,15 @@ export class TutorialSetup extends IpsoSetup {
   }
 
   setupMePyramid() {
-    // Line 1 (x=0–4): all hidden — NC3 from display will swap with NC30 at x=2
+    // Line 1 (x=0–4): all hidden — NC3 from display will swap with NC1 at x=0
     this.createNumberCard(me, 0, true, NumberCard.NumberCard1)
     this.createNumberCard(me, 1, true, NumberCard.NumberCard2)
-    this.createNumberCard(me, 2, true, NumberCard.NumberCard30) // hidden — will swap with NC3
+    this.createNumberCard(me, 2, true, NumberCard.NumberCard30)
     this.createNumberCard(me, 3, true, NumberCard.NumberCard4)
     this.createNumberCard(me, 4, true, NumberCard.NumberCard5)
-    // Line 2 (x=5–8): all hidden — NC7 from display will swap with NC40 at x=6
-    this.createNumberCard(me, 5, true, NumberCard.NumberCard6)
-    this.createNumberCard(me, 6, true, NumberCard.NumberCard40) // hidden — will swap with NC7
+    // Line 2 (x=5–8): all hidden — NC7 from display will swap with NC6 at x=5
+    this.createNumberCard(me, 5, true, NumberCard.NumberCard6) // hidden — will swap with NC7
+    this.createNumberCard(me, 6, true, NumberCard.NumberCard40)
     this.createNumberCard(me, 7, true, NumberCard.NumberCard8)
     this.createNumberCard(me, 8, true, NumberCard.NumberCard9)
     // Line 3 (x=9–11): all hidden

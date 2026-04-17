@@ -1,1 +1,55 @@
-{}
+{
+  "tuto.step.1": "¡Bienvenido a <bold>Ipso</bold>! Tu objetivo: llenar tu pirámide con cartas numeradas y conseguir la mayor cantidad de puntos posible. Haz clic en la carta <bold>3</bold> del escaparate para colocarla en el espacio inferior izquierdo de la pirámide.",
+  "tuto.step.2": "¡La carta 3 está en su lugar! Tu objetivo: formar <bold>filas ascendentes</bold> en tu pirámide. La fila inferior tiene 5 cartas — si van de la más pequeña a la más grande, dan <bold>1 punto por carta</bold>. ¿Todas del <bold>mismo color</bold>? ¡Los puntos se <bold>doblan</bold>!",
+  "tuto.step.3": "¡Te toca! Coloca ahora la carta <bold>7</bold> en el espacio inferior izquierdo de la segunda fila.",
+  "tuto.step.4": "Algunas cartas tienen <bold>estrellas</bold> — ¡cada estrella visible en tus cartas al final de la partida otorga <bold>1 punto adicional</bold>!",
+  "tuto.step.5": "¡Sigue llenando tu pirámide turno a turno! Una vez que tus <bold>14 cartas</bold> estén reveladas, puedes usar tu <bold>carta estrella</bold> para robar la primera carta del mazo y reemplazar una carta. O guárdala para <bold>3 puntos de bonificación</bold> al final de la partida.",
+  "tuto.step.6": "Al final de la partida, las filas cuyos números no están en orden ascendente son <bold>eliminadas</bold> y no puntúan. Las demás puntúan 1 o 2 puntos por carta según el color. ¡Buena suerte!",
+
+  "log.play-card": "{player} jugó la carta {number} en su pirámide",
+  "log.use-star-card": "{player} usó su carta estrella",
+  "log.place-from-pile": "{player} colocó la carta {number} en su pirámide",
+  "log.discard-from-pile": "{player} descartó la carta {number}",
+  "log.pass": "{player} pasó",
+
+  "header.play-card.you": "Debes elegir una carta y colocarla en tu pirámide",
+  "header.play-card.player": "{player} debe elegir una carta y colocarla en su pirámide",
+  "header.use-star-card.you": "Puedes <use>usar tu carta estrella</use> o <pass>pasar</pass>",
+  "header.use-star-card.player": "{player} puede usar su carta estrella para robar la primera carta del mazo y reemplazar una de sus cartas",
+  "header.discard-non-ascending-lines": "Eliminando filas no ascendentes",
+
+  "help.number-card.title": "Carta Numerada",
+  "help.number-card.description": "Cada carta tiene un <bold>número del 1 al 90</bold> y un <bold>color</bold> entre cinco. Algunas cartas también tienen <bold>estrellas</bold> (1 o 2) que otorgan puntos de bonificación.",
+  "help.number-card.colors": "Hay <bold>5 colores</bold>: rosa, amarillo, verde, cian y naranja.",
+  "help.number-card.pyramid.title": "La pirámide",
+  "help.number-card.pyramid.description": "Cada jugador construye una pirámide de <bold>14 cartas</bold> organizada en 4 filas. Al inicio de la partida, todas las cartas están ocultas. Cada turno, eliges una carta visible del escaparate y la colocas boca arriba en tu pirámide, intercambiándola con una carta oculta.",
+  "help.number-card.scoring.title": "Puntuación",
+  "help.number-card.scoring.description": "Al final de la partida, cada fila de tu pirámide puntúa si sus cartas están en <bold>orden ascendente</bold> de izquierda a derecha:",
+  "help.number-card.scoring.line1": "<bold>Fila 1</bold> — 5 cartas: hasta 10 puntos",
+  "help.number-card.scoring.line2": "<bold>Fila 2</bold> — 4 cartas: hasta 8 puntos",
+  "help.number-card.scoring.line3": "<bold>Fila 3</bold> — 3 cartas: hasta 6 puntos",
+  "help.number-card.scoring.line4": "<bold>Fila 4</bold> — 2 cartas: hasta 4 puntos",
+  "help.number-card.scoring.same-color": "Una fila ascendente puntúa <bold>1 punto por carta</bold>. Si todas las cartas son del <bold>mismo color</bold>, puntúa <bold>2 puntos por carta</bold>. Una fila no ascendente es eliminada y no puntúa.",
+  "help.number-card.stars.title": "Estrellas",
+  "help.number-card.stars.description": "Cada estrella visible en tus cartas al final de la partida otorga <bold>1 punto adicional</bold>.",
+
+  "help.star-card.title": "Carta Estrella",
+  "help.star-card.description": "Cada jugador tiene <bold>una carta estrella</bold>, colocada en la cima de su pirámide al inicio de la partida.",
+  "help.star-card.use.title": "Uso",
+  "help.star-card.use.description": "Una vez que las <bold>14 cartas de tu pirámide estén todas reveladas</bold>, puedes descartar tu carta estrella para robar la primera carta del mazo y reemplazar cualquier carta de tu pirámide. También puedes elegir <bold>pasar</bold> y conservar tu carta estrella.",
+  "help.star-card.bonus.title": "Bonificación de fin de partida",
+  "help.star-card.bonus.description": "Si tu carta estrella sigue en tu pirámide al final de la partida, te otorga <bold>3 puntos</bold> adicionales.",
+
+  "oddOrEven": "Fila par o impar",
+  "oddOrEven.help": "Las reglas permanecen sin cambios. Después del recuento de puntos habitual, añade 1 punto por carta si una fila está compuesta únicamente por cartas pares o únicamente por cartas impares.",
+
+  "game-over.score.type.line": "<line/>",
+  "game-over.score.type.stars": "<stars/>",
+  "game-over.score.type.star-card": "<starcard/>",
+  "game-over.score.type.total": "Total",
+  "game-over.score.points": "{points, plural, one{# punto} other{# puntos}}",
+
+  "view.display-at": "Mostrar en",
+  "view.left": "Izquierda",
+  "view.right": "Derecha"
+}

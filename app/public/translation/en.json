@@ -1,1 +1,55 @@
-{}
+{
+  "tuto.step.1": "Welcome to <bold>Ipso</bold>! Your goal: fill your pyramid with numbered cards and score as many points as possible. Click on the <bold>3</bold> card in the display to place it in the bottom-left slot of the pyramid.",
+  "tuto.step.2": "The 3 card is in place! Your goal: form <bold>ascending rows</bold> in your pyramid. The bottom row has 5 cards — if they go from smallest to largest, they score <bold>1 point per card</bold>. All the <bold>same color</bold>? The points are <bold>doubled</bold>!",
+  "tuto.step.3": "Your turn! Now place the <bold>7</bold> card in the bottom-left slot of the second row.",
+  "tuto.step.4": "Some cards have <bold>stars</bold> — each star visible on your cards at the end of the game scores <bold>1 extra point</bold>!",
+  "tuto.step.5": "Keep filling your pyramid turn after turn! Once all your <bold>14 cards</bold> are revealed, you can use your <bold>star card</bold> to draw the top card from the deck and replace a card. Or keep it for <bold>3 bonus points</bold> at the end of the game.",
+  "tuto.step.6": "At the end of the game, rows whose numbers are not in ascending order are <bold>discarded</bold> and score nothing. The others score 1 or 2 points per card depending on color. Good luck!",
+
+  "log.play-card": "{player} played card {number} in their pyramid",
+  "log.use-star-card": "{player} used their star card",
+  "log.place-from-pile": "{player} placed card {number} in their pyramid",
+  "log.discard-from-pile": "{player} discarded card {number}",
+  "log.pass": "{player} passed",
+
+  "header.play-card.you": "You must choose a card and place it in your pyramid",
+  "header.play-card.player": "{player} must choose a card and place it in their pyramid",
+  "header.use-star-card.you": "You can <use>use your star card</use> or <pass>pass</pass>",
+  "header.use-star-card.player": "{player} can use their star card to draw the top card from the deck and replace one of their cards",
+  "header.discard-non-ascending-lines": "Discarding non-ascending rows",
+
+  "help.number-card.title": "Numbered Card",
+  "help.number-card.description": "Each card has a <bold>number from 1 to 90</bold> and a <bold>color</bold> among five. Some cards also have <bold>stars</bold> (1 or 2) that score bonus points.",
+  "help.number-card.colors": "There are <bold>5 colors</bold>: pink, yellow, green, cyan, and orange.",
+  "help.number-card.pyramid.title": "The pyramid",
+  "help.number-card.pyramid.description": "Each player builds a pyramid of <bold>14 cards</bold> organized in 4 rows. At the start of the game, all cards are hidden. Each turn, you choose a visible card from the display and place it face up in your pyramid, swapping it with a hidden card.",
+  "help.number-card.scoring.title": "Score",
+  "help.number-card.scoring.description": "At the end of the game, each row of your pyramid scores points if its cards are in <bold>ascending order</bold> from left to right:",
+  "help.number-card.scoring.line1": "<bold>Row 1</bold> — 5 cards: up to 10 points",
+  "help.number-card.scoring.line2": "<bold>Row 2</bold> — 4 cards: up to 8 points",
+  "help.number-card.scoring.line3": "<bold>Row 3</bold> — 3 cards: up to 6 points",
+  "help.number-card.scoring.line4": "<bold>Row 4</bold> — 2 cards: up to 4 points",
+  "help.number-card.scoring.same-color": "An ascending row scores <bold>1 point per card</bold>. If all cards are the <bold>same color</bold>, it scores <bold>2 points per card</bold>. A non-ascending row is discarded and scores nothing.",
+  "help.number-card.stars.title": "Stars",
+  "help.number-card.stars.description": "Each star visible on your cards at the end of the game scores <bold>1 extra point</bold>.",
+
+  "help.star-card.title": "Star Card",
+  "help.star-card.description": "Each player has <bold>one star card</bold>, placed at the top of their pyramid at the start of the game.",
+  "help.star-card.use.title": "Use",
+  "help.star-card.use.description": "Once all <bold>14 cards in your pyramid are revealed</bold>, you can discard your star card to draw the top card from the deck and replace any card in your pyramid. You can also choose to <bold>pass</bold> and keep your star card.",
+  "help.star-card.bonus.title": "End-of-game bonus",
+  "help.star-card.bonus.description": "If your star card is still in your pyramid at the end of the game, it scores <bold>3 extra points</bold>.",
+
+  "oddOrEven": "Odd or Even Row",
+  "oddOrEven.help": "The rules remain unchanged. After the regular scoring, add 1 point per card if a row consists entirely of even cards or entirely of odd cards.",
+
+  "game-over.score.type.line": "<line/>",
+  "game-over.score.type.stars": "<stars/>",
+  "game-over.score.type.star-card": "<starcard/>",
+  "game-over.score.type.total": "Total",
+  "game-over.score.points": "{points, plural, one{# point} other{# points}}",
+
+  "view.display-at": "Display at",
+  "view.left": "Left",
+  "view.right": "Right"
+}

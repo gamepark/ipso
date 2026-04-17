@@ -1,1 +1,55 @@
-{}
+{
+  "tuto.step.1": "Willkommen bei <bold>Ipso</bold>! Ihr Ziel: Füllen Sie Ihre Pyramide mit nummerierten Karten und erzielen Sie so viele Punkte wie möglich. Klicken Sie auf die Karte <bold>3</bold> in der Auslage, um sie in den unteren linken Platz der Pyramide zu legen.",
+  "tuto.step.2": "Die 3 ist auf ihrem Platz! Ihr Ziel: Bilden Sie <bold>aufsteigende Reihen</bold> in Ihrer Pyramide. Die unterste Reihe hat 5 Karten — wenn sie von der kleinsten zur größten gehen, bringen sie <bold>1 Punkt pro Karte</bold>. Alle <bold>gleiche Farbe</bold>? Die Punkte werden <bold>verdoppelt</bold>!",
+  "tuto.step.3": "Sie sind dran! Legen Sie jetzt die Karte <bold>7</bold> in den unteren linken Platz der zweiten Reihe.",
+  "tuto.step.4": "Manche Karten haben <bold>Sterne</bold> — jeder sichtbare Stern auf Ihren Karten am Spielende bringt <bold>1 zusätzlichen Punkt</bold>!",
+  "tuto.step.5": "Füllen Sie Ihre Pyramide Zug um Zug! Sobald alle Ihre <bold>14 Karten</bold> aufgedeckt sind, können Sie Ihre <bold>Sternkarte</bold> verwenden, um die oberste Karte vom Stapel zu ziehen und eine Karte zu ersetzen. Oder behalten Sie sie für <bold>3 Bonuspunkte</bold> am Spielende.",
+  "tuto.step.6": "Am Spielende werden Reihen, deren Nummern nicht aufsteigend sind, <bold>gestrichen</bold> und bringen nichts. Die anderen bringen je nach Farbe 1 oder 2 Punkte pro Karte. Viel Glück!",
+
+  "log.play-card": "{player} hat Karte {number} in die Pyramide gelegt",
+  "log.use-star-card": "{player} hat die Sternkarte verwendet",
+  "log.place-from-pile": "{player} hat Karte {number} in die Pyramide gelegt",
+  "log.discard-from-pile": "{player} hat Karte {number} abgeworfen",
+  "log.pass": "{player} hat gepasst",
+
+  "header.play-card.you": "Sie müssen eine Karte auswählen und in Ihre Pyramide legen",
+  "header.play-card.player": "{player} muss eine Karte auswählen und in die Pyramide legen",
+  "header.use-star-card.you": "Sie können <use>Ihre Sternkarte verwenden</use> oder <pass>passen</pass>",
+  "header.use-star-card.player": "{player} kann die Sternkarte verwenden, um die oberste Karte vom Stapel zu ziehen und eine seiner Karten zu ersetzen",
+  "header.discard-non-ascending-lines": "Streichen nicht-aufsteigender Reihen",
+
+  "help.number-card.title": "Nummerierte Karte",
+  "help.number-card.description": "Jede Karte hat eine <bold>Zahl von 1 bis 90</bold> und eine <bold>Farbe</bold> aus fünf möglichen. Manche Karten haben auch <bold>Sterne</bold> (1 oder 2), die Bonuspunkte bringen.",
+  "help.number-card.colors": "Es gibt <bold>5 Farben</bold>: Rosa, Gelb, Grün, Cyan und Orange.",
+  "help.number-card.pyramid.title": "Die Pyramide",
+  "help.number-card.pyramid.description": "Jeder Spieler baut eine Pyramide aus <bold>14 Karten</bold> in 4 Reihen. Zu Spielbeginn sind alle Karten verdeckt. Jede Runde wählen Sie eine sichtbare Karte aus der Auslage und tauschen sie mit einer verdeckten Karte in Ihrer Pyramide.",
+  "help.number-card.scoring.title": "Wertung",
+  "help.number-card.scoring.description": "Am Spielende bringt jede Reihe Ihrer Pyramide Punkte, wenn ihre Karten von links nach rechts in <bold>aufsteigender Reihenfolge</bold> liegen:",
+  "help.number-card.scoring.line1": "<bold>Reihe 1</bold> — 5 Karten: bis zu 10 Punkte",
+  "help.number-card.scoring.line2": "<bold>Reihe 2</bold> — 4 Karten: bis zu 8 Punkte",
+  "help.number-card.scoring.line3": "<bold>Reihe 3</bold> — 3 Karten: bis zu 6 Punkte",
+  "help.number-card.scoring.line4": "<bold>Reihe 4</bold> — 2 Karten: bis zu 4 Punkte",
+  "help.number-card.scoring.same-color": "Eine aufsteigende Reihe bringt <bold>1 Punkt pro Karte</bold>. Wenn alle Karten <bold>dieselbe Farbe</bold> haben, bringt sie <bold>2 Punkte pro Karte</bold>. Eine nicht-aufsteigende Reihe wird gestrichen und bringt nichts.",
+  "help.number-card.stars.title": "Sterne",
+  "help.number-card.stars.description": "Jeder sichtbare Stern auf Ihren Karten am Spielende bringt <bold>1 zusätzlichen Punkt</bold>.",
+
+  "help.star-card.title": "Sternkarte",
+  "help.star-card.description": "Jeder Spieler hat <bold>eine Sternkarte</bold>, die zu Spielbeginn an der Spitze seiner Pyramide liegt.",
+  "help.star-card.use.title": "Verwendung",
+  "help.star-card.use.description": "Sobald alle <bold>14 Karten Ihrer Pyramide aufgedeckt sind</bold>, können Sie Ihre Sternkarte abwerfen, um die oberste Karte vom Stapel zu ziehen und eine beliebige Karte in Ihrer Pyramide zu ersetzen. Sie können auch wählen zu <bold>passen</bold> und Ihre Sternkarte zu behalten.",
+  "help.star-card.bonus.title": "Spielende-Bonus",
+  "help.star-card.bonus.description": "Wenn sich Ihre Sternkarte am Spielende noch in Ihrer Pyramide befindet, bringt sie Ihnen <bold>3 zusätzliche Punkte</bold>.",
+
+  "oddOrEven": "Gerade oder ungerade Reihe",
+  "oddOrEven.help": "Die Regeln bleiben unverändert. Nach der normalen Wertung erhalten Sie 1 zusätzlichen Punkt pro Karte, wenn eine Reihe ausschließlich aus geraden oder ausschließlich aus ungeraden Karten besteht.",
+
+  "game-over.score.type.line": "<line/>",
+  "game-over.score.type.stars": "<stars/>",
+  "game-over.score.type.star-card": "<starcard/>",
+  "game-over.score.type.total": "Gesamt",
+  "game-over.score.points": "{points, plural, one{# Punkt} other{# Punkte}}",
+
+  "view.display-at": "Anzeigen bei",
+  "view.left": "Links",
+  "view.right": "Rechts"
+}

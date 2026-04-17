@@ -1,1 +1,55 @@
-{}
+{
+  "tuto.step.1": "Benvenuto in <bold>Ipso</bold>! Il tuo obiettivo: riempire la tua piramide con carte numerate e segnare il maggior numero di punti possibile. Clicca sulla carta <bold>3</bold> nell'esposizione per posizionarla nello spazio in basso a sinistra della piramide.",
+  "tuto.step.2": "La carta 3 è al suo posto! Il tuo obiettivo: formare <bold>righe crescenti</bold> nella tua piramide. La riga in basso ha 5 carte — se vanno dalla più piccola alla più grande, valgono <bold>1 punto per carta</bold>. Tutte dello <bold>stesso colore</bold>? I punti vengono <bold>raddoppiati</bold>!",
+  "tuto.step.3": "Tocca a te! Posiziona ora la carta <bold>7</bold> nello spazio in basso a sinistra della seconda riga.",
+  "tuto.step.4": "Alcune carte hanno delle <bold>stelle</bold> — ogni stella visibile sulle tue carte a fine partita vale <bold>1 punto aggiuntivo</bold>!",
+  "tuto.step.5": "Continua a riempire la tua piramide turno dopo turno! Una volta rivelate tutte le tue <bold>14 carte</bold>, puoi usare la tua <bold>carta stella</bold> per pescare la prima carta del mazzo e sostituire una carta. Oppure tienila per <bold>3 punti bonus</bold> a fine partita.",
+  "tuto.step.6": "A fine partita, le righe i cui numeri non sono in ordine crescente vengono <bold>eliminate</bold> e non valgono nulla. Le altre valgono 1 o 2 punti per carta in base al colore. Buona fortuna!",
+
+  "log.play-card": "{player} ha giocato la carta {number} nella sua piramide",
+  "log.use-star-card": "{player} ha usato la sua carta stella",
+  "log.place-from-pile": "{player} ha posizionato la carta {number} nella sua piramide",
+  "log.discard-from-pile": "{player} ha scartato la carta {number}",
+  "log.pass": "{player} ha passato",
+
+  "header.play-card.you": "Devi scegliere una carta e posizionarla nella tua piramide",
+  "header.play-card.player": "{player} deve scegliere una carta e posizionarla nella sua piramide",
+  "header.use-star-card.you": "Puoi <use>usare la tua carta stella</use> o <pass>passare</pass>",
+  "header.use-star-card.player": "{player} può usare la sua carta stella per pescare la prima carta del mazzo e sostituire una delle sue carte",
+  "header.discard-non-ascending-lines": "Eliminazione delle righe non crescenti",
+
+  "help.number-card.title": "Carta Numerata",
+  "help.number-card.description": "Ogni carta ha un <bold>numero da 1 a 90</bold> e un <bold>colore</bold> tra cinque. Alcune carte hanno anche delle <bold>stelle</bold> (1 o 2) che valgono punti bonus.",
+  "help.number-card.colors": "Ci sono <bold>5 colori</bold>: rosa, giallo, verde, ciano e arancione.",
+  "help.number-card.pyramid.title": "La piramide",
+  "help.number-card.pyramid.description": "Ogni giocatore costruisce una piramide di <bold>14 carte</bold> organizzata in 4 righe. All'inizio della partita, tutte le carte sono coperte. Ogni turno, scegli una carta visibile dall'esposizione e la posizioni a faccia in su nella tua piramide, scambiandola con una carta coperta.",
+  "help.number-card.scoring.title": "Punteggio",
+  "help.number-card.scoring.description": "A fine partita, ogni riga della tua piramide vale punti se le sue carte sono in <bold>ordine crescente</bold> da sinistra a destra:",
+  "help.number-card.scoring.line1": "<bold>Riga 1</bold> — 5 carte: fino a 10 punti",
+  "help.number-card.scoring.line2": "<bold>Riga 2</bold> — 4 carte: fino a 8 punti",
+  "help.number-card.scoring.line3": "<bold>Riga 3</bold> — 3 carte: fino a 6 punti",
+  "help.number-card.scoring.line4": "<bold>Riga 4</bold> — 2 carte: fino a 4 punti",
+  "help.number-card.scoring.same-color": "Una riga crescente vale <bold>1 punto per carta</bold>. Se tutte le carte sono dello <bold>stesso colore</bold>, vale <bold>2 punti per carta</bold>. Una riga non crescente viene eliminata e non vale nulla.",
+  "help.number-card.stars.title": "Stelle",
+  "help.number-card.stars.description": "Ogni stella visibile sulle tue carte a fine partita vale <bold>1 punto aggiuntivo</bold>.",
+
+  "help.star-card.title": "Carta Stella",
+  "help.star-card.description": "Ogni giocatore ha <bold>una carta stella</bold>, posizionata in cima alla sua piramide all'inizio della partita.",
+  "help.star-card.use.title": "Utilizzo",
+  "help.star-card.use.description": "Una volta che tutte le <bold>14 carte della tua piramide sono scoperte</bold>, puoi scartare la tua carta stella per pescare la prima carta del mazzo e sostituire qualsiasi carta nella tua piramide. Puoi anche scegliere di <bold>passare</bold> e conservare la tua carta stella.",
+  "help.star-card.bonus.title": "Bonus di fine partita",
+  "help.star-card.bonus.description": "Se la tua carta stella è ancora nella tua piramide a fine partita, ti vale <bold>3 punti</bold> aggiuntivi.",
+
+  "oddOrEven": "Riga pari o dispari",
+  "oddOrEven.help": "Le regole rimangono invariate. Dopo il conteggio dei punti normale, aggiungi 1 punto per carta se una riga è composta interamente da carte pari o interamente da carte dispari.",
+
+  "game-over.score.type.line": "<line/>",
+  "game-over.score.type.stars": "<stars/>",
+  "game-over.score.type.star-card": "<starcard/>",
+  "game-over.score.type.total": "Totale",
+  "game-over.score.points": "{points, plural, one{# punto} other{# punti}}",
+
+  "view.display-at": "Mostra a",
+  "view.left": "Sinistra",
+  "view.right": "Destra"
+}

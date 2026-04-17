@@ -48,7 +48,8 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
             i18nKey="tuto.step.1"
             components={BaseComponents}
           />
-        )
+        ),
+        position: { y: 10 }
       },
       focus: (game) => ({
         materials: [
@@ -77,7 +78,7 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
             components={BaseComponents}
           />
         ),
-        position: { y: -25 }
+        position: { y: -20 }
       },
       focus: (game) => ({
         materials: [
@@ -111,7 +112,7 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
             components={BaseComponents}
           />
         ),
-        position: { y: -25 }
+        position: { y: -20 }
       },
       focus: (game) => ({
         materials: [
@@ -140,7 +141,7 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
             components={BaseComponents}
           />
         ),
-        position: { y: -35 }
+        position: { y: -20 }
       },
       focus: (game) => ({
         materials: [
@@ -161,7 +162,7 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
             components={BaseComponents}
           />
         ),
-        position: { y: -20 }
+        position: { y: 20 }
       },
       focus: (game) => ({
         materials: [
