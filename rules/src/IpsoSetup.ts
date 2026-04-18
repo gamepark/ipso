@@ -7,6 +7,7 @@ import { MemoryType } from './rules/MemoryType'
 import { RuleId } from './rules/RuleId'
 import { PlayerId } from './PlayerId';
 import { numberCards } from './material/NumberCard'
+import { getPyramidPositions } from './rules/helper/pyramidLines'
 
 /**
  * This class creates a new Game based on the game options
@@ -52,11 +53,15 @@ export class IpsoSetup extends MaterialGameSetup<PlayerId, MaterialType, Locatio
 
   setupPlayerPyramid(player: PlayerId) {
     const drawPile = this.getDrawPile()
-    drawPile.dealAtOnce({
-      type: LocationType.Pyramid,
-      player: player,
-      rotation: true
-    }, 14)
+    for (const { x, y } of getPyramidPositions()) {
+      drawPile.dealOne({
+        type: LocationType.Pyramid,
+        player,
+        x,
+        y,
+        rotation: true
+      })
+    }
   }
 
   setupPlayerStarCard(player: PlayerId) {
@@ -64,8 +69,9 @@ export class IpsoSetup extends MaterialGameSetup<PlayerId, MaterialType, Locatio
       id: player,
       location: {
         type: LocationType.Pyramid,
-        player: player,
-        x: 14
+        player,
+        x: 0,
+        y: 0
       }
     })
   }

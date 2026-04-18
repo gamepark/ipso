@@ -13,7 +13,7 @@ export class PlayCardRule extends PlayerTurnRule {
     if (isMoveItem(move) && move.location.type === LocationType.Pyramid) {
       const oldCardLocation = this.material(MaterialType.NumberCard).getItem(move.itemIndex).location
       const cardAlreadyInMoveLocation = this.material(MaterialType.NumberCard).location(l =>
-        l.type === LocationType.Pyramid && l.x === move.location.x && l.player === move.location.player
+        l.type === LocationType.Pyramid && l.x === move.location.x && l.y === move.location.y && l.player === move.location.player
       )
       if (cardAlreadyInMoveLocation.length) {
         return [cardAlreadyInMoveLocation.moveItem(oldCardLocation)]

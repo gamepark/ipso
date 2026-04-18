@@ -38,7 +38,7 @@ export class UseStarCardRule extends PlayerTurnRule {
   beforeItemMove(move: ItemMove): MaterialMove[] {
     if (isMoveItem(move) && move.location.type === LocationType.Pyramid) {
       const cardAlreadyInMoveLocation = this.material(MaterialType.NumberCard).location(l =>
-        l.type === LocationType.Pyramid && l.x === move.location.x && l.player === move.location.player
+        l.type === LocationType.Pyramid && l.x === move.location.x && l.y === move.location.y && l.player === move.location.player
       )
       if (cardAlreadyInMoveLocation.length) {
         return [cardAlreadyInMoveLocation.moveItem({ type: LocationType.DiscardPile })]

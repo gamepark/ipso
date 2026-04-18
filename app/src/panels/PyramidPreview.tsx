@@ -13,12 +13,7 @@ type PyramidPreviewProps = {
   playerId: number
 }
 
-const rows = [
-  [0, 1, 2, 3, 4],
-  [5, 6, 7, 8],
-  [9, 10, 11],
-  [12, 13],
-]
+const rows = [4, 3, 2, 1]
 
 export const PyramidPreview: FC<PyramidPreviewProps> = ({ playerId }) => {
   const rules = useRules<IpsoRules>()!
@@ -34,10 +29,10 @@ export const PyramidPreview: FC<PyramidPreviewProps> = ({ playerId }) => {
 
   return (
     <div css={previewCss}>
-      {rows.map((row, rowIndex) => (
-        <div key={rowIndex} css={[rowCss, rowWidthCss(row.length, 5)]}>
-          {row.map((x) => {
-            const card = cards.find(c => c.location.x === x)
+      {rows.map((y) => (
+        <div key={y} css={[rowCss, rowWidthCss(y + 1, 5)]}>
+          {Array.from({ length: y + 1 }, (_, x) => {
+            const card = cards.find(c => c.location.y === y && c.location.x === x)
             const isRevealed = card && card.id !== undefined && !card.location.rotation
             const image = isRevealed
               ? numberCardDescription.images[card!.id as NumberCard]

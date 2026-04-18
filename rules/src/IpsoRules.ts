@@ -35,8 +35,7 @@ export class IpsoRules
   locationsStrategies = {
     [MaterialType.NumberCard]: {
       [LocationType.DrawPile]: new PositiveSequenceStrategy(),
-      [LocationType.CardDisplay]: new FillGapStrategy(),
-      [LocationType.Pyramid]: new FillGapStrategy()
+      [LocationType.CardDisplay]: new FillGapStrategy()
     }
   }
 

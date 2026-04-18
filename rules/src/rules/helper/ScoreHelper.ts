@@ -3,11 +3,11 @@ import { LocationType } from '../../material/LocationType'
 import { MaterialType } from '../../material/MaterialType'
 import { Colors, NumberCard, numberCardData } from '../../material/NumberCard'
 import { MemoryType } from '../MemoryType'
-import { isAscending, pyramidLines } from './pyramidLines'
+import { isAscending, pyramidLinesY } from './pyramidLines'
 
 export class ScoreHelper extends MaterialRulesPart {
   calculateScore(player: number): number {
-    const linesPoints = pyramidLines.reduce((sum, _, i) => sum + this.getLinePoints(player, i), 0)
+    const linesPoints = pyramidLinesY.reduce((sum, y) => sum + this.getLinePoints(player, y), 0)
     return linesPoints + this.getStars(player) + this.getStarCard(player)
   }
 
@@ -21,13 +21,9 @@ export class ScoreHelper extends MaterialRulesPart {
       .reduce((acc, curr) => acc + curr, 0)
   }
 
-  getLinePoints(player: number, lineIndex: number): number {
-    return this.getPointsForLine(player, pyramidLines[lineIndex])
-  }
-
-  private getPointsForLine(player: number, lineX: number[]): number {
+  getLinePoints(player: number, lineY: number): number {
     const lineCards = this.getPlayerCards(player)
-      .filter(card => card.location.x !== undefined && lineX.includes(card.location.x))
+      .filter(card => card.location.y === lineY)
       .sort((a, b) => a.location.x! - b.location.x!)
     if (lineCards.length === 0) return 0
     if (lineCards.some(card => card.id === undefined)) return 0
