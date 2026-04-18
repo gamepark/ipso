@@ -19,9 +19,9 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
     { id: me },
     {
       id: opponent,
-      name: 'Mimi',
+      name: 'Alexandre',
       avatar: {
-        topType: 'LongHairBigHair',
+        topType: 'ShortHairTheCaesar',
         accessoriesType: 'Blank',
         hairColor: 'BrownDark',
         facialHairType: 'Blank',
