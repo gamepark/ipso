@@ -19,6 +19,7 @@ export class IpsoSetup extends MaterialGameSetup<PlayerId, MaterialType, Locatio
     this.setupDrawPile()
     this.setupCardDisplay()
     this.setupPlayerPyramids()
+    this.trimDrawPile()
   }
 
   setupDrawPile() {
@@ -71,6 +72,13 @@ export class IpsoSetup extends MaterialGameSetup<PlayerId, MaterialType, Locatio
 
   getDrawPile() {
     return this.material(MaterialType.NumberCard).location(LocationType.DrawPile).deck()
+  }
+
+  trimDrawPile() {
+    const drawPile = this.material(MaterialType.NumberCard).location(LocationType.DrawPile)
+    const excess = drawPile.length - this.players.length
+    if (excess <= 0) return
+    drawPile.limit(excess).deleteItemsAtOnce()
   }
 
   start() {
