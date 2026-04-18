@@ -13,7 +13,7 @@ const BaseComponents = {
 }
 
 export class Tutorial extends MaterialTutorial<number, MaterialType, LocationType> {
-  version = 3
+  version = 4
 
   players = [
     { id: me },
@@ -40,7 +40,7 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
 
   steps: TutorialStep[] = [
     // ── Step 1 ─────────────────────────────────────────────
-    // Welcome + premier coup : NC3 au début de la ligne du bas (x=0)
+    // Welcome + premier coup : NC3 au début de la ligne du bas (y=4, x=0)
     {
       popup: {
         text: () => (
@@ -62,6 +62,7 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
         filter: (move, game) =>
           isMoveItemType(MaterialType.NumberCard)(move) &&
           move.location.type === LocationType.Pyramid &&
+          move.location.y === 4 &&
           move.location.x === 0 &&
           move.location.player === me &&
           this.material(game, MaterialType.NumberCard).getItem(move.itemIndex).id === NumberCard.NumberCard3
@@ -83,7 +84,7 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
       focus: (game) => ({
         materials: [
           this.material(game, MaterialType.NumberCard)
-            .location(l => l.type === LocationType.Pyramid && l.player === me && l.x !== undefined && l.x <= 4)
+            .location(l => l.type === LocationType.Pyramid && l.player === me && l.y === 4)
         ],
         margin: { bottom: 2, top: 2, left: 2, right: 2 }
       })
@@ -103,7 +104,7 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
     },
 
     // ── Step 4 ─────────────────────────────────────────────
-    // Deuxième coup : NC7 au début de la deuxième ligne (x=5)
+    // Deuxième coup : NC7 au début de la deuxième ligne (y=3, x=0)
     {
       popup: {
         text: () => (
@@ -125,7 +126,8 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
         filter: (move, game) =>
           isMoveItemType(MaterialType.NumberCard)(move) &&
           move.location.type === LocationType.Pyramid &&
-          move.location.x === 5 &&
+          move.location.y === 3 &&
+          move.location.x === 0 &&
           move.location.player === me &&
           this.material(game, MaterialType.NumberCard).getItem(move.itemIndex).id === NumberCard.NumberCard7
       }
