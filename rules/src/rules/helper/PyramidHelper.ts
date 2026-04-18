@@ -10,15 +10,14 @@ export class PyramidHelper extends MaterialRulesPart {
     this.player = player
   }
 
-
-  possibleLocations(onlyHiddens: boolean): Location[] {
+  possibleLocations(onlyHidden: boolean): Location[] {
     const locations = this.material(MaterialType.NumberCard)
       .location(LocationType.Pyramid)
       .player(this.player)
       .getItems()
       .map(it => it.location)
 
-    if(onlyHiddens) {
+    if (onlyHidden) {
       return locations.filter(location => location.rotation)
     }
     return locations

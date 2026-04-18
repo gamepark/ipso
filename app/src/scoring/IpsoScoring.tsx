@@ -100,7 +100,7 @@ export class IpsoScoring implements ScoringDescription {
           <Trans
             i18nKey="game-over.score.points"
             values={{
-              points: scoreHelper.getFirstLine(player)
+              points: scoreHelper.getLinePoints(player, 0)
             }}
           />
         )
@@ -109,7 +109,7 @@ export class IpsoScoring implements ScoringDescription {
           <Trans
             i18nKey="game-over.score.points"
             values={{
-              points: scoreHelper.getSecondLine(player)
+              points: scoreHelper.getLinePoints(player, 1)
             }}
           />
         )
@@ -118,7 +118,7 @@ export class IpsoScoring implements ScoringDescription {
           <Trans
             i18nKey="game-over.score.points"
             values={{
-              points: scoreHelper.getThirdLine(player)
+              points: scoreHelper.getLinePoints(player, 2)
             }}
           />
         )
@@ -127,7 +127,7 @@ export class IpsoScoring implements ScoringDescription {
           <Trans
             i18nKey="game-over.score.points"
             values={{
-              points: scoreHelper.getFourthLine(player)
+              points: scoreHelper.getLinePoints(player, 3)
             }}
           />
         )

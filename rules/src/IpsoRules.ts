@@ -29,7 +29,7 @@ export class IpsoRules
   rules = {
     [RuleId.PlayCard]: PlayCardRule,
     [RuleId.UseStarCard]: UseStarCardRule,
-    [RuleId.DiscardNonAscendigLines]: DiscardNonAscendingLinesRule,
+    [RuleId.DiscardNonAscendingLines]: DiscardNonAscendingLinesRule,
   }
 
   locationsStrategies = {
