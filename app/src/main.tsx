@@ -11,6 +11,7 @@ import { Locators } from './locators/Locators'
 import { Material } from './material/Material'
 import { IpsoScoring } from './scoring/IpsoScoring.tsx'
 import { Tutorial } from './tutorial/Tutorial'
+import { ai } from './tutorial/TutorialAI'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')!).render(
       scoring={new IpsoScoring()}
       logs={new IpsoLogDescription()}
       tutorial={new Tutorial()}
+      ai={ai}
     >
       <App />
     </GameProvider>
