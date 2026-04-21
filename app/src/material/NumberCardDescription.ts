@@ -1,20 +1,10 @@
-import { CardDescription, ItemContext } from '@gamepark/react-game'
-import { PlayerId } from '@gamepark/ipso/PlayerId'
-import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { LocationType } from '@gamepark/ipso/material/LocationType'
+import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { NumberCard } from '@gamepark/ipso/material/NumberCard'
-import { isMoveItemType, MaterialMove } from '@gamepark/rules-api'
-import { NumberCardHelp } from './help/NumberCardHelp'
+import { PlayerId } from '@gamepark/ipso/PlayerId'
+import { CardDescription } from '@gamepark/react-game'
 
 import NumberCard1 from '../images/NumberCard1.jpg'
-import NumberCard2 from '../images/NumberCard2.jpg'
-import NumberCard3 from '../images/NumberCard3.jpg'
-import NumberCard4 from '../images/NumberCard4.jpg'
-import NumberCard5 from '../images/NumberCard5.jpg'
-import NumberCard6 from '../images/NumberCard6.jpg'
-import NumberCard7 from '../images/NumberCard7.jpg'
-import NumberCard8 from '../images/NumberCard8.jpg'
-import NumberCard9 from '../images/NumberCard9.jpg'
 import NumberCard10 from '../images/NumberCard10.jpg'
 import NumberCard11 from '../images/NumberCard11.jpg'
 import NumberCard12 from '../images/NumberCard12.jpg'
@@ -25,6 +15,7 @@ import NumberCard16 from '../images/NumberCard16.jpg'
 import NumberCard17 from '../images/NumberCard17.jpg'
 import NumberCard18 from '../images/NumberCard18.jpg'
 import NumberCard19 from '../images/NumberCard19.jpg'
+import NumberCard2 from '../images/NumberCard2.jpg'
 import NumberCard20 from '../images/NumberCard20.jpg'
 import NumberCard21 from '../images/NumberCard21.jpg'
 import NumberCard22 from '../images/NumberCard22.jpg'
@@ -35,6 +26,7 @@ import NumberCard26 from '../images/NumberCard26.jpg'
 import NumberCard27 from '../images/NumberCard27.jpg'
 import NumberCard28 from '../images/NumberCard28.jpg'
 import NumberCard29 from '../images/NumberCard29.jpg'
+import NumberCard3 from '../images/NumberCard3.jpg'
 import NumberCard30 from '../images/NumberCard30.jpg'
 import NumberCard31 from '../images/NumberCard31.jpg'
 import NumberCard32 from '../images/NumberCard32.jpg'
@@ -45,6 +37,7 @@ import NumberCard36 from '../images/NumberCard36.jpg'
 import NumberCard37 from '../images/NumberCard37.jpg'
 import NumberCard38 from '../images/NumberCard38.jpg'
 import NumberCard39 from '../images/NumberCard39.jpg'
+import NumberCard4 from '../images/NumberCard4.jpg'
 import NumberCard40 from '../images/NumberCard40.jpg'
 import NumberCard41 from '../images/NumberCard41.jpg'
 import NumberCard42 from '../images/NumberCard42.jpg'
@@ -55,6 +48,7 @@ import NumberCard46 from '../images/NumberCard46.jpg'
 import NumberCard47 from '../images/NumberCard47.jpg'
 import NumberCard48 from '../images/NumberCard48.jpg'
 import NumberCard49 from '../images/NumberCard49.jpg'
+import NumberCard5 from '../images/NumberCard5.jpg'
 import NumberCard50 from '../images/NumberCard50.jpg'
 import NumberCard51 from '../images/NumberCard51.jpg'
 import NumberCard52 from '../images/NumberCard52.jpg'
@@ -65,6 +59,7 @@ import NumberCard56 from '../images/NumberCard56.jpg'
 import NumberCard57 from '../images/NumberCard57.jpg'
 import NumberCard58 from '../images/NumberCard58.jpg'
 import NumberCard59 from '../images/NumberCard59.jpg'
+import NumberCard6 from '../images/NumberCard6.jpg'
 import NumberCard60 from '../images/NumberCard60.jpg'
 import NumberCard61 from '../images/NumberCard61.jpg'
 import NumberCard62 from '../images/NumberCard62.jpg'
@@ -75,6 +70,7 @@ import NumberCard66 from '../images/NumberCard66.jpg'
 import NumberCard67 from '../images/NumberCard67.jpg'
 import NumberCard68 from '../images/NumberCard68.jpg'
 import NumberCard69 from '../images/NumberCard69.jpg'
+import NumberCard7 from '../images/NumberCard7.jpg'
 import NumberCard70 from '../images/NumberCard70.jpg'
 import NumberCard71 from '../images/NumberCard71.jpg'
 import NumberCard72 from '../images/NumberCard72.jpg'
@@ -85,6 +81,7 @@ import NumberCard76 from '../images/NumberCard76.jpg'
 import NumberCard77 from '../images/NumberCard77.jpg'
 import NumberCard78 from '../images/NumberCard78.jpg'
 import NumberCard79 from '../images/NumberCard79.jpg'
+import NumberCard8 from '../images/NumberCard8.jpg'
 import NumberCard80 from '../images/NumberCard80.jpg'
 import NumberCard81 from '../images/NumberCard81.jpg'
 import NumberCard82 from '../images/NumberCard82.jpg'
@@ -95,8 +92,10 @@ import NumberCard86 from '../images/NumberCard86.jpg'
 import NumberCard87 from '../images/NumberCard87.jpg'
 import NumberCard88 from '../images/NumberCard88.jpg'
 import NumberCard89 from '../images/NumberCard89.jpg'
+import NumberCard9 from '../images/NumberCard9.jpg'
 import NumberCard90 from '../images/NumberCard90.jpg'
 import NumberCardBack from '../images/NumberCardBack.jpg'
+import { NumberCardHelp } from './help/NumberCardHelp'
 
 export class NumberCardDescription extends CardDescription<PlayerId, MaterialType, LocationType, NumberCard> {
   width = 3
@@ -195,15 +194,10 @@ export class NumberCardDescription extends CardDescription<PlayerId, MaterialTyp
     [NumberCard.NumberCard87]: NumberCard87,
     [NumberCard.NumberCard88]: NumberCard88,
     [NumberCard.NumberCard89]: NumberCard89,
-    [NumberCard.NumberCard90]: NumberCard90,
+    [NumberCard.NumberCard90]: NumberCard90
   }
 
   backImage = NumberCardBack
-
-  canShortClick(move: MaterialMove<PlayerId, MaterialType, LocationType, number, number>, context: ItemContext<PlayerId, MaterialType, LocationType, number, number>): boolean {
-    return isMoveItemType(MaterialType.NumberCard)(move) && move.location.type === LocationType.Pyramid && move.location.player === context.player && move.itemIndex === context.index
-  }
-
 }
 
 export const numberCardDescription = new NumberCardDescription()

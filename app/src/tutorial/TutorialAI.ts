@@ -3,6 +3,7 @@ import { LocationType } from '@gamepark/ipso/material/LocationType'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { NumberCard, numberCardData } from '@gamepark/ipso/material/NumberCard'
 import { CustomMoveType } from '@gamepark/ipso/rules/CustomMoveType'
+import { MemoryType } from '@gamepark/ipso/rules/MemoryType'
 import { RuleId } from '@gamepark/ipso/rules/RuleId'
 import { isCustomMoveType, isMoveItemType, MaterialGame, MaterialMove } from '@gamepark/rules-api'
 import { sample } from 'es-toolkit'
@@ -69,12 +70,67 @@ function getBestUseStarCardMove(rules: IpsoRules, player: number, moves: Materia
     return discardMoves[0] ?? sample(moves)!
   }
 
-  const scored = pyramidPlacements.map((move) => ({ move, score: scorePlacement(rules, player, move) }))
-  const best = scored.reduce((a, b) => (a.score >= b.score ? a : b))
+  // All 14 cards are face-up at this point, so we can compute the real score delta
+  // (line points + stars) for each potential replacement and pick the actual best.
+  const oddOrEven = !!rules.remind(MemoryType.OddOrEvenOptionEnabled)
+  const scored = pyramidPlacements.map((move) => ({
+    move,
+    delta: scoreStarCardPlacement(rules, player, move, oddOrEven)
+  }))
+  const best = scored.reduce((a, b) => (a.delta >= b.delta ? a : b))
 
-  // Only place if it beats discarding (threshold tuned so marginally-bad placements are discarded).
-  if (best.score > 0) return best.move
+  if (best.delta > 0) return best.move
   return discardMoves[0] ?? best.move
+}
+
+function scoreStarCardPlacement(
+  rules: IpsoRules,
+  player: number,
+  move: MaterialMove,
+  oddOrEven: boolean
+): number {
+  if (!isMoveItemType(MaterialType.NumberCard)(move)) return 0
+  if (move.location.type !== LocationType.Pyramid) return 0
+  const { x, y } = move.location
+  if (x === undefined || y === undefined) return 0
+
+  const newCardItem = rules.material(MaterialType.NumberCard).getItem(move.itemIndex)
+  if (newCardItem?.id === undefined) return 0
+  const newCard = newCardItem.id as NumberCard
+
+  const lineItems = rules
+    .material(MaterialType.NumberCard)
+    .location(LocationType.Pyramid)
+    .player(player)
+    .location((l) => l.y === y)
+    .getItems()
+    .filter((item) => item.id !== undefined)
+    .sort((a, b) => (a.location.x ?? 0) - (b.location.x ?? 0))
+
+  const oldLineIds = lineItems.map((item) => item.id as NumberCard)
+  const oldCardAtPos = lineItems.find((item) => item.location.x === x)?.id as NumberCard | undefined
+  const newLineIds = lineItems.map((item) =>
+    item.location.x === x ? newCard : (item.id as NumberCard)
+  )
+
+  const linePointsDelta = computeLinePoints(newLineIds, oddOrEven) - computeLinePoints(oldLineIds, oddOrEven)
+  const starsDelta =
+    numberCardData[newCard].stars - (oldCardAtPos !== undefined ? numberCardData[oldCardAtPos].stars : 0)
+
+  return linePointsDelta + starsDelta
+}
+
+function computeLinePoints(cardIds: NumberCard[], oddOrEven: boolean): number {
+  if (cardIds.length === 0) return 0
+  const data = cardIds.map((id) => numberCardData[id])
+  const numbers = data.map((d) => d.number)
+  if (!numbers.every((n, i) => i === 0 || n > numbers[i - 1])) return 0
+  let pointsPerCard = 1
+  if (data.every((d) => d.color === data[0].color)) pointsPerCard++
+  if (oddOrEven && (numbers.every((n) => n % 2 === 0) || numbers.every((n) => n % 2 !== 0))) {
+    pointsPerCard++
+  }
+  return cardIds.length * pointsPerCard
 }
 
 function scorePlacement(rules: IpsoRules, player: number, move: MaterialMove): number {
