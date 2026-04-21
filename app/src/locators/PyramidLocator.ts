@@ -16,7 +16,7 @@ class PyramidLocator extends HexagonalGridLocator {
   getCoordinates(location: Location, context: MaterialContext) {
     const { left, right } = getSides(context)
     let base: { x: number; y: number }
-    if (location.player === left) base = { x: -10.4, y: 8.8 }
+    if (location.player === left) base = { x: -11, y: 8.8 }
     else if (location.player === right) base = { x: 11, y: 8.8 }
     else return { x: -200, y: -200 }
 

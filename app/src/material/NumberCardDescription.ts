@@ -2,7 +2,8 @@ import { LocationType } from '@gamepark/ipso/material/LocationType'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { NumberCard } from '@gamepark/ipso/material/NumberCard'
 import { PlayerId } from '@gamepark/ipso/PlayerId'
-import { CardDescription } from '@gamepark/react-game'
+import { CardDescription, MaterialContext } from '@gamepark/react-game'
+import { MaterialItem } from '@gamepark/rules-api'
 
 import NumberCard1 from '../images/NumberCard1.jpg'
 import NumberCard10 from '../images/NumberCard10.jpg'
@@ -198,6 +199,10 @@ export class NumberCardDescription extends CardDescription<PlayerId, MaterialTyp
   }
 
   backImage = NumberCardBack
+
+  isFlippedOnTable(item: Partial<MaterialItem>, context: MaterialContext) {
+    return item.location?.type === LocationType.DrawPile || super.isFlippedOnTable(item, context)
+  }
 }
 
 export const numberCardDescription = new NumberCardDescription()
