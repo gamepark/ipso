@@ -48,7 +48,7 @@ export class IpsoRules
   }
 
   giveTime(): number {
-    return 60
+    return 20
   }
 
   getScore(playerId: number): number {
