@@ -4,8 +4,8 @@ export const colors = {
   navyLight: '#2D4A9E',
   cream: '#EFECD6',
   creamSoft: '#F5F2E0',
-  gold: '#F5C842',
-  goldDeep: '#D9A826'
+  gold: '#D4AC48',
+  goldDeep: '#AF8518'
 }
 
 export const cardColors = {

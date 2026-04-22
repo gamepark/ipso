@@ -14,7 +14,7 @@ const buttonBase = css`
   color: ${colors.cream} !important;
   border: 0.15em solid ${colors.gold} !important;
   border-radius: 0.4em !important;
-  padding: 0.4em 1em;
+  padding: 0.4em 1em !important;
   font-family: ${fontDisplay};
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -64,30 +64,33 @@ const headerBar = css`
 `
 
 const headerButtons = css`
-  background: ${colors.gold} !important;
-  color: ${colors.navy} !important;
-  border: 0.15em solid ${colors.navy} !important;
-  border-radius: 0.3em !important;
+  background: transparent !important;
+  color: ${colors.cream} !important;
+  border: 0.08em solid ${colors.cream} !important;
+  border-radius: 0.35em !important;
   font-family: ${fontDisplay};
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
-  padding: 0.2em 0.8em;
+  padding: 0 0.45em !important;
   letter-spacing: 0.02em;
-  box-shadow: 0 0.15em 0.25em rgba(0, 0, 0, 0.3);
+  box-shadow: none !important;
   outline: none !important;
-  transition: background 150ms ease, transform 120ms ease;
+  transition: background 150ms ease, color 150ms ease;
 
   &:hover:not(:disabled),
   &:focus:hover:not(:disabled) {
-    background: ${colors.goldDeep} !important;
+    background: ${colors.cream} !important;
+    color: ${colors.navy} !important;
   }
 
   &:focus:not(:hover):not(:disabled) {
-    background: ${colors.gold} !important;
+    background: transparent !important;
+    color: ${colors.cream} !important;
   }
 
   &:active:not(:disabled) {
-    transform: translateY(0.05em);
+    background: ${colors.gold} !important;
+    color: ${colors.navy} !important;
   }
 `
 
