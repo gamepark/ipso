@@ -126,19 +126,6 @@ const menuPanel = css`
   }
 `
 
-const journalTab = css`
-  background: ${colors.cream} !important;
-  color: ${colors.navy} !important;
-  border-color: ${colors.navy} !important;
-  font-family: ${fontDisplay};
-  font-weight: 600;
-`
-
-const journalTabSelected = css`
-  background: ${colors.navy} !important;
-  color: ${colors.cream} !important;
-`
-
 const menuMainButton = css`
   background: ${colors.gold} !important;
   color: ${colors.navy} !important;

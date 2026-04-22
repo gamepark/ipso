@@ -62,7 +62,6 @@ export const PlayerPanels: FC = () => {
               player={player}
               isViewed={isViewed}
               isClickable={isClickable}
-              compact={players.length >= 6}
             />
             <div css={[previewTrayCss, isHovered && previewTrayVisibleCss]}>
               <PyramidPreview playerId={player.id} />

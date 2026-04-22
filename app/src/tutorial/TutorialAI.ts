@@ -1,7 +1,7 @@
 import { IpsoRules } from '@gamepark/ipso/IpsoRules'
 import { LocationType } from '@gamepark/ipso/material/LocationType'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
-import { isTopStar, NumberCard, numberCardData } from '@gamepark/ipso/material/NumberCard'
+import { isTopStar, NumberCard, numberCardData, NumericCard } from '@gamepark/ipso/material/NumberCard'
 import { CustomMoveType } from '@gamepark/ipso/rules/CustomMoveType'
 import { MemoryType } from '@gamepark/ipso/rules/MemoryType'
 import { RuleId } from '@gamepark/ipso/rules/RuleId'
@@ -99,24 +99,22 @@ function scoreStarCardPlacement(
   const { x, y } = move.location
   if (x === undefined || y === undefined) return 0
 
-  const newCardItem = rules.material(MaterialType.NumberCard).getItem(move.itemIndex)
+  const newCardItem = rules.material(MaterialType.NumberCard).getItem<NumericCard>(move.itemIndex)
   if (newCardItem?.id === undefined) return 0
-  const newCard = newCardItem.id as NumberCard
+  const newCard = newCardItem.id
 
   const lineItems = rules
     .material(MaterialType.NumberCard)
     .location(LocationType.Pyramid)
     .player(player)
     .location((l) => l.y === y)
-    .getItems()
+    .getItems<NumericCard>()
     .filter((item) => item.id !== undefined)
     .sort((a, b) => (a.location.x ?? 0) - (b.location.x ?? 0))
 
-  const oldLineIds = lineItems.map((item) => item.id as NumberCard)
-  const oldCardAtPos = lineItems.find((item) => item.location.x === x)?.id as NumberCard | undefined
-  const newLineIds = lineItems.map((item) =>
-    item.location.x === x ? newCard : (item.id as NumberCard)
-  )
+  const oldLineIds = lineItems.map((item) => item.id!)
+  const oldCardAtPos = lineItems.find((item) => item.location.x === x)?.id
+  const newLineIds = lineItems.map((item) => (item.location.x === x ? newCard : item.id!))
 
   const linePointsDelta = computeLinePoints(newLineIds, oddOrEven) - computeLinePoints(oldLineIds, oddOrEven)
   const starsDelta =
@@ -125,7 +123,7 @@ function scoreStarCardPlacement(
   return linePointsDelta + starsDelta
 }
 
-function computeLinePoints(cardIds: NumberCard[], oddOrEven: boolean): number {
+function computeLinePoints(cardIds: NumericCard[], oddOrEven: boolean): number {
   if (cardIds.length === 0) return 0
   const data = cardIds.map((id) => numberCardData[id])
   const numbers = data.map((d) => d.number)
@@ -145,9 +143,9 @@ function scorePlacement(rules: IpsoRules, player: number, move: MaterialMove): n
   const y = move.location.y
   if (x === undefined || y === undefined) return 0
 
-  const cardItem = rules.material(MaterialType.NumberCard).getItem(move.itemIndex)
+  const cardItem = rules.material(MaterialType.NumberCard).getItem<NumericCard>(move.itemIndex)
   if (cardItem?.id === undefined) return 0
-  const data = numberCardData[cardItem.id as NumberCard]
+  const data = numberCardData[cardItem.id]
   if (!data) return 0
 
   let score = 0
@@ -167,14 +165,13 @@ function scorePlacement(rules: IpsoRules, player: number, move: MaterialMove): n
     .location(LocationType.Pyramid)
     .player(player)
     .location((l) => l.y === y && l.rotation === false && l.x !== x)
-    .getItems()
+    .getItems<NumericCard>()
     .filter((item) => item.id !== undefined)
 
   const wouldBreakAscending = lineCards.some((c) => {
-    const other = numberCardData[c.id as NumberCard]
+    const other = numberCardData[c.id!]
     if (c.location.x! < x && other.number >= data.number) return true
-    return c.location.x! > x && other.number <= data.number;
-
+    return c.location.x! > x && other.number <= data.number
   })
 
   if (wouldBreakAscending) {
@@ -184,7 +181,7 @@ function scorePlacement(rules: IpsoRules, player: number, move: MaterialMove): n
   }
 
   if (lineCards.length > 0) {
-    const allSameColor = lineCards.every((c) => numberCardData[c.id as NumberCard].color === data.color)
+    const allSameColor = lineCards.every((c) => numberCardData[c.id!].color === data.color)
     if (allSameColor) {
       // Preserving the same-color potential is worth ~lineLength extra points at game end.
       score += lineLength
