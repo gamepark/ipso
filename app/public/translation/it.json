@@ -54,8 +54,15 @@
   "oddOrEven.dialog.example": "Esempio: una riga <bold>4 – 8 – 20 – 42</bold> (tutte pari) guadagna <bold>+4 punti</bold> in aggiunta al punteggio normale.",
   "oddOrEven.dialog.ok": "Capito",
 
+  "last-turn.title": "Ultimo turno",
+  "last-turn.intro": "Tutte le 14 carte sono scoperte, è il tuo <bold>ultimo turno</bold> prima del conteggio finale. Hai due opzioni per la tua <bold>carta stella</bold>:",
+  "last-turn.use": "<bold>Scartarla</bold> per pescare la prima carta del mazzo e sostituire qualsiasi carta della tua piramide.",
+  "last-turn.keep": "<bold>Tenerla</bold> per guadagnare <bold>+3 punti</bold> a fine partita.",
+  "last-turn.ok": "Capito",
+
   "game-over.score.type.line": "<line/>",
   "game-over.score.type.stars": "<stars/>",
+  "game-over.score.tiebreaker": "(spareggio)",
   "game-over.score.type.star-card": "<starcard/>",
   "game-over.score.type.total": "Totale",
   "game-over.score.points": "{points, plural, one{# punto} other{# punti}}",

@@ -58,8 +58,15 @@
   "oddOrEven.dialog.example": "Exemple : une ligne <bold>4 – 8 – 20 – 42</bold> (toutes paires) rapporte <bold>+4 points</bold> en plus du score habituel.",
   "oddOrEven.dialog.ok": "J'ai compris",
 
+  "last-turn.title": "Dernier tour",
+  "last-turn.intro": "Vos 14 cartes sont toutes révélées, c'est votre <bold>dernier tour</bold> avant le décompte final. Vous avez deux options pour votre <bold>carte étoile</bold> :",
+  "last-turn.use": "<bold>La défausser</bold> pour piocher la première carte de la pioche et remplacer n'importe quelle carte de votre pyramide.",
+  "last-turn.keep": "<bold>La conserver</bold> pour gagner <bold>+3 points</bold> en fin de partie.",
+  "last-turn.ok": "J'ai compris",
+
   "game-over.score.type.line": "<line/>",
   "game-over.score.type.stars": "<stars/>",
+  "game-over.score.tiebreaker": "(départage)",
   "game-over.score.type.star-card": "<starcard/>",
   "game-over.score.type.total": "Total",
   "game-over.score.points": "{points, plural, one{# point} other{# points}}",

@@ -54,8 +54,15 @@
   "oddOrEven.dialog.example": "Пример: ряд <bold>4 – 8 – 20 – 42</bold> (все чётные) приносит <bold>+4 очка</bold> сверх обычного подсчёта.",
   "oddOrEven.dialog.ok": "Понятно",
 
+  "last-turn.title": "Последний ход",
+  "last-turn.intro": "Все 14 ваших карт открыты — это ваш <bold>последний ход</bold> перед итоговым подсчётом. У вас есть два варианта с <bold>картой звезды</bold>:",
+  "last-turn.use": "<bold>Сбросить её</bold>, чтобы взять верхнюю карту колоды и заменить любую карту в своей пирамиде.",
+  "last-turn.keep": "<bold>Сохранить её</bold>, чтобы получить <bold>+3 очка</bold> в конце партии.",
+  "last-turn.ok": "Понятно",
+
   "game-over.score.type.line": "<line/>",
   "game-over.score.type.stars": "<stars/>",
+  "game-over.score.tiebreaker": "(тай-брейк)",
   "game-over.score.type.star-card": "<starcard/>",
   "game-over.score.type.total": "Итого",
   "game-over.score.points": "{points, plural, one{# очко} few{# очка} many{# очков} other{# очка}}",

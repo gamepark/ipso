@@ -54,8 +54,15 @@
   "oddOrEven.dialog.example": "Ejemplo: una fila <bold>4 – 8 – 20 – 42</bold> (todas pares) gana <bold>+4 puntos</bold> además del recuento habitual.",
   "oddOrEven.dialog.ok": "Entendido",
 
+  "last-turn.title": "Último turno",
+  "last-turn.intro": "Tus 14 cartas están reveladas, es tu <bold>último turno</bold> antes del recuento final. Tienes dos opciones con tu <bold>carta estrella</bold>:",
+  "last-turn.use": "<bold>Descartarla</bold> para robar la primera carta del mazo y reemplazar cualquier carta de tu pirámide.",
+  "last-turn.keep": "<bold>Conservarla</bold> para ganar <bold>+3 puntos</bold> al final de la partida.",
+  "last-turn.ok": "Entendido",
+
   "game-over.score.type.line": "<line/>",
   "game-over.score.type.stars": "<stars/>",
+  "game-over.score.tiebreaker": "(desempate)",
   "game-over.score.type.star-card": "<starcard/>",
   "game-over.score.type.total": "Total",
   "game-over.score.points": "{points, plural, one{# punto} other{# puntos}}",

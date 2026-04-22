@@ -54,8 +54,15 @@
   "oddOrEven.dialog.example": "Beispiel: eine Reihe <bold>4 – 8 – 20 – 42</bold> (alle gerade) bringt <bold>+4 Punkte</bold> zusätzlich zur normalen Wertung.",
   "oddOrEven.dialog.ok": "Verstanden",
 
+  "last-turn.title": "Letzter Zug",
+  "last-turn.intro": "Alle 14 Karten sind aufgedeckt — dies ist dein <bold>letzter Zug</bold> vor der Schlusswertung. Du hast zwei Möglichkeiten mit deiner <bold>Sternkarte</bold>:",
+  "last-turn.use": "<bold>Ablegen</bold>, um die oberste Karte des Stapels zu ziehen und eine beliebige Karte deiner Pyramide zu ersetzen.",
+  "last-turn.keep": "<bold>Behalten</bold>, um am Ende der Partie <bold>+3 Punkte</bold> zu erhalten.",
+  "last-turn.ok": "Verstanden",
+
   "game-over.score.type.line": "<line/>",
   "game-over.score.type.stars": "<stars/>",
+  "game-over.score.tiebreaker": "(Gleichstand)",
   "game-over.score.type.star-card": "<starcard/>",
   "game-over.score.type.total": "Gesamt",
   "game-over.score.points": "{points, plural, one{# Punkt} other{# Punkte}}",

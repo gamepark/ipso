@@ -54,8 +54,15 @@
   "oddOrEven.dialog.example": "Example: a row <bold>4 – 8 – 20 – 42</bold> (all even) scores <bold>+4 points</bold> on top of the regular score.",
   "oddOrEven.dialog.ok": "Got it",
 
+  "last-turn.title": "Last turn",
+  "last-turn.intro": "All 14 of your cards are face-up — this is your <bold>last turn</bold> before final scoring. You have two options with your <bold>star card</bold>:",
+  "last-turn.use": "<bold>Discard it</bold> to draw the top card of the deck and replace any card in your pyramid.",
+  "last-turn.keep": "<bold>Keep it</bold> to score <bold>+3 points</bold> at the end of the game.",
+  "last-turn.ok": "Got it",
+
   "game-over.score.type.line": "<line/>",
   "game-over.score.type.stars": "<stars/>",
+  "game-over.score.tiebreaker": "(tie-breaker)",
   "game-over.score.type.star-card": "<starcard/>",
   "game-over.score.type.total": "Total",
   "game-over.score.points": "{points, plural, one{# point} other{# points}}",
