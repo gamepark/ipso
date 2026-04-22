@@ -28,8 +28,7 @@ export class IpsoSetup extends MaterialGameSetup<PlayerId, MaterialType, Locatio
       numberCards.map((numberCard) => ({
         id: numberCard,
         location: {
-          type: LocationType.DrawPile,
-          rotation: true
+          type: LocationType.DrawPile
         }
       }))
     )

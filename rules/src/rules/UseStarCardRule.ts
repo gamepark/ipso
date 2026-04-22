@@ -1,14 +1,4 @@
-import {
-  CustomMove,
-  isCustomMoveType,
-  isMoveItem,
-  isMoveItemType,
-  ItemMove,
-  Location,
-  MaterialMove,
-  PlayerTurnRule,
-  RuleMove
-} from '@gamepark/rules-api'
+import { CustomMove, isCustomMoveType, isMoveItem, isMoveItemType, ItemMove, Location, MaterialMove, PlayerTurnRule, RuleMove } from '@gamepark/rules-api'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
 import { CustomMoveType } from './CustomMoveType'
@@ -20,7 +10,7 @@ export class UseStarCardRule extends PlayerTurnRule {
     if (this.player !== this.game.players[0]) return []
     return this.material(MaterialType.NumberCard)
       .location(LocationType.CardDisplay)
-      .moveItems({ type: LocationType.DrawPile, x: 0, rotation: true })
+      .moveItems({ type: LocationType.DrawPile, x: 0 })
   }
 
   getPlayerMoves(): MaterialMove[] {
@@ -50,7 +40,7 @@ export class UseStarCardRule extends PlayerTurnRule {
   afterItemMove(move: ItemMove): MaterialMove[] {
     if (!isMoveItem(move) || move.location.type !== LocationType.DiscardPile) return []
     if (isMoveItemType(MaterialType.StarCard)(move)) {
-      return [this.cardToPlay.moveItem(it => ({ ...it.location, rotation: false }))]
+      return [this.topOfDrawPile.moveItem({ type: LocationType.CardDisplay })]
     } else if (isMoveItemType(MaterialType.NumberCard)(move)) {
       return [this.goToNextStep()]
     }
@@ -76,6 +66,10 @@ export class UseStarCardRule extends PlayerTurnRule {
   }
 
   private get cardToPlay() {
+    return this.material(MaterialType.NumberCard).location(LocationType.CardDisplay)
+  }
+
+  private get topOfDrawPile() {
     return this.material(MaterialType.NumberCard).location(LocationType.DrawPile).maxBy(it => it.location.x ?? 0)
   }
 

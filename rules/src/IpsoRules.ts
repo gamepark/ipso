@@ -2,6 +2,7 @@ import {
   CompetitiveScore,
   FillGapStrategy,
   HiddenMaterialRules,
+  hideItemId,
   MaterialGame,
   MaterialItem,
   MaterialMove,
@@ -23,13 +24,12 @@ import { UseStarCardRule } from './rules/UseStarCardRule'
  */
 export class IpsoRules
   extends HiddenMaterialRules<PlayerId, MaterialType, LocationType>
-  implements TimeLimit<MaterialGame, MaterialMove>, CompetitiveScore<MaterialGame, MaterialMove, number>
-{
+  implements TimeLimit<MaterialGame, MaterialMove>, CompetitiveScore<MaterialGame, MaterialMove, number> {
   scoreHelper = new ScoreHelper(this.game)
   rules = {
     [RuleId.PlayCard]: PlayCardRule,
     [RuleId.UseStarCard]: UseStarCardRule,
-    [RuleId.DiscardNonAscendingLines]: DiscardNonAscendingLinesRule,
+    [RuleId.DiscardNonAscendingLines]: DiscardNonAscendingLinesRule
   }
 
   locationsStrategies = {
@@ -41,7 +41,7 @@ export class IpsoRules
 
   hidingStrategies = {
     [MaterialType.NumberCard]: {
-      [LocationType.DrawPile]: (item: MaterialItem) => (!item.location.rotation ? [] : ['id']),
+      [LocationType.DrawPile]: hideItemId,
       [LocationType.Pyramid]: (item: MaterialItem) => (!item.location.rotation ? [] : ['id'])
     }
   }
@@ -49,6 +49,7 @@ export class IpsoRules
   giveTime(): number {
     return 60
   }
+
   getScore(playerId: number): number {
     return this.scoreHelper.calculateScore(playerId)
   }

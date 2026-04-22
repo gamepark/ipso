@@ -70,7 +70,7 @@ export class TutorialSetup extends IpsoSetup {
     for (let i = cursor; i < remaining.length; i++) {
       this.material(MaterialType.NumberCard).createItem({
         id: remaining[i],
-        location: { type: LocationType.DrawPile, rotation: true, x: i - cursor }
+        location: { type: LocationType.DrawPile, x: i - cursor }
       })
     }
 
