@@ -3,16 +3,11 @@ import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { MemoryType } from '@gamepark/ipso/rules/MemoryType'
 import { usePlayerId, useRules } from '@gamepark/react-game'
 import { MaterialRules } from '@gamepark/rules-api'
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-export const OddOrEvenDialogContext = createContext<(() => void) | undefined>(undefined)
-
-export const useOpenOddOrEvenDialog = () => useContext(OddOrEvenDialogContext)
-
-// Popup shows once at the start of the game (no cards played yet) when the
-// variant is enabled. No localStorage — refreshing before any card has been
-// played re-shows it; once any card is face-up in a pyramid, it never
-// auto-opens again (still reachable via the context's `reopen`).
+// Opens once at game start when the variant is enabled. No persistence:
+// refreshing while still at game-start re-shows it; once any card is
+// face-up in a pyramid, it never auto-opens again.
 export const useOddOrEvenDialog = () => {
   const rules = useRules<MaterialRules>()
   const playerId = usePlayerId()
@@ -33,8 +28,7 @@ export const useOddOrEvenDialog = () => {
     }
   }, [variantOn, gameNotStarted])
 
-  const dismiss = useCallback(() => setShow(false), [])
-  const reopen = useCallback(() => setShow(true), [])
+  const dismiss = () => setShow(false)
 
-  return { show, dismiss, reopen }
+  return { show, dismiss }
 }
