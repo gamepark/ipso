@@ -4,6 +4,7 @@ import { PlayerId } from '@gamepark/ipso/PlayerId'
 import { StyledPlayerPanel, usePlayerId, usePlay, usePlayers, useRules } from '@gamepark/react-game'
 import { MaterialMoveBuilder } from '@gamepark/rules-api'
 import { FC, useState, useCallback, useRef } from 'react'
+import { useAutoViewOnDrag } from '../hooks/useAutoViewOnDrag'
 import { encodeView, getSides } from '../locators/ViewHelper'
 import { SidePickerPopup } from './SidePickerPopup'
 import { BoardNameLabels } from './BoardNameLabels'
@@ -11,6 +12,7 @@ import { getPanelCssPosition } from './PanelPosition'
 import { PyramidPreview } from './PyramidPreview'
 
 export const PlayerPanels: FC = () => {
+  useAutoViewOnDrag()
   const players = usePlayers<PlayerId>({ sortFromMe: true })
   const rules = useRules<IpsoRules>()!
   const play = usePlay()

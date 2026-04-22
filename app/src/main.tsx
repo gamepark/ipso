@@ -1,7 +1,7 @@
 import { IpsoOptionsSpec } from '@gamepark/ipso/IpsoOptions'
 import { IpsoRules } from '@gamepark/ipso/IpsoRules'
 import { IpsoSetup } from '@gamepark/ipso/IpsoSetup'
-import { GameProvider } from '@gamepark/react-game'
+import { BottomBarNavigation, GameProvider } from '@gamepark/react-game'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { gameAnimations } from './animations/GameAnimations'
@@ -27,6 +27,7 @@ createRoot(document.getElementById('root')!).render(
       logs={new IpsoLogDescription()}
       tutorial={new Tutorial()}
       ai={ai}
+      theme={{ dialog: { navigation: BottomBarNavigation } }}
     >
       <App />
     </GameProvider>

@@ -32,7 +32,7 @@ const BoardLabel: FC<{ playerId: number, side: 'left' | 'right' }> = ({ playerId
 
 const labelCss = css`
   position: absolute;
-  bottom: 0.3em;
+  bottom: 0.1em;
   transform-style: preserve-3d;
   font-style: italic;
   font-weight: 600;

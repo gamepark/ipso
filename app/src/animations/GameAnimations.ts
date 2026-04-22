@@ -45,6 +45,25 @@ gameAnimations
     ]
   }))
 
+// Card from Pyramid → CardDisplay (non-visible player): appear from panel, pause below, then to display
+gameAnimations
+  .configure((move, context) => {
+    if (!isCardMove(move) || move.location.type !== LocationType.CardDisplay) return false
+    const item = context.rules.material(MaterialType.NumberCard).getItem(move.itemIndex)
+    if (!item || item.location.type !== LocationType.Pyramid || isPlayerVisible(item, context)) return false
+    trajectoryPlayer = item.location.player
+    return true
+  })
+  .duration(1500)
+  .trajectory(() => ({
+    elevation: false,
+    waypoints: [
+      { at: 0, locator: onPlayerPanelLocator, location: () => ({ player: trajectoryPlayer }) },
+      { at: 0.35, locator: belowPlayerPanelLocator, location: () => ({ player: trajectoryPlayer }) },
+      { at: 0.65, locator: belowPlayerPanelLocator, location: () => ({ player: trajectoryPlayer }) }
+    ]
+  }))
+
 // Card from Pyramid → DiscardPile (visible player): normal animation
 gameAnimations
   .configure((move, context) => {
