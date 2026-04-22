@@ -48,6 +48,11 @@
 
   "oddOrEven": "Odd or Even Row",
   "oddOrEven.help": "The rules remain unchanged. After the regular scoring, add 1 point per card if a row consists entirely of even cards or entirely of odd cards.",
+  "oddOrEven.dialog.title": "Variant: Odd or Even Row",
+  "oddOrEven.dialog.intro": "The <bold>\"Odd or Even Row\"</bold> variant is enabled for this game.",
+  "oddOrEven.dialog.rule": "The rules remain unchanged. After the regular scoring, <bold>add 1 point per card</bold> if a row consists <bold>entirely of even cards</bold> or <bold>entirely of odd cards</bold>.",
+  "oddOrEven.dialog.example": "Example: a row <bold>4 – 8 – 20 – 42</bold> (all even) scores <bold>+4 points</bold> on top of the regular score.",
+  "oddOrEven.dialog.ok": "Got it",
 
   "game-over.score.type.line": "<line/>",
   "game-over.score.type.stars": "<stars/>",

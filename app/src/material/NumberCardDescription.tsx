@@ -263,10 +263,7 @@ export class NumberCardDescription extends CardDescription<PlayerId, MaterialTyp
     const selectMoves = canPlace
       ? (item.selected
         ? [numberCard.index(context.index).unselectItem()]
-        : [
-          ...numberCard.selected().unselectItems(),
-          numberCard.index(context.index).selectItem()
-        ])
+        : [...numberCard.selected().unselectItems(), numberCard.index(context.index).selectItem()])
       : undefined
     return <>
       {selectMoves &&
@@ -274,7 +271,7 @@ export class NumberCardDescription extends CardDescription<PlayerId, MaterialTyp
           x={3} y={-1.25}
           label={<Trans i18nKey={item.selected ? 'action.unselect' : 'action.place'} />}
           labelPosition="right"
-          moves={selectMoves} options={{ transient: true }}
+          move={selectMoves[0]} moves={selectMoves} options={{ transient: true }}
           css={smaller}
         >
           <FontAwesomeIcon icon={faHandPointer} />

@@ -47,7 +47,7 @@ const PlaceCardButton: FC<{ itemIndex?: number, closeDialog: () => void }> = ({ 
     ? [numberCard.index(itemIndex).unselectItem()]
     : [...numberCard.selected().unselectItems(), numberCard.index(itemIndex).selectItem()]
   return (
-    <PlayMoveButton move={selectMoves[0]} moves={selectMoves.slice(1)} transient onPlay={closeDialog} css={placeButtonCss}>
+    <PlayMoveButton move={selectMoves[0]} moves={selectMoves} transient onPlay={closeDialog} css={placeButtonCss}>
       <FontAwesomeIcon icon={faHandPointer} />
       <span>
         <Trans i18nKey={item.selected ? 'action.unselect' : 'action.place.long'} />

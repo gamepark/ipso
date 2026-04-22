@@ -48,6 +48,11 @@
 
   "oddOrEven": "Riga pari o dispari",
   "oddOrEven.help": "Le regole rimangono invariate. Dopo il conteggio dei punti normale, aggiungi 1 punto per carta se una riga è composta interamente da carte pari o interamente da carte dispari.",
+  "oddOrEven.dialog.title": "Variante: Riga pari o dispari",
+  "oddOrEven.dialog.intro": "La variante <bold>«Riga pari o dispari»</bold> è attivata per questa partita.",
+  "oddOrEven.dialog.rule": "Le regole rimangono invariate. Dopo il conteggio dei punti normale, <bold>aggiungi 1 punto per carta</bold> se una riga è composta <bold>interamente da carte pari</bold> o <bold>interamente da carte dispari</bold>.",
+  "oddOrEven.dialog.example": "Esempio: una riga <bold>4 – 8 – 20 – 42</bold> (tutte pari) guadagna <bold>+4 punti</bold> in aggiunta al punteggio normale.",
+  "oddOrEven.dialog.ok": "Capito",
 
   "game-over.score.type.line": "<line/>",
   "game-over.score.type.stars": "<stars/>",

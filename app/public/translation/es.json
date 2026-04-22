@@ -48,6 +48,11 @@
 
   "oddOrEven": "Fila par o impar",
   "oddOrEven.help": "Las reglas permanecen sin cambios. Después del recuento de puntos habitual, añade 1 punto por carta si una fila está compuesta únicamente por cartas pares o únicamente por cartas impares.",
+  "oddOrEven.dialog.title": "Variante: Fila par o impar",
+  "oddOrEven.dialog.intro": "La variante <bold>«Fila par o impar»</bold> está activada en esta partida.",
+  "oddOrEven.dialog.rule": "Las reglas permanecen sin cambios. Después del recuento de puntos habitual, <bold>añade 1 punto por carta</bold> si una fila está compuesta <bold>únicamente por cartas pares</bold> o <bold>únicamente por cartas impares</bold>.",
+  "oddOrEven.dialog.example": "Ejemplo: una fila <bold>4 – 8 – 20 – 42</bold> (todas pares) gana <bold>+4 puntos</bold> además del recuento habitual.",
+  "oddOrEven.dialog.ok": "Entendido",
 
   "game-over.score.type.line": "<line/>",
   "game-over.score.type.stars": "<stars/>",

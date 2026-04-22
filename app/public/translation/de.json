@@ -48,6 +48,11 @@
 
   "oddOrEven": "Gerade oder ungerade Reihe",
   "oddOrEven.help": "Die Regeln bleiben unverändert. Nach der normalen Wertung erhalten Sie 1 zusätzlichen Punkt pro Karte, wenn eine Reihe ausschließlich aus geraden oder ausschließlich aus ungeraden Karten besteht.",
+  "oddOrEven.dialog.title": "Variante: Gerade oder ungerade Reihe",
+  "oddOrEven.dialog.intro": "Die Variante <bold>„Gerade oder ungerade Reihe“</bold> ist für diese Partie aktiviert.",
+  "oddOrEven.dialog.rule": "Die Regeln bleiben unverändert. Nach der normalen Wertung erhaltet ihr <bold>1 zusätzlichen Punkt pro Karte</bold>, wenn eine Reihe <bold>ausschließlich aus geraden Karten</bold> oder <bold>ausschließlich aus ungeraden Karten</bold> besteht.",
+  "oddOrEven.dialog.example": "Beispiel: eine Reihe <bold>4 – 8 – 20 – 42</bold> (alle gerade) bringt <bold>+4 Punkte</bold> zusätzlich zur normalen Wertung.",
+  "oddOrEven.dialog.ok": "Verstanden",
 
   "game-over.score.type.line": "<line/>",
   "game-over.score.type.stars": "<stars/>",

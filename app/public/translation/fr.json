@@ -52,6 +52,11 @@
 
   "oddOrEven": "Ligne pair ou impaire",
   "oddOrEven.help": "Les règles restent inchangées. Après le décompte de points habituel, ajoutez 1 point par carte si une ligne est composée uniquement de cartes paires ou uniquement de cartes impaires.",
+  "oddOrEven.dialog.title": "Variante : Ligne pair ou impaire",
+  "oddOrEven.dialog.intro": "La variante <bold>« Ligne pair ou impaire »</bold> est activée pour cette partie.",
+  "oddOrEven.dialog.rule": "Les règles restent inchangées. Après le décompte de points habituel, <bold>ajoutez 1 point par carte</bold> si une ligne est composée <bold>uniquement de cartes paires</bold> ou <bold>uniquement de cartes impaires</bold>.",
+  "oddOrEven.dialog.example": "Exemple : une ligne <bold>4 – 8 – 20 – 42</bold> (toutes paires) rapporte <bold>+4 points</bold> en plus du score habituel.",
+  "oddOrEven.dialog.ok": "J'ai compris",
 
   "game-over.score.type.line": "<line/>",
   "game-over.score.type.stars": "<stars/>",
