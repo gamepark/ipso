@@ -67,12 +67,17 @@ export class IpsoScoring implements ScoringDescription {
         )
       case ScoringKeys.Stars:
         return (
-          <Trans
-            i18nKey="game-over.score.type.stars"
-            components={{
-              stars: <Picture src={StarIcon} css={pictureCss} />
-            }}
-          />
+          <span css={starsHeaderCss}>
+            <Trans
+              i18nKey="game-over.score.type.stars"
+              components={{
+                stars: <Picture src={StarIcon} css={pictureCss} />
+              }}
+            />
+            <span css={tieBreakerBadgeCss}>
+              <Trans i18nKey="game-over.score.tiebreaker" />
+            </span>
+          </span>
         )
       case ScoringKeys.StarCard:
         return (
@@ -172,4 +177,17 @@ const pictureCss = css`
   display: inline-block;
   vertical-align: sub;
   height: 1.3em;
+`
+
+const starsHeaderCss = css`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+`
+
+const tieBreakerBadgeCss = css`
+  font-size: 0.6em;
+  font-style: italic;
+  opacity: 0.75;
+  font-weight: 500;
 `
