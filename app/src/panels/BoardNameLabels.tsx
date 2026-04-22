@@ -49,11 +49,11 @@ const labelCss = css`
 `
 
 const leftCss = css`
-  left: 27.5%;
+  left: 22.5%;
   transform: translateX(-50%) translateZ(100em);
 `
 
 const rightCss = css`
-  left: 74%;
+  left: 77.5%;
   transform: translateX(-50%) translateZ(100em);
 `
