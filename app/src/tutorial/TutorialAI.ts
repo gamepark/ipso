@@ -165,13 +165,18 @@ function scorePlacement(rules: IpsoRules, player: number, move: MaterialMove): n
     .getItems()
     .filter((item) => item.id !== undefined)
 
-  let conflicts = 0
-  for (const c of lineCards) {
+  const wouldBreakAscending = lineCards.some((c) => {
     const other = numberCardData[c.id as NumberCard]
-    if (c.location.x! < x && other.number >= data.number) conflicts++
-    if (c.location.x! > x && other.number <= data.number) conflicts++
+    if (c.location.x! < x && other.number >= data.number) return true
+    return c.location.x! > x && other.number <= data.number;
+
+  })
+
+  if (wouldBreakAscending) {
+    // A non-ascending line is destroyed at end of game: 0 line points AND its stars are lost.
+    // Hard veto so value always beats color — only chosen when every other placement also breaks.
+    score -= 1000
   }
-  score -= conflicts * 6
 
   if (lineCards.length > 0) {
     const allSameColor = lineCards.every((c) => numberCardData[c.id as NumberCard].color === data.color)
