@@ -26,7 +26,7 @@ class BelowPlayerPanelLocator extends Locator {
     const playerCount = context.rules.players.length
     const playerIndex = getRelativePlayerIndex(context, location.player)
     const { x, y } = getPanelTablePosition(playerIndex, playerCount)
-    return { x, y: y + getPanelHeight() / 2 + 2, z: 100 }
+    return { x, y: y + getPanelHeight(playerCount) / 2 + 2, z: 100 }
   }
 }
 

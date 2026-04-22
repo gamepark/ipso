@@ -10,6 +10,7 @@ import { IpsoLogDescription } from './logs/IpsoLogDescription'
 import { Locators } from './locators/Locators'
 import { Material } from './material/Material'
 import { IpsoScoring } from './scoring/IpsoScoring.tsx'
+import { theme } from './theme'
 import { Tutorial } from './tutorial/Tutorial'
 import { ai } from './tutorial/TutorialAI'
 
@@ -27,7 +28,7 @@ createRoot(document.getElementById('root')!).render(
       logs={new IpsoLogDescription()}
       tutorial={new Tutorial()}
       ai={ai}
-      theme={{ dialog: { navigation: BottomBarNavigation } }}
+      theme={{ ...theme, dialog: { ...theme.dialog, navigation: BottomBarNavigation } }}
     >
       <App />
     </GameProvider>

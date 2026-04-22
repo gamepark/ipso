@@ -6,10 +6,16 @@
   "tuto.step.5": "¡Sigue llenando tu pirámide turno a turno! Una vez que tus <bold>14 cartas</bold> estén reveladas, puedes usar tu <bold>carta estrella</bold> para robar la primera carta del mazo y reemplazar una carta. O guárdala para <bold>3 puntos de bonificación</bold> al final de la partida.",
   "tuto.step.6": "Al final de la partida, las filas cuyos números no están en orden ascendente son <bold>eliminadas</bold> y no puntúan. Las demás puntúan 1 o 2 puntos por carta según el color. ¡Buena suerte!",
 
-  "log.play-card": "{player} jugó la carta {number} en su pirámide",
-  "log.use-star-card": "{player} usó su carta estrella",
-  "log.place-from-pile": "{player} colocó la carta {number} en su pirámide",
-  "log.discard-from-pile": "{player} descartó la carta {number}",
+  "action.place": "Colocar",
+  "action.place.long": "Colocar en la pirámide",
+  "action.unselect": "Deseleccionar",
+  "action.discard": "Descartar",
+  "action.keep": "Mantener",
+
+  "log.play-card": "{player} jugó <card/> en su pirámide",
+  "log.use-star-card": "{player} usó su <star/>",
+  "log.place-from-pile": "{player} colocó <card/> en su pirámide",
+  "log.discard-from-pile": "{player} descartó <card/>",
   "log.pass": "{player} pasó",
 
   "header.play-card.you": "Debes elegir una carta y colocarla en tu pirámide",

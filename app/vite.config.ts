@@ -30,8 +30,11 @@ function localeUrlPlugin(): PluginOption {
       server.printUrls = () => {
         const address = server.resolvedUrls
         if (address) {
-          const url = address.local[0] ?? `http://localhost:3000/`
-          console.log(`  ➜  Game: \x1b[36m${url}?locale=${locale}\x1b[0m`)
+          const urls = [...(address.local ?? []), ...(address.network ?? [])]
+          if (urls.length === 0) urls.push('http://localhost:3000/')
+          for (const url of urls) {
+            console.log(`  ➜  Game: \x1b[36m${url}?locale=${locale}\x1b[0m`)
+          }
         }
       }
     }
@@ -46,6 +49,7 @@ export default defineConfig(({ mode }) => {
       sourcemap: 'hidden'
     },
     server: {
+      host: true,
       port: 3000,
     },
     resolve: {

@@ -1,8 +1,9 @@
-import { DeckLocator } from '@gamepark/react-game'
+import { DeckLocator, SortFunction } from '@gamepark/react-game'
 
 class DrawPileLocator extends DeckLocator {
   coordinates = { x: 0, y: 8, z: 5 }
   limit = 10
+  navigationSorts: SortFunction[] = []
 }
 
 export const drawPileLocator = new DrawPileLocator()

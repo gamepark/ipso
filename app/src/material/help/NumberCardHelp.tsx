@@ -1,9 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { LocationType } from '@gamepark/ipso/material/LocationType'
+import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { isTopStar, NumberCard } from '@gamepark/ipso/material/NumberCard'
-import { MaterialHelpProps, Picture } from '@gamepark/react-game'
-import { FC } from 'react'
+import { MaterialHelpProps, Picture, PlayMoveButton, useLegalMoves, useRules } from '@gamepark/react-game'
+import { isMoveItemType, MaterialRules } from '@gamepark/rules-api'
+import { faHandPointer } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FC, ReactNode } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
+import { colors } from '../../theme/colors'
+import { fontDisplay } from '../../theme/typography'
 import FirstLine from '../../images/firstLine.jpg'
 import SecondLine from '../../images/secondLine.jpg'
 import ThirdLine from '../../images/thirdLine.jpg'
@@ -19,12 +26,42 @@ const components = {
   bold: <strong />,
 }
 
-export const NumberCardHelp: FC<MaterialHelpProps> = ({ item }) => {
+const HelpContent: FC<{ children: ReactNode }> = ({ children }) => (
+  <div css={helpContentCss}>{children}</div>
+)
+
+const PlaceCardButton: FC<{ itemIndex?: number, closeDialog: () => void }> = ({ itemIndex, closeDialog }) => {
+  const rules = useRules<MaterialRules>()
+  const legalMoves = useLegalMoves()
+  if (itemIndex === undefined || !rules) return null
+  const item = rules.material(MaterialType.NumberCard).getItem(itemIndex)
+  if (!item || item.location.type !== LocationType.CardDisplay) return null
+  const canPlace = legalMoves.some(move =>
+    isMoveItemType(MaterialType.NumberCard)(move)
+    && move.itemIndex === itemIndex
+    && move.location.type === LocationType.Pyramid
+  )
+  if (!canPlace) return null
+  const numberCard = rules.material(MaterialType.NumberCard)
+  const selectMoves = item.selected
+    ? [numberCard.index(itemIndex).unselectItem()]
+    : [...numberCard.selected().unselectItems(), numberCard.index(itemIndex).selectItem()]
+  return (
+    <PlayMoveButton move={selectMoves[0]} moves={selectMoves.slice(1)} transient onPlay={closeDialog} css={placeButtonCss}>
+      <FontAwesomeIcon icon={faHandPointer} />
+      <span>
+        <Trans i18nKey={item.selected ? 'action.unselect' : 'action.place.long'} />
+      </span>
+    </PlayMoveButton>
+  )
+}
+
+export const NumberCardHelp: FC<MaterialHelpProps> = ({ item, itemIndex, closeDialog }) => {
   const { t } = useTranslation()
 
   if (isTopStar(item?.id as NumberCard | undefined)) {
     return (
-      <>
+      <HelpContent>
         <h2>{t('help.star-card.title', 'Carte Étoile')}</h2>
         <p>
           <Trans i18nKey="help.star-card.description" components={components} />
@@ -37,13 +74,14 @@ export const NumberCardHelp: FC<MaterialHelpProps> = ({ item }) => {
         <p>
           <Trans i18nKey="help.star-card.bonus.description" components={components} />
         </p>
-      </>
+      </HelpContent>
     )
   }
 
   return (
-    <>
+    <HelpContent>
       <h2>{t('help.number-card.title', 'Carte Numérotée')}</h2>
+      <PlaceCardButton itemIndex={itemIndex} closeDialog={closeDialog} />
       <p>
         <Trans i18nKey="help.number-card.description" components={components} />
       </p>
@@ -93,9 +131,46 @@ export const NumberCardHelp: FC<MaterialHelpProps> = ({ item }) => {
       <p>
         <Trans i18nKey="help.number-card.stars.description" components={components} />
       </p>
-    </>
+    </HelpContent>
   )
 }
+
+const placeButtonCss = css`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 0.3em;
+  margin-bottom: 0.6em;
+`
+
+const helpContentCss = css`
+  h2 {
+    font-family: ${fontDisplay};
+    font-weight: 700;
+    color: ${colors.navy};
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-bottom: 2px solid ${colors.gold};
+    padding-bottom: 0.3em;
+    margin-top: 0;
+  }
+
+  h3 {
+    font-family: ${fontDisplay};
+    font-weight: 600;
+    color: ${colors.navyLight};
+    letter-spacing: 0.02em;
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+  }
+
+  p { line-height: 1.5; margin: 0.5em 0; }
+
+  strong, b {
+    color: ${colors.goldDeep};
+    font-weight: 700;
+  }
+`
 
 const colorSamplesCss = css`
   display: flex;

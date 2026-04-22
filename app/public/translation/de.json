@@ -6,10 +6,16 @@
   "tuto.step.5": "Füllen Sie Ihre Pyramide Zug um Zug! Sobald alle Ihre <bold>14 Karten</bold> aufgedeckt sind, können Sie Ihre <bold>Sternkarte</bold> verwenden, um die oberste Karte vom Stapel zu ziehen und eine Karte zu ersetzen. Oder behalten Sie sie für <bold>3 Bonuspunkte</bold> am Spielende.",
   "tuto.step.6": "Am Spielende werden Reihen, deren Nummern nicht aufsteigend sind, <bold>gestrichen</bold> und bringen nichts. Die anderen bringen je nach Farbe 1 oder 2 Punkte pro Karte. Viel Glück!",
 
-  "log.play-card": "{player} hat Karte {number} in die Pyramide gelegt",
-  "log.use-star-card": "{player} hat die Sternkarte verwendet",
-  "log.place-from-pile": "{player} hat Karte {number} in die Pyramide gelegt",
-  "log.discard-from-pile": "{player} hat Karte {number} abgeworfen",
+  "action.place": "Platzieren",
+  "action.place.long": "In der Pyramide platzieren",
+  "action.unselect": "Abwählen",
+  "action.discard": "Ablegen",
+  "action.keep": "Behalten",
+
+  "log.play-card": "{player} hat <card/> in die Pyramide gelegt",
+  "log.use-star-card": "{player} hat <star/> verwendet",
+  "log.place-from-pile": "{player} hat <card/> in die Pyramide gelegt",
+  "log.discard-from-pile": "{player} hat <card/> abgeworfen",
   "log.pass": "{player} hat gepasst",
 
   "header.play-card.you": "Sie müssen eine Karte auswählen und in Ihre Pyramide legen",

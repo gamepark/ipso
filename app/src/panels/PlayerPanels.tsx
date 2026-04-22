@@ -1,11 +1,12 @@
 import { css } from '@emotion/react'
 import { IpsoRules } from '@gamepark/ipso/IpsoRules'
 import { PlayerId } from '@gamepark/ipso/PlayerId'
-import { StyledPlayerPanel, usePlayerId, usePlay, usePlayers, useRules } from '@gamepark/react-game'
+import { usePlayerId, usePlay, usePlayers, useRules } from '@gamepark/react-game'
 import { MaterialMoveBuilder } from '@gamepark/rules-api'
 import { FC, useState, useCallback, useRef } from 'react'
 import { useAutoViewOnDrag } from '../hooks/useAutoViewOnDrag'
 import { encodeView, getSides } from '../locators/ViewHelper'
+import { IpsoPlayerPanel } from './IpsoPlayerPanel'
 import { SidePickerPopup } from './SidePickerPopup'
 import { BoardNameLabels } from './BoardNameLabels'
 import { getPanelCssPosition } from './PanelPosition'
@@ -57,11 +58,11 @@ export const PlayerPanels: FC = () => {
             onMouseEnter={() => onMouseEnter(player.id)}
             onMouseLeave={onMouseLeave}
           >
-            <StyledPlayerPanel
+            <IpsoPlayerPanel
               player={player}
-              css={[isViewed && isClickable && viewedCss, backgrounds[index]]}
-              color="#000000"
-              activeRing
+              isViewed={isViewed}
+              isClickable={isClickable}
+              compact={players.length >= 6}
             />
             <div css={[previewTrayCss, isHovered && previewTrayVisibleCss]}>
               <PyramidPreview playerId={player.id} />
@@ -92,10 +93,6 @@ const clickableCss = css`
   cursor: pointer;
 `
 
-const viewedCss = css`
-  box-shadow: 0 0 0 0.15em gold, 0 0 0.5em rgba(255, 215, 0, 0.5);
-`
-
 const previewTrayCss = css`
   position: absolute;
   top: 100%;
@@ -106,7 +103,8 @@ const previewTrayCss = css`
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease, transform 0.2s ease;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(21, 35, 88, 0.9);
+  border: 1px solid rgba(245, 200, 66, 0.3);
   border-radius: 0 0 0.8em 0.8em;
   box-shadow: 0 0.3em 0.8em rgba(0, 0, 0, 0.6);
 `
@@ -124,12 +122,3 @@ const panelPosition = (playerCount: number, index: number) => {
     left: ${left}em;
   `
 }
-
-const pink = css`background: linear-gradient(135deg, white 0%, #fb49c5 80%)`
-const red = css`background: linear-gradient(135deg, white 0%, #ff5c25 80%)`
-const blue = css`background: linear-gradient(135deg, white 0%, #009ace 80%)`
-const green = css`background: linear-gradient(135deg, white 0%, #44d62d 80%)`
-const yellow = css`background: linear-gradient(135deg, white 0%, #ffe900 80%)`
-const purple = css`background: linear-gradient(135deg, white 0%, #9900ff 80%)`
-
-const backgrounds = [pink, red, blue, green, yellow, purple]

@@ -5,10 +5,11 @@ import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { isTopStar, NumberCard } from '@gamepark/ipso/material/NumberCard'
 import { PlayerId } from '@gamepark/ipso/PlayerId'
 import { CustomMoveType } from '@gamepark/ipso/rules/CustomMoveType'
-import { faCheck, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faHandPointer, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { CardDescription, ItemContext, ItemMenuButton, MaterialContext } from '@gamepark/react-game'
 import { isCustomMoveType, isMoveItemType, MaterialItem, MaterialMove } from '@gamepark/rules-api'
+import { Trans } from 'react-i18next'
 
 import NumberCard1 from '../images/NumberCard1.jpg'
 import NumberCard10 from '../images/NumberCard10.jpg'
@@ -209,9 +210,19 @@ export class NumberCardDescription extends CardDescription<PlayerId, MaterialTyp
 
   backImage = NumberCardBack
 
-  isFlippedOnTable(item: Partial<MaterialItem<PlayerId, LocationType, NumberCard>>, context: MaterialContext) {
+  canShortClick(): boolean {
+    return false
+  }
+
+  getShortClickLocalMove(_context: ItemContext<number, MaterialType, LocationType, number, number>): MaterialMove<number, MaterialType, LocationType, number, number> | undefined {
+    return
+  }
+
+  getShortClickMove(): undefined { }
+
+  isFlipped(item: Partial<MaterialItem<PlayerId, LocationType, NumberCard>>, context: MaterialContext) {
     if (isTopStar(item.id)) return false
-    return item.location?.type === LocationType.DrawPile || super.isFlippedOnTable(item, context)
+    return item.location?.type === LocationType.DrawPile || super.isFlipped(item, context)
   }
 
   getItemMenu(item: MaterialItem<PlayerId, LocationType, NumberCard>, context: ItemContext, legalMoves: MaterialMove[]) {
@@ -226,12 +237,12 @@ export class NumberCardDescription extends CardDescription<PlayerId, MaterialTyp
       if (!discard && !keep) return null
       return <>
         {discard &&
-          <ItemMenuButton x={3} y={-1.25} label="Défausser" labelPosition="right" move={discard} css={smaller}>
+          <ItemMenuButton x={3} y={-1.25} label={<Trans i18nKey="action.discard" />} labelPosition="right" move={discard} css={smaller}>
             <FontAwesomeIcon icon={faTrash} />
           </ItemMenuButton>
         }
         {keep &&
-          <ItemMenuButton x={3} y={1.25} label="Garder" labelPosition="right" move={keep} css={smaller}>
+          <ItemMenuButton x={3} y={1.25} label={<Trans i18nKey="action.keep" />} labelPosition="right" move={keep} css={smaller}>
             <FontAwesomeIcon icon={faCheck} />
           </ItemMenuButton>
         }
@@ -243,12 +254,38 @@ export class NumberCardDescription extends CardDescription<PlayerId, MaterialTyp
       && move.itemIndex === context.index
       && move.location.type === LocationType.DiscardPile
     )
-    if (!discard) return null
-    return (
-      <ItemMenuButton x={3} y={0} label="Défausser" labelPosition="right" move={discard} css={smaller}>
-        <FontAwesomeIcon icon={faTrash} />
-      </ItemMenuButton>
+    const canPlace = legalMoves.some(move =>
+      isMoveItemType(MaterialType.NumberCard)(move)
+      && move.itemIndex === context.index
+      && move.location.type === LocationType.Pyramid
     )
+    const numberCard = context.rules.material(MaterialType.NumberCard)
+    const selectMoves = canPlace
+      ? (item.selected
+        ? [numberCard.index(context.index).unselectItem()]
+        : [
+          ...numberCard.selected().unselectItems(),
+          numberCard.index(context.index).selectItem()
+        ])
+      : undefined
+    return <>
+      {selectMoves &&
+        <ItemMenuButton
+          x={3} y={-1.25}
+          label={<Trans i18nKey={item.selected ? 'action.unselect' : 'action.place'} />}
+          labelPosition="right"
+          moves={selectMoves} options={{ transient: true }}
+          css={smaller}
+        >
+          <FontAwesomeIcon icon={faHandPointer} />
+        </ItemMenuButton>
+      }
+      {discard &&
+        <ItemMenuButton x={3} y={1.25} label={<Trans i18nKey="action.discard" />} labelPosition="right" move={discard} css={smaller}>
+          <FontAwesomeIcon icon={faTrash} />
+        </ItemMenuButton>
+      }
+    </>
   }
 }
 

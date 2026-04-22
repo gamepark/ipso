@@ -22,7 +22,7 @@ export class IpsoLogDescription implements LogDescription<MaterialMove, PlayerId
       }
 
       if (isMoveItemType(MaterialType.NumberCard)(move) && move.location.type === LocationType.CardDisplay) {
-        return { player, Component: DisplayCardLog, depth: 1 }
+        return { Component: DisplayCardLog, depth: 1 }
       }
     }
 
@@ -32,11 +32,11 @@ export class IpsoLogDescription implements LogDescription<MaterialMove, PlayerId
         if (isTopStar(item?.id)) {
           return { player, Component: UseStarCardLog }
         }
-        return { player, Component: DiscardCardLog, depth: 1 }
+        return { Component: DiscardCardLog, depth: 1 }
       }
 
       if (isMoveItemType(MaterialType.NumberCard)(move) && move.location.type === LocationType.Pyramid) {
-        return { player, Component: PlayCardLog, depth: 1 }
+        return { Component: PlayCardLog, depth: 1 }
       }
 
       if (isCustomMoveType(CustomMoveType.Pass)(move)) {

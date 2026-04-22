@@ -6,10 +6,16 @@
   "tuto.step.5": "Continua a riempire la tua piramide turno dopo turno! Una volta rivelate tutte le tue <bold>14 carte</bold>, puoi usare la tua <bold>carta stella</bold> per pescare la prima carta del mazzo e sostituire una carta. Oppure tienila per <bold>3 punti bonus</bold> a fine partita.",
   "tuto.step.6": "A fine partita, le righe i cui numeri non sono in ordine crescente vengono <bold>eliminate</bold> e non valgono nulla. Le altre valgono 1 o 2 punti per carta in base al colore. Buona fortuna!",
 
-  "log.play-card": "{player} ha giocato la carta {number} nella sua piramide",
-  "log.use-star-card": "{player} ha usato la sua carta stella",
-  "log.place-from-pile": "{player} ha posizionato la carta {number} nella sua piramide",
-  "log.discard-from-pile": "{player} ha scartato la carta {number}",
+  "action.place": "Posiziona",
+  "action.place.long": "Posiziona nella piramide",
+  "action.unselect": "Deseleziona",
+  "action.discard": "Scarta",
+  "action.keep": "Tieni",
+
+  "log.play-card": "{player} ha giocato <card/> nella sua piramide",
+  "log.use-star-card": "{player} ha usato la sua <star/>",
+  "log.place-from-pile": "{player} ha posizionato <card/> nella sua piramide",
+  "log.discard-from-pile": "{player} ha scartato <card/>",
   "log.pass": "{player} ha passato",
 
   "header.play-card.you": "Devi scegliere una carta e posizionarla nella tua piramide",

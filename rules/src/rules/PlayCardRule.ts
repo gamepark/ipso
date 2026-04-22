@@ -24,6 +24,9 @@ export class PlayCardRule extends PlayerTurnRule {
 
   afterItemMove(move: ItemMove): MaterialMove[] {
     if (isMoveItem(move) && move.location.type === LocationType.Pyramid) {
+      for (const item of this.game.items[MaterialType.NumberCard] ?? []) {
+        if (item.selected) delete item.selected
+      }
       const nextRule = this.nextPlayerIsFirstPlayerAndAllCardsPlayed() ? RuleId.UseStarCard : RuleId.PlayCard
       return [this.startPlayerTurn(nextRule, this.nextPlayer)]
     }

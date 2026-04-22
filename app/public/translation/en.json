@@ -6,10 +6,16 @@
   "tuto.step.5": "Keep filling your pyramid turn after turn! Once all your <bold>14 cards</bold> are revealed, you can use your <bold>star card</bold> to draw the top card from the deck and replace a card. Or keep it for <bold>3 bonus points</bold> at the end of the game.",
   "tuto.step.6": "At the end of the game, rows whose numbers are not in ascending order are <bold>discarded</bold> and score nothing. The others score 1 or 2 points per card depending on color. Good luck!",
 
-  "log.play-card": "{player} played card {number} in their pyramid",
-  "log.use-star-card": "{player} used their star card",
-  "log.place-from-pile": "{player} placed card {number} in their pyramid",
-  "log.discard-from-pile": "{player} discarded card {number}",
+  "action.place": "Place",
+  "action.place.long": "Place in the pyramid",
+  "action.unselect": "Unselect",
+  "action.discard": "Discard",
+  "action.keep": "Keep",
+
+  "log.play-card": "{player} played <card/> in their pyramid",
+  "log.use-star-card": "{player} used their <star/>",
+  "log.place-from-pile": "{player} placed <card/> in their pyramid",
+  "log.discard-from-pile": "{player} discarded <card/>",
   "log.pass": "{player} passed",
 
   "header.play-card.you": "You must choose a card and place it in your pyramid",
