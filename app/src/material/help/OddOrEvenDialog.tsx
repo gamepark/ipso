@@ -36,7 +36,7 @@ export const OddOrEvenDialog: FC<Props> = ({ open, onClose }) => {
 
 const contentCss = css`
   max-width: 40em;
-  margin: 1em;
+  padding: 1em;
   font-size: 3em;
   font-family: ${fontDisplay};
   color: ${colors.navy};
