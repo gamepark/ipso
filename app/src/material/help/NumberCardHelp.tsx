@@ -3,9 +3,10 @@ import { css } from '@emotion/react'
 import { LocationType } from '@gamepark/ipso/material/LocationType'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { isTopStar, NumberCard } from '@gamepark/ipso/material/NumberCard'
+import { CustomMoveType } from '@gamepark/ipso/rules/CustomMoveType'
 import { MaterialHelpProps, Picture, PlayMoveButton, useLegalMoves, useRules } from '@gamepark/react-game'
-import { isMoveItemType, MaterialRules } from '@gamepark/rules-api'
-import { faHandPointer } from '@fortawesome/free-solid-svg-icons'
+import { isCustomMoveType, isMoveItemType, MaterialRules } from '@gamepark/rules-api'
+import { faCheck, faHandPointer, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FC, ReactNode } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
@@ -29,6 +30,35 @@ const components = {
 const HelpContent: FC<{ children: ReactNode }> = ({ children }) => (
   <div css={helpContentCss}>{children}</div>
 )
+
+const StarActionButtons: FC<{ itemIndex?: number, closeDialog: () => void }> = ({ itemIndex, closeDialog }) => {
+  const rules = useRules<MaterialRules>()
+  const legalMoves = useLegalMoves()
+  if (itemIndex === undefined || !rules) return null
+  const discard = legalMoves.find(move =>
+    isMoveItemType(MaterialType.NumberCard)(move)
+    && move.itemIndex === itemIndex
+    && move.location.type === LocationType.DiscardPile
+  )
+  const keep = legalMoves.find(move => isCustomMoveType(CustomMoveType.Pass)(move))
+  if (!discard && !keep) return null
+  return (
+    <div css={starButtonsRowCss}>
+      {discard &&
+        <PlayMoveButton move={discard} onPlay={closeDialog} css={actionButtonCss}>
+          <FontAwesomeIcon icon={faTrash} />
+          <span><Trans i18nKey="action.discard" /></span>
+        </PlayMoveButton>
+      }
+      {keep &&
+        <PlayMoveButton move={keep} onPlay={closeDialog} css={actionButtonCss}>
+          <FontAwesomeIcon icon={faCheck} />
+          <span><Trans i18nKey="action.keep" /></span>
+        </PlayMoveButton>
+      }
+    </div>
+  )
+}
 
 const PlaceCardButton: FC<{ itemIndex?: number, closeDialog: () => void }> = ({ itemIndex, closeDialog }) => {
   const rules = useRules<MaterialRules>()
@@ -63,6 +93,7 @@ export const NumberCardHelp: FC<MaterialHelpProps> = ({ item, itemIndex, closeDi
     return (
       <HelpContent>
         <h2>{t('help.star-card.title', 'Carte Étoile')}</h2>
+        <StarActionButtons itemIndex={itemIndex} closeDialog={closeDialog} />
         <p>
           <Trans i18nKey="help.star-card.description" components={components} />
         </p>
@@ -141,6 +172,19 @@ const placeButtonCss = css`
   gap: 0.5em;
   margin-top: 0.3em;
   margin-bottom: 0.6em;
+`
+
+const starButtonsRowCss = css`
+  display: flex;
+  gap: 0.6em;
+  margin: 0.4em 0 0.8em;
+  flex-wrap: wrap;
+`
+
+const actionButtonCss = css`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
 `
 
 const helpContentCss = css`
