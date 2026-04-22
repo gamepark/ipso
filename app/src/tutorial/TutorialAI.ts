@@ -1,7 +1,7 @@
 import { IpsoRules } from '@gamepark/ipso/IpsoRules'
 import { LocationType } from '@gamepark/ipso/material/LocationType'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
-import { NumberCard, numberCardData } from '@gamepark/ipso/material/NumberCard'
+import { isTopStar, NumberCard, numberCardData } from '@gamepark/ipso/material/NumberCard'
 import { CustomMoveType } from '@gamepark/ipso/rules/CustomMoveType'
 import { MemoryType } from '@gamepark/ipso/rules/MemoryType'
 import { RuleId } from '@gamepark/ipso/rules/RuleId'
@@ -54,7 +54,12 @@ function getBestUseStarCardMove(rules: IpsoRules, player: number, moves: Materia
     const opponents = rules.game.players.filter((p) => p !== player)
     const maxOpponentScore = opponents.length ? Math.max(...opponents.map((p) => rules.getScore(p))) : 0
     if (myScore >= maxOpponentScore) return passMoves[0]
-    const discardStar = moves.find((m) => isMoveItemType(MaterialType.StarCard)(m))
+    const discardStar = moves.find((m) => {
+      if (!isMoveItemType(MaterialType.NumberCard)(m)) return false
+      if (m.location.type !== LocationType.DiscardPile) return false
+      const item = rules.material(MaterialType.NumberCard).getItem<NumberCard>(m.itemIndex)
+      return isTopStar(item?.id)
+    })
     if (discardStar) return discardStar
     return passMoves[0]
   }

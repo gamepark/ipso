@@ -1,6 +1,7 @@
 import { IpsoRules } from '@gamepark/ipso/IpsoRules.ts'
 import { LocationType } from '@gamepark/ipso/material/LocationType.ts'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType.ts'
+import { isTopStar, NumberCard } from '@gamepark/ipso/material/NumberCard.ts'
 import { CustomMoveType } from '@gamepark/ipso/rules/CustomMoveType.ts'
 import { PlayMoveButton, useLegalMove, usePlayerId, usePlayerName, useRules } from '@gamepark/react-game'
 import { isCustomMoveType, isMoveItemType } from '@gamepark/rules-api'
@@ -12,8 +13,16 @@ export const UseStarCardHeader = () => {
   const activePlayer = rules.game.rule?.player
   const itsMe = player && activePlayer === player
   const pass = useLegalMove(isCustomMoveType(CustomMoveType.Pass))
-  const use = useLegalMove(move => isMoveItemType(MaterialType.StarCard)(move) && move.location.type === LocationType.DiscardPile)
-  const discard = useLegalMove(move => isMoveItemType(MaterialType.NumberCard)(move) && move.location.type === LocationType.DiscardPile)
+  const use = useLegalMove(move => {
+    if (!isMoveItemType(MaterialType.NumberCard)(move) || move.location.type !== LocationType.DiscardPile) return false
+    const item = rules.material(MaterialType.NumberCard).getItem<NumberCard>(move.itemIndex)
+    return isTopStar(item?.id)
+  })
+  const discard = useLegalMove(move => {
+    if (!isMoveItemType(MaterialType.NumberCard)(move) || move.location.type !== LocationType.DiscardPile) return false
+    const item = rules.material(MaterialType.NumberCard).getItem<NumberCard>(move.itemIndex)
+    return !isTopStar(item?.id)
+  })
   const name = usePlayerName(activePlayer)
 
   if (itsMe) {

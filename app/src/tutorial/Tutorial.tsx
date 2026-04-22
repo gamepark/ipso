@@ -209,7 +209,7 @@ export class Tutorial extends MaterialTutorial<number, MaterialType, LocationTyp
       },
       focus: (game) => ({
         materials: [
-          this.material(game, MaterialType.StarCard).location(LocationType.Pyramid).player(me),
+          this.material(game, MaterialType.NumberCard).location(LocationType.Pyramid).player(me).id(NumberCard.TopStar),
           this.material(game, MaterialType.NumberCard).location(LocationType.DrawPile)
         ],
         margin: { bottom: 2, top: 2, left: 2, right: 2 }

@@ -2,6 +2,7 @@ import { LogDescription, MoveComponentContext, MovePlayedLogDescription } from '
 import { isCustomMoveType, isMoveItemType, MaterialGame, MaterialMove } from '@gamepark/rules-api'
 import { LocationType } from '@gamepark/ipso/material/LocationType'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
+import { isTopStar, NumberCard } from '@gamepark/ipso/material/NumberCard'
 import { CustomMoveType } from '@gamepark/ipso/rules/CustomMoveType'
 import { RuleId } from '@gamepark/ipso/rules/RuleId'
 import { PlayerId } from '@gamepark/ipso/PlayerId'
@@ -26,16 +27,16 @@ export class IpsoLogDescription implements LogDescription<MaterialMove, PlayerId
     }
 
     if (context.game.rule?.id === RuleId.UseStarCard) {
-      if (isMoveItemType(MaterialType.StarCard)(move) && move.location.type === LocationType.DiscardPile) {
-        return { player, Component: UseStarCardLog }
+      if (isMoveItemType(MaterialType.NumberCard)(move) && move.location.type === LocationType.DiscardPile) {
+        const item = context.game.items[MaterialType.NumberCard]?.[move.itemIndex] as { id?: NumberCard } | undefined
+        if (isTopStar(item?.id)) {
+          return { player, Component: UseStarCardLog }
+        }
+        return { player, Component: DiscardCardLog, depth: 1 }
       }
 
       if (isMoveItemType(MaterialType.NumberCard)(move) && move.location.type === LocationType.Pyramid) {
         return { player, Component: PlayCardLog, depth: 1 }
-      }
-
-      if (isMoveItemType(MaterialType.NumberCard)(move) && move.location.type === LocationType.DiscardPile) {
-        return { player, Component: DiscardCardLog, depth: 1 }
       }
 
       if (isCustomMoveType(CustomMoveType.Pass)(move)) {

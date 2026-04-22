@@ -14,10 +14,18 @@ function isPlayerVisible(item: MaterialItem, context: MaterialContext): boolean 
 export const gameAnimations = new MaterialGameAnimations()
 
 const isCardMove = isMoveItemType(MaterialType.NumberCard)
-const isStarCardMove = isMoveItemType(MaterialType.StarCard)
 
 // Closure to capture the destination player from the move
 let trajectoryPlayer: PlayerId | undefined
+
+// Card from CardDisplay → DrawPile: flat trajectory (no arc), card slides under the existing pile cards
+gameAnimations
+  .configure((move, context) => {
+    if (!isCardMove(move) || move.location.type !== LocationType.DrawPile) return false
+    const item = context.rules.material(MaterialType.NumberCard).getItem(move.itemIndex)
+    return item?.location.type === LocationType.CardDisplay
+  })
+  .trajectory(() => ({ elevation: false }))
 
 // Card from CardDisplay → Pyramid (visible player): normal animation
 gameAnimations
@@ -78,34 +86,6 @@ gameAnimations
   .configure((move, context) => {
     if (!isCardMove(move) || move.location.type !== LocationType.DiscardPile) return false
     const item = context.rules.material(MaterialType.NumberCard).getItem(move.itemIndex)
-    if (!item || item.location.type !== LocationType.Pyramid || isPlayerVisible(item, context)) return false
-    trajectoryPlayer = item.location.player
-    return true
-  })
-  .duration(1500)
-  .trajectory(() => ({
-    elevation: false,
-    waypoints: [
-      { at: 0, locator: onPlayerPanelLocator, location: () => ({ player: trajectoryPlayer }) },
-      { at: 0.35, locator: belowPlayerPanelLocator, location: () => ({ player: trajectoryPlayer }) },
-      { at: 0.65, locator: belowPlayerPanelLocator, location: () => ({ player: trajectoryPlayer }) }
-    ]
-  }))
-
-// Star card move to DiscardPile (visible): normal
-gameAnimations
-  .configure((move, context) => {
-    if (!isStarCardMove(move) || move.location.type !== LocationType.DiscardPile) return false
-    const item = context.rules.material(MaterialType.StarCard).getItem(move.itemIndex)
-    return item?.location.type === LocationType.Pyramid && isPlayerVisible(item, context)
-  })
-  .duration(500)
-
-// Star card move to DiscardPile (non-visible): appear from panel, pause below, then to discard
-gameAnimations
-  .configure((move, context) => {
-    if (!isStarCardMove(move) || move.location.type !== LocationType.DiscardPile) return false
-    const item = context.rules.material(MaterialType.StarCard).getItem(move.itemIndex)
     if (!item || item.location.type !== LocationType.Pyramid || isPlayerVisible(item, context)) return false
     trajectoryPlayer = item.location.player
     return true

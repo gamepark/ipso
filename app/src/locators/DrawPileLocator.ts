@@ -1,7 +1,7 @@
 import { DeckLocator } from '@gamepark/react-game'
 
 class DrawPileLocator extends DeckLocator {
-  coordinates = { x: 0, y: 8 }
+  coordinates = { x: 0, y: 8, z: 5 }
   limit = 10
 }
 

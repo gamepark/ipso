@@ -90,10 +90,17 @@ export enum NumberCard {
   NumberCard87,
   NumberCard88,
   NumberCard89,
-  NumberCard90
+  NumberCard90,
+  TopStar = 200
 }
 
-export const numberCards = getEnumValues(NumberCard)
+export const numberCards = getEnumValues(NumberCard).filter(id => id !== NumberCard.TopStar)
+
+export function isTopStar(id: NumberCard | undefined): boolean {
+  return id === NumberCard.TopStar
+}
+
+export type NumericCard = Exclude<NumberCard, NumberCard.TopStar>
 
 export enum Colors {
   Pink = 1,
@@ -109,7 +116,7 @@ interface Data {
   stars: number
 }
 
-export const numberCardData: Record<NumberCard, Data> = {
+export const numberCardData: Record<NumericCard, Data> = {
   [NumberCard.NumberCard1]: { color: Colors.Pink, number: 1, stars: 0 },
   [NumberCard.NumberCard2]: { color: Colors.Yellow, number: 2, stars: 0 },
   [NumberCard.NumberCard3]: { color: Colors.Green, number: 3, stars: 0 },

@@ -75,12 +75,12 @@ export class TutorialSetup extends IpsoSetup {
     }
 
     // --- Star cards ---------------------------------------------------------
-    this.material(MaterialType.StarCard).createItem({
-      id: me,
+    this.material(MaterialType.NumberCard).createItem({
+      id: NumberCard.TopStar,
       location: { type: LocationType.Pyramid, player: me, x: 0, y: 0 }
     })
-    this.material(MaterialType.StarCard).createItem({
-      id: opponent,
+    this.material(MaterialType.NumberCard).createItem({
+      id: NumberCard.TopStar,
       location: { type: LocationType.Pyramid, player: opponent, x: 0, y: 0 }
     })
 

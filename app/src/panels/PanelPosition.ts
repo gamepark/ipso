@@ -3,8 +3,8 @@ export const PANEL_WIDTH_EM = 28 // in panel em (StyledPlayerPanel default)
 const PANEL_GAP_EM = 1 // in panel em
 
 // Table boundaries (must match GameDisplay.tsx)
-const TABLE_X_MIN = -23
-const TABLE_X_MAX = 23
+const TABLE_X_MIN = -20
+const TABLE_X_MAX = 20
 const TABLE_Y_MIN = 3
 
 /**

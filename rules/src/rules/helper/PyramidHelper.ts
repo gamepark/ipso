@@ -1,6 +1,7 @@
 import { Location, MaterialGame, MaterialRulesPart } from '@gamepark/rules-api'
 import { LocationType } from '../../material/LocationType'
 import { MaterialType } from '../../material/MaterialType'
+import { isTopStar, NumberCard } from '../../material/NumberCard'
 
 export class PyramidHelper extends MaterialRulesPart {
   player?: number
@@ -14,7 +15,8 @@ export class PyramidHelper extends MaterialRulesPart {
     const locations = this.material(MaterialType.NumberCard)
       .location(LocationType.Pyramid)
       .player(this.player)
-      .getItems()
+      .getItems<NumberCard>()
+      .filter(it => !isTopStar(it.id))
       .map(it => it.location)
 
     if (onlyHidden) {

@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { isTopStar, NumberCard } from '@gamepark/ipso/material/NumberCard'
 import { MaterialHelpProps, Picture } from '@gamepark/react-game'
 import { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
@@ -18,8 +19,27 @@ const components = {
   bold: <strong />,
 }
 
-export const NumberCardHelp: FC<MaterialHelpProps> = () => {
+export const NumberCardHelp: FC<MaterialHelpProps> = ({ item }) => {
   const { t } = useTranslation()
+
+  if (isTopStar(item?.id as NumberCard | undefined)) {
+    return (
+      <>
+        <h2>{t('help.star-card.title', 'Carte Étoile')}</h2>
+        <p>
+          <Trans i18nKey="help.star-card.description" components={components} />
+        </p>
+        <h3>{t('help.star-card.use.title', 'Utilisation')}</h3>
+        <p>
+          <Trans i18nKey="help.star-card.use.description" components={components} />
+        </p>
+        <h3>{t('help.star-card.bonus.title', 'Bonus de fin de partie')}</h3>
+        <p>
+          <Trans i18nKey="help.star-card.bonus.description" components={components} />
+        </p>
+      </>
+    )
+  }
 
   return (
     <>

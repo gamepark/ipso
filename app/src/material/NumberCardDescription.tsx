@@ -2,12 +2,13 @@
 import { css } from '@emotion/react'
 import { LocationType } from '@gamepark/ipso/material/LocationType'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
-import { NumberCard } from '@gamepark/ipso/material/NumberCard'
+import { isTopStar, NumberCard } from '@gamepark/ipso/material/NumberCard'
 import { PlayerId } from '@gamepark/ipso/PlayerId'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { CustomMoveType } from '@gamepark/ipso/rules/CustomMoveType'
+import { faCheck, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { CardDescription, ItemContext, ItemMenuButton, MaterialContext } from '@gamepark/react-game'
-import { isMoveItemType, MaterialItem, MaterialMove } from '@gamepark/rules-api'
+import { isCustomMoveType, isMoveItemType, MaterialItem, MaterialMove } from '@gamepark/rules-api'
 
 import NumberCard1 from '../images/NumberCard1.jpg'
 import NumberCard10 from '../images/NumberCard10.jpg'
@@ -100,6 +101,7 @@ import NumberCard89 from '../images/NumberCard89.jpg'
 import NumberCard9 from '../images/NumberCard9.jpg'
 import NumberCard90 from '../images/NumberCard90.jpg'
 import NumberCardBack from '../images/NumberCardBack.jpg'
+import StarCardImage from '../images/StarCard.jpg'
 import { NumberCardHelp } from './help/NumberCardHelp'
 
 export class NumberCardDescription extends CardDescription<PlayerId, MaterialType, LocationType, NumberCard> {
@@ -201,16 +203,40 @@ export class NumberCardDescription extends CardDescription<PlayerId, MaterialTyp
     [NumberCard.NumberCard87]: NumberCard87,
     [NumberCard.NumberCard88]: NumberCard88,
     [NumberCard.NumberCard89]: NumberCard89,
-    [NumberCard.NumberCard90]: NumberCard90
+    [NumberCard.NumberCard90]: NumberCard90,
+    [NumberCard.TopStar]: StarCardImage
   }
 
   backImage = NumberCardBack
 
-  isFlippedOnTable(item: Partial<MaterialItem>, context: MaterialContext) {
+  isFlippedOnTable(item: Partial<MaterialItem<PlayerId, LocationType, NumberCard>>, context: MaterialContext) {
+    if (isTopStar(item.id)) return false
     return item.location?.type === LocationType.DrawPile || super.isFlippedOnTable(item, context)
   }
 
-  getItemMenu(item: MaterialItem, context: ItemContext, legalMoves: MaterialMove[]) {
+  getItemMenu(item: MaterialItem<PlayerId, LocationType, NumberCard>, context: ItemContext, legalMoves: MaterialMove[]) {
+    if (isTopStar(item.id)) {
+      if (item.location.player !== context.player) return null
+      const discard = legalMoves.find(move =>
+        isMoveItemType(MaterialType.NumberCard)(move)
+        && move.itemIndex === context.index
+        && move.location.type === LocationType.DiscardPile
+      )
+      const keep = legalMoves.find(move => isCustomMoveType(CustomMoveType.Pass)(move))
+      if (!discard && !keep) return null
+      return <>
+        {discard &&
+          <ItemMenuButton x={3} y={-1.25} label="Défausser" labelPosition="right" move={discard} css={smaller}>
+            <FontAwesomeIcon icon={faTrash} />
+          </ItemMenuButton>
+        }
+        {keep &&
+          <ItemMenuButton x={3} y={1.25} label="Garder" labelPosition="right" move={keep} css={smaller}>
+            <FontAwesomeIcon icon={faCheck} />
+          </ItemMenuButton>
+        }
+      </>
+    }
     if (item.location.type !== LocationType.CardDisplay) return null
     const discard = legalMoves.find(move =>
       isMoveItemType(MaterialType.NumberCard)(move)

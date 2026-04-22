@@ -1,7 +1,7 @@
 import { MaterialMove, MaterialRulesPart } from '@gamepark/rules-api'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
-import { NumberCard, numberCardData } from '../material/NumberCard'
+import { numberCardData, NumericCard } from '../material/NumberCard'
 import { isAscending, pyramidLinesY } from './helper/pyramidLines'
 
 export class DiscardNonAscendingLinesRule extends MaterialRulesPart {
@@ -22,7 +22,7 @@ export class DiscardNonAscendingLinesRule extends MaterialRulesPart {
       .player(player)
       .location(l => l.y === lineY)
       .sort(it => it.location.x ?? 0)
-    const numbers = cards.getItems().map(card => numberCardData[card.id as NumberCard].number)
+    const numbers = cards.getItems<NumericCard>().map(card => numberCardData[card.id].number)
     if (!isAscending(numbers)) {
       return [cards.deleteItemsAtOnce()]
     }

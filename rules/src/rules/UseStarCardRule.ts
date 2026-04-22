@@ -1,6 +1,7 @@
 import { CustomMove, isCustomMoveType, isMoveItem, isMoveItemType, ItemMove, Location, MaterialMove, PlayerTurnRule, RuleMove } from '@gamepark/rules-api'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
+import { isTopStar, NumberCard } from '../material/NumberCard'
 import { CustomMoveType } from './CustomMoveType'
 import { PyramidHelper } from './helper/PyramidHelper'
 import { RuleId } from './RuleId'
@@ -39,12 +40,12 @@ export class UseStarCardRule extends PlayerTurnRule {
 
   afterItemMove(move: ItemMove): MaterialMove[] {
     if (!isMoveItem(move) || move.location.type !== LocationType.DiscardPile) return []
-    if (isMoveItemType(MaterialType.StarCard)(move)) {
+    if (!isMoveItemType(MaterialType.NumberCard)(move)) return []
+    const movedItem = this.material(MaterialType.NumberCard).getItem<NumberCard>(move.itemIndex)
+    if (isTopStar(movedItem?.id)) {
       return [this.topOfDrawPile.moveItem({ type: LocationType.CardDisplay })]
-    } else if (isMoveItemType(MaterialType.NumberCard)(move)) {
-      return [this.goToNextStep()]
     }
-    return []
+    return [this.goToNextStep()]
   }
 
   onCustomMove(move: CustomMove): MaterialMove[] {
@@ -74,6 +75,6 @@ export class UseStarCardRule extends PlayerTurnRule {
   }
 
   private get starCard() {
-    return this.material(MaterialType.StarCard).location(LocationType.Pyramid).player(this.player)
+    return this.material(MaterialType.NumberCard).location(LocationType.Pyramid).player(this.player).id(NumberCard.TopStar)
   }
 }

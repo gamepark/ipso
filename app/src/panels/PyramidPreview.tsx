@@ -2,12 +2,12 @@
 import { css } from '@emotion/react'
 import { LocationType } from '@gamepark/ipso/material/LocationType'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
-import { NumberCard } from '@gamepark/ipso/material/NumberCard'
+import { isTopStar, NumberCard } from '@gamepark/ipso/material/NumberCard'
 import { IpsoRules } from '@gamepark/ipso/IpsoRules'
 import { useRules } from '@gamepark/react-game'
 import { FC } from 'react'
 import { numberCardDescription } from '../material/NumberCardDescription'
-import { starCardDescription } from '../material/StarCardDescription'
+import StarCardImage from '../images/StarCard.jpg'
 
 type PyramidPreviewProps = {
   playerId: number
@@ -17,15 +17,13 @@ const rows = [4, 3, 2, 1]
 
 export const PyramidPreview: FC<PyramidPreviewProps> = ({ playerId }) => {
   const rules = useRules<IpsoRules>()!
-  const cards = rules.material(MaterialType.NumberCard)
+  const allPyramidItems = rules.material(MaterialType.NumberCard)
     .location(LocationType.Pyramid)
     .player(playerId)
-    .getItems()
+    .getItems<NumberCard>()
 
-  const starCard = rules.material(MaterialType.StarCard)
-    .location(LocationType.Pyramid)
-    .player(playerId)
-    .getItems()
+  const cards = allPyramidItems.filter(it => !isTopStar(it.id))
+  const starCard = allPyramidItems.filter(it => isTopStar(it.id))
 
   return (
     <div css={previewCss}>
@@ -35,7 +33,7 @@ export const PyramidPreview: FC<PyramidPreviewProps> = ({ playerId }) => {
             const card = cards.find(c => c.location.y === y && c.location.x === x)
             const isRevealed = card && card.id !== undefined && !card.location.rotation
             const image = isRevealed
-              ? numberCardDescription.images[card!.id as NumberCard]
+              ? numberCardDescription.images[card!.id!]
               : numberCardDescription.backImage
             return (
               <img
@@ -50,7 +48,7 @@ export const PyramidPreview: FC<PyramidPreviewProps> = ({ playerId }) => {
       ))}
       {starCard.length > 0 && (
         <div css={[rowCss, rowWidthCss(1, 5)]}>
-          <img src={starCardDescription.image} alt="" css={cellCss} />
+          <img src={StarCardImage} alt="" css={cellCss} />
         </div>
       )}
     </div>

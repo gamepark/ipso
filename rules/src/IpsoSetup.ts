@@ -6,7 +6,7 @@ import { MaterialType } from './material/MaterialType'
 import { MemoryType } from './rules/MemoryType'
 import { RuleId } from './rules/RuleId'
 import { PlayerId } from './PlayerId';
-import { numberCards } from './material/NumberCard'
+import { NumberCard, numberCards } from './material/NumberCard'
 import { getPyramidPositions } from './rules/helper/pyramidLines'
 
 /**
@@ -64,8 +64,8 @@ export class IpsoSetup extends MaterialGameSetup<PlayerId, MaterialType, Locatio
   }
 
   setupPlayerStarCard(player: PlayerId) {
-    this.material(MaterialType.StarCard).createItem({
-      id: player,
+    this.material(MaterialType.NumberCard).createItem({
+      id: NumberCard.TopStar,
       location: {
         type: LocationType.Pyramid,
         player,

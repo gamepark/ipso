@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { FC, useEffect } from 'react'
+import { FC, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 type SidePickerPopupProps = {
@@ -11,15 +11,26 @@ type SidePickerPopupProps = {
 
 export const SidePickerPopup: FC<SidePickerPopupProps> = ({ currentSide, onPick, onClose }) => {
   const { t } = useTranslation()
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    const onOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        onClose()
+        e.stopPropagation()
+      }
+    }
     document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
+    document.addEventListener('click', onOutside, true)
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.removeEventListener('click', onOutside, true)
+    }
   }, [onClose])
 
   return (
-    <div css={bubbleCss} onClick={(e) => e.stopPropagation()}>
+    <div ref={ref} css={bubbleCss} onClick={(e) => e.stopPropagation()}>
       <span css={labelCss}>{t('view.display-at', 'Afficher à')}</span>
       <button
         css={[buttonCss, currentSide === 'left' && currentButtonCss]}
