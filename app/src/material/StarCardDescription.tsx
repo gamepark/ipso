@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import { LocationType } from '@gamepark/ipso/material/LocationType'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { CustomMoveType } from '@gamepark/ipso/rules/CustomMoveType'
@@ -30,17 +31,21 @@ export class StarCardDescription extends CardDescription {
 
     return <>
       {discard &&
-        <ItemMenuButton angle={50} radius={4} x={2} y={-1} label={'Défausser'} labelPosition="right" move={discard}>
+        <ItemMenuButton x={3} y={-1.25} label={'Défausser'} labelPosition="right" move={discard} css={smaller}>
           <FontAwesomeIcon icon={faTrash} />
         </ItemMenuButton>
       }
       {keep &&
-        <ItemMenuButton angle={50} radius={4} x={2} y={1} label={'Garder'} labelPosition="right"  move={keep}>
+        <ItemMenuButton x={3} y={1.25} label={'Garder'} labelPosition="right"  move={keep} css={smaller}>
           <FontAwesomeIcon icon={faCheck} />
         </ItemMenuButton>
       }
     </>
   }
 }
+
+const smaller = css`
+  font-size: 0.7em;
+`
 
 export const starCardDescription = new StarCardDescription()

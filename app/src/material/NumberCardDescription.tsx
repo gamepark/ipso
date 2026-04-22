@@ -1,9 +1,13 @@
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import { LocationType } from '@gamepark/ipso/material/LocationType'
 import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { NumberCard } from '@gamepark/ipso/material/NumberCard'
 import { PlayerId } from '@gamepark/ipso/PlayerId'
-import { CardDescription, MaterialContext } from '@gamepark/react-game'
-import { MaterialItem } from '@gamepark/rules-api'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { CardDescription, ItemContext, ItemMenuButton, MaterialContext } from '@gamepark/react-game'
+import { isMoveItemType, MaterialItem, MaterialMove } from '@gamepark/rules-api'
 
 import NumberCard1 from '../images/NumberCard1.jpg'
 import NumberCard10 from '../images/NumberCard10.jpg'
@@ -105,6 +109,8 @@ export class NumberCardDescription extends CardDescription<PlayerId, MaterialTyp
 
   help = NumberCardHelp
 
+  menuAlwaysVisible = true
+
   images = {
     [NumberCard.NumberCard1]: NumberCard1,
     [NumberCard.NumberCard2]: NumberCard2,
@@ -203,6 +209,25 @@ export class NumberCardDescription extends CardDescription<PlayerId, MaterialTyp
   isFlippedOnTable(item: Partial<MaterialItem>, context: MaterialContext) {
     return item.location?.type === LocationType.DrawPile || super.isFlippedOnTable(item, context)
   }
+
+  getItemMenu(item: MaterialItem, context: ItemContext, legalMoves: MaterialMove[]) {
+    if (item.location.type !== LocationType.CardDisplay) return null
+    const discard = legalMoves.find(move =>
+      isMoveItemType(MaterialType.NumberCard)(move)
+      && move.itemIndex === context.index
+      && move.location.type === LocationType.DiscardPile
+    )
+    if (!discard) return null
+    return (
+      <ItemMenuButton x={3} y={0} label="Défausser" labelPosition="right" move={discard} css={smaller}>
+        <FontAwesomeIcon icon={faTrash} />
+      </ItemMenuButton>
+    )
+  }
 }
+
+const smaller = css`
+  font-size: 0.7em;
+`
 
 export const numberCardDescription = new NumberCardDescription()

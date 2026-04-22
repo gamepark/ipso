@@ -18,6 +18,7 @@
   "header.play-card.you": "Vous devez choisir une carte et la placer dans votre pyramide",
   "header.play-card.player": "{player} doit choisir une carte et la placer dans sa pyramide",
   "header.use-star-card.you": "Vous pouvez <use>utiliser votre carte étoile</use> ou <pass>passer</pass>",
+  "header.use-star-card.you.place-or-discard": "Placez la carte piochée dans votre pyramide ou <discard>défaussez-la</discard>",
   "header.use-star-card.player": "{player} peut utiliser sa carte étoile pour piocher la première carte de la pioche et remplacer une de ses cartes",
   "header.discard-non-ascending-lines": "Suppression des lignes non croissantes",
 

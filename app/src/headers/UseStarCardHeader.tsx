@@ -13,9 +13,18 @@ export const UseStarCardHeader = () => {
   const itsMe = player && activePlayer === player
   const pass = useLegalMove(isCustomMoveType(CustomMoveType.Pass))
   const use = useLegalMove(move => isMoveItemType(MaterialType.StarCard)(move) && move.location.type === LocationType.DiscardPile)
+  const discard = useLegalMove(move => isMoveItemType(MaterialType.NumberCard)(move) && move.location.type === LocationType.DiscardPile)
   const name = usePlayerName(activePlayer)
 
   if (itsMe) {
+    if (!use && !pass) {
+      return <Trans
+        i18nKey="header.use-star-card.you.place-or-discard"
+        components={{
+          discard: <PlayMoveButton move={discard}/>
+        }}
+      />
+    }
     return <Trans
       i18nKey="header.use-star-card.you"
       components={{
