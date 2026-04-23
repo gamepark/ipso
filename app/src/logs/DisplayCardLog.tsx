@@ -17,7 +17,7 @@ export const DisplayCardLog: FC<MoveComponentProps<MaterialMove>> = ({ move, con
 
   return (
     <Trans
-      i18nKey="log.discard-from-pile"
+      i18nKey="log.reveal-card"
       values={{ player: playerName, number }}
       components={{
         card: <CardChip item={item} revealedId={moveItem.reveal?.id as NumberCard | undefined} />
