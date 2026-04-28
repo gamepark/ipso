@@ -1,4 +1,4 @@
-import { isMoveItem, ItemMove, Location, MaterialMove, PlayerTurnRule } from '@gamepark/rules-api'
+import { isMoveItem, ItemMove, MaterialMove, PlayerTurnRule } from '@gamepark/rules-api'
 import { LocationType } from '../material/LocationType'
 import { MaterialType } from '../material/MaterialType'
 import { PyramidHelper } from './helper/PyramidHelper'
@@ -6,7 +6,7 @@ import { RuleId } from './RuleId'
 
 export class PlayCardRule extends PlayerTurnRule {
   getPlayerMoves(): MaterialMove[] {
-    return this.possibleLocations().flatMap(it => this.cardsToPlay.moveItems({ ...it, rotation: false }))
+    return new PyramidHelper(this.game).hiddenLocations().flatMap(it => this.cardsToPlay.moveItems({ ...it, rotation: false }))
   }
 
   beforeItemMove(move: ItemMove): MaterialMove[] {
@@ -38,11 +38,6 @@ export class PlayCardRule extends PlayerTurnRule {
     const allCardsPlayed = this.material(MaterialType.NumberCard).location(LocationType.Pyramid).player(this.nextPlayer).rotation(true).length === 0
     return nextPlayerIsFirstPlayer && allCardsPlayed
   }
-
-  private possibleLocations(): Location[] {
-    return new PyramidHelper(this.game).possibleLocations(true)
-  }
-
   private get cardsToPlay() {
     return this.material(MaterialType.NumberCard).location(LocationType.CardDisplay)
   }

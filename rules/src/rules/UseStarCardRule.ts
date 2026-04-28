@@ -63,7 +63,7 @@ export class UseStarCardRule extends PlayerTurnRule {
   }
 
   private possibleLocations(): Location[] {
-    return new PyramidHelper(this.game).possibleLocations(false)
+    return new PyramidHelper(this.game).allLocations()
   }
 
   private get cardToPlay() {

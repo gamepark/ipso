@@ -1,3 +1,4 @@
+import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { PyramidHelper } from '@gamepark/ipso/rules/helper/PyramidHelper.ts'
 import { DropAreaDescription, getRelativePlayerIndex, HexagonalGridLocator, HexOrientation, isItemContext, ItemContext, MaterialContext, SortFunction } from '@gamepark/react-game'
 import { HexGridSystem, isMoveItem, isMoveItemsAtOnce, Location, MaterialItem, MaterialMove } from '@gamepark/rules-api'
@@ -87,11 +88,8 @@ class PyramidLocator extends HexagonalGridLocator {
   }
 
   getLocations(context: MaterialContext): Partial<Location>[] {
-    // Strip `rotation` so isLocationSubset(moveLocation, dropLocation) passes:
-    // the slot locations carry rotation:true (hidden card) while the placement
-    // moves target the slot with rotation:false (face-up) — without this,
-    // isMoveToLocation returns false for every legal move.
-    return new PyramidHelper(context.rules.game).possibleLocations(true).map(({ rotation: _r, ...rest }) => rest)
+    if (!context.rules.material(MaterialType.NumberCard).selected().length) return []
+    return new PyramidHelper(context.rules.game).allLocations()
   }
 
   navigationSorts: SortFunction[] = []
