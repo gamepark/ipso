@@ -1,9 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css, keyframes } from '@emotion/react'
 import { IpsoRules } from '@gamepark/ipso/IpsoRules'
-import { isTopStar, NumberCard } from '@gamepark/ipso/material/NumberCard'
-import { LocationType } from '@gamepark/ipso/material/LocationType'
-import { MaterialType } from '@gamepark/ipso/material/MaterialType'
 import { Player } from '@gamepark/react-client'
 import { Avatar, getRelativePlayerIndex, PlayerTimer, useMaterialContext, usePlayerName, useRules } from '@gamepark/react-game'
 import { blinkOnRunningTimeout } from '@gamepark/react-game/dist/components/PlayerTimer/PlayerTimer'
@@ -12,16 +9,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FC } from 'react'
 import { colors, playerGradients } from '../theme/colors'
 import { fontDisplay } from '../theme/typography'
-import { getPanelWidth, PANEL_ASPECT_RATIO } from './PanelPosition'
 
 type IpsoPlayerPanelProps = {
   player: Player
+  panelHeight: number
   isViewed?: boolean
   isClickable?: boolean
 }
 
+/** Vertical units the panel content is laid out in (1 inner em = panelHeight / HEIGHT_UNITS) */
+const HEIGHT_UNITS = 5
 
-export const IpsoPlayerPanel: FC<IpsoPlayerPanelProps> = ({ player, isViewed, isClickable }) => {
+export const IpsoPlayerPanel: FC<IpsoPlayerPanelProps> = ({ player, panelHeight, isViewed, isClickable }) => {
   const rules = useRules<IpsoRules>()!
   const context = useMaterialContext()
   const playerName = usePlayerName(player.id)
@@ -29,19 +28,8 @@ export const IpsoPlayerPanel: FC<IpsoPlayerPanelProps> = ({ player, isViewed, is
   const isOver = rules.isOver()
   const gradientIndex = getRelativePlayerIndex(context, player.id) % playerGradients.length
 
-  const playerCount = rules.players.length
-  const width = getPanelWidth(playerCount)
-
-  const pyramidCards = rules.material(MaterialType.NumberCard)
-    .location(LocationType.Pyramid)
-    .player(player.id)
-    .getItems<NumberCard>()
-
-  const starPresent = pyramidCards.some(c => isTopStar(c.id))
-  const rows = [1, 2, 3, 4]
-
   return (
-    <div css={[panelCss(width), panelGradientCss(gradientIndex), isTurnToPlay && activePanelCss, isViewed && isClickable && viewedPanelCss]}>
+    <div css={[panelCss(panelHeight), panelGradientCss(gradientIndex), isTurnToPlay && activePanelCss, isViewed && viewedPanelCss, isClickable && clickablePanelCss]}>
       <div css={avatarWrapCss}>
         {isTurnToPlay && <div css={activeRingCss} />}
         <Avatar playerId={player.id} css={avatarCss} />
@@ -55,54 +43,30 @@ export const IpsoPlayerPanel: FC<IpsoPlayerPanelProps> = ({ player, isViewed, is
           </div>
         )}
       </div>
-      <div css={miniPyramidCss}>
-        <div css={rowCss}>
-          <span css={[cellCss, starPresent ? cellStarCss : cellEmptyCss]} />
-        </div>
-        {rows.map(y => (
-          <div key={y} css={rowCss}>
-            {Array.from({ length: y + 1 }).map((_, x) => {
-              const card = pyramidCards.find(c => c.location.y === y && c.location.x === x)
-              const revealed = card && card.id !== undefined && !card.location.rotation
-              return <span key={x} css={[cellCss, revealed && cellRevealedCss]} />
-            })}
-          </div>
-        ))}
-      </div>
     </div>
   )
 }
 
-// Height derived from width/ratio. Inner content scales via panel's
-// own font-size (1 inner em = panel_height / HEIGHT_UNITS), so changing
-// the ratio really does resize the content (taller panel → bigger text).
-// Width + height are both expressed in panel-em so their physical sizes
-// in wrapper em come out to `width` × `width / PANEL_ASPECT_RATIO`
-// regardless of the font-size scaling.
-const HEIGHT_UNITS = 5
-
-const panelCss = (width: number) => {
-  const heightWrapperEm = width / PANEL_ASPECT_RATIO        // physical height in wrapper em
-  const innerUnit = heightWrapperEm / HEIGHT_UNITS          // 1 inner em in wrapper em
-  const widthInPanelEm = width / innerUnit                  // CSS width (panel-em)
-  return css`
-    width: ${widthInPanelEm}em;
-    height: ${HEIGHT_UNITS}em;
-    font-size: ${innerUnit}em;
-    display: flex;
-    align-items: center;
-    gap: 0.6em;
-    padding: 0.55em 0.7em;
-    border-radius: 0.9em;
-    color: ${colors.cream};
-    font-family: ${fontDisplay};
-    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    position: relative;
-    overflow: visible;
-    box-sizing: border-box;
-  `
-}
+// Panel fills its parent (positioned by PlayerPanels in table-em) and sets
+// its own font-size so inner content scales with the panel height
+// regardless of player count.
+const panelCss = (panelHeight: number) => css`
+  width: 100%;
+  height: 100%;
+  font-size: ${panelHeight / HEIGHT_UNITS}em;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.55em 0.7em;
+  border-radius: 0.9em;
+  color: ${colors.cream};
+  font-family: ${fontDisplay};
+  box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: visible;
+  box-sizing: border-box;
+`
 
 const panelGradientCss = (index: number) => css`
   background: ${playerGradients[index]};
@@ -116,8 +80,19 @@ const activePanelCss = css`
 
 const viewedPanelCss = css`
   box-shadow:
-    0 0 0 0.12em ${colors.gold},
+    0 0 0 0.18em ${colors.gold},
     0 0.2em 0.5em rgba(0, 0, 0, 0.4);
+`
+
+const clickablePanelCss = css`
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  &:hover {
+    transform: translateY(-0.05em);
+    box-shadow:
+      0 0 0 0.1em rgba(245, 200, 66, 0.6),
+      0 0.3em 0.6em rgba(0, 0, 0, 0.5);
+  }
 `
 
 const avatarWrapCss = css`
@@ -192,41 +167,4 @@ const timerIconCss = css`
 const timerCss = css`
   line-height: 1;
   color: ${colors.cream};
-`
-
-const miniPyramidCss = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.12em;
-  flex-shrink: 0;
-  opacity: 0.95;
-`
-
-const rowCss = css`
-  display: flex;
-  gap: 0.12em;
-`
-
-const cellCss = css`
-  width: 0.65em;
-  height: 0.65em;
-  border-radius: 0.12em;
-  background: rgba(26, 46, 112, 0.5);
-  border: 1px solid rgba(239, 236, 214, 0.25);
-`
-
-const cellEmptyCss = css`
-  background: transparent;
-  border-style: dashed;
-  opacity: 0.4;
-`
-
-const cellRevealedCss = css`
-  background: rgba(239, 236, 214, 0.75);
-`
-
-const cellStarCss = css`
-  background: ${colors.gold};
-  border-color: ${colors.goldDeep};
 `

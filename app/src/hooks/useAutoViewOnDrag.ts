@@ -3,12 +3,11 @@ import { useDndMonitor } from '@dnd-kit/core'
 import { usePlay, usePlayerId, useRules } from '@gamepark/react-game'
 import { MaterialMoveBuilder } from '@gamepark/rules-api'
 import { useCallback } from 'react'
-import { encodeView, getSides } from '../locators/ViewHelper'
+import { getViewedPlayer } from '../locators/ViewHelper'
 
 /**
- * When the current player starts dragging one of their items and
- * their board is NOT currently in one of the two visible slots,
- * auto-switch the left slot to their board.
+ * When the current player starts dragging one of their items and the
+ * viewed player is not them, auto-switch the view to their pyramid.
  */
 export const useAutoViewOnDrag = () => {
   const rules = useRules<IpsoRules>()
@@ -18,10 +17,10 @@ export const useAutoViewOnDrag = () => {
   const onDragStart = useCallback(() => {
     if (!rules || me === undefined) return
 
-    const { left, right } = getSides({ rules, player: me } as any)
-    if (left === me || right === me) return
+    const viewed = getViewedPlayer({ rules, player: me } as any)
+    if (viewed === me) return
 
-    play(MaterialMoveBuilder.changeView(encodeView(me, right)), { transient: true })
+    play(MaterialMoveBuilder.changeView(me), { transient: true })
   }, [rules, me, play])
 
   useDndMonitor({ onDragStart })

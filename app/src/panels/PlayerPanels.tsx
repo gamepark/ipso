@@ -3,14 +3,13 @@ import { IpsoRules } from '@gamepark/ipso/IpsoRules'
 import { PlayerId } from '@gamepark/ipso/PlayerId'
 import { usePlayerId, usePlay, usePlayers, useRules } from '@gamepark/react-game'
 import { MaterialMoveBuilder } from '@gamepark/rules-api'
-import { FC, useState, useCallback, useRef } from 'react'
+import { FC, useCallback } from 'react'
 import { useAutoViewOnDrag } from '../hooks/useAutoViewOnDrag'
-import { encodeView, getSides } from '../locators/ViewHelper'
+import { getViewedPlayer } from '../locators/ViewHelper'
 import { IpsoPlayerPanel } from './IpsoPlayerPanel'
-import { SidePickerPopup } from './SidePickerPopup'
-import { BoardNameLabels } from './BoardNameLabels'
-import { getPanelCssPosition } from './PanelPosition'
-import { PyramidPreview } from './PyramidPreview'
+import { getPanelHeight, getPanelSlot, getPanelTablePosition, getPanelWidth, TABLE_X_MIN, TABLE_Y_MIN } from './PanelPosition'
+
+const PANEL_TRANSITION_MS = 500
 
 export const PlayerPanels: FC = () => {
   useAutoViewOnDrag()
@@ -18,106 +17,59 @@ export const PlayerPanels: FC = () => {
   const rules = useRules<IpsoRules>()!
   const play = usePlay()
   const playerId = usePlayerId()
-  const [openPickerFor, setOpenPickerFor] = useState<PlayerId | undefined>(undefined)
-  const [hoveredPlayer, setHoveredPlayer] = useState<PlayerId | undefined>(undefined)
-  const hoverTimeout = useRef<ReturnType<typeof setTimeout>>(undefined)
-  const isClickable = rules.players.length > 2
+  const playerCount = rules.players.length
+  // At 2 players both pyramids are full-size — no viewed concept, no panel clicks.
+  const supportsViewSwitch = playerCount > 2
 
-  const { left: leftPlayer, right: rightPlayer } = getSides({ rules, player: playerId } as any)
+  const viewed = getViewedPlayer({ rules, player: playerId } as any)
+  const viewedIndex = players.findIndex(p => p.id === viewed)
+  const width = getPanelWidth(playerCount)
+  const height = getPanelHeight(playerCount)
 
-  const assignSide = useCallback((targetPlayer: PlayerId, targetSide: 'left' | 'right') => {
-    const newLeft = targetSide === 'left' ? targetPlayer : (leftPlayer === targetPlayer ? rightPlayer : leftPlayer)
-    const newRight = targetSide === 'right' ? targetPlayer : (rightPlayer === targetPlayer ? leftPlayer : rightPlayer)
-    play(MaterialMoveBuilder.changeView(encodeView(newLeft, newRight)), { transient: true })
-    setOpenPickerFor(undefined)
-  }, [leftPlayer, rightPlayer, play])
-
-  const onMouseEnter = useCallback((id: PlayerId) => {
-    clearTimeout(hoverTimeout.current)
-    hoverTimeout.current = setTimeout(() => setHoveredPlayer(id), 500)
-  }, [])
-
-  const onMouseLeave = useCallback(() => {
-    clearTimeout(hoverTimeout.current)
-    setHoveredPlayer(undefined)
-  }, [])
+  const setView = useCallback((target: PlayerId) => {
+    play(MaterialMoveBuilder.changeView(target), { transient: true })
+  }, [play])
 
   return (
     <>
       {players.map((player, index) => {
-        const isViewedLeft = player.id === leftPlayer
-        const isViewedRight = player.id === rightPlayer
-        const isViewed = isViewedLeft || isViewedRight
-        const isHovered = hoveredPlayer === player.id && openPickerFor !== player.id && isClickable
+        const slot = getPanelSlot(index, viewedIndex < 0 ? 0 : viewedIndex, playerCount)
+        const { x, y } = getPanelTablePosition(slot, playerCount)
+        const isViewed = supportsViewSwitch && player.id === viewed
+        const isClickable = supportsViewSwitch && !isViewed
 
         return (
           <div
             key={player.id}
-            css={[wrapperCss, panelPosition(players.length, index), isClickable && clickableCss]}
-            onClick={isClickable ? () => setOpenPickerFor(openPickerFor === player.id ? undefined : player.id) : undefined}
-            onMouseEnter={() => onMouseEnter(player.id)}
-            onMouseLeave={onMouseLeave}
+            css={[wrapperCss(width, height), positionCss(x, y)]}
+            onClick={isClickable ? () => setView(player.id) : undefined}
           >
             <IpsoPlayerPanel
               player={player}
+              panelHeight={height}
               isViewed={isViewed}
               isClickable={isClickable}
             />
-            <div css={[previewTrayCss, isHovered && previewTrayVisibleCss]}>
-              <PyramidPreview playerId={player.id} />
-            </div>
-            {openPickerFor === player.id && (
-              <SidePickerPopup
-                currentSide={isViewedLeft ? 'left' : isViewedRight ? 'right' : undefined}
-                onPick={(side) => assignSide(player.id, side)}
-                onClose={() => setOpenPickerFor(undefined)}
-              />
-            )}
           </div>
         )
       })}
-      <BoardNameLabels />
     </>
   )
 }
 
-const wrapperCss = css`
+// Origin offset matches the framework's default item placement
+// (getLocationOriginCss with OriginType.Origin): items live in a coordinate
+// system whose (0, 0) sits at left:-xMin, top:-yMin of the table div.
+const wrapperCss = (width: number, height: number) => css`
   position: absolute;
+  left: ${-TABLE_X_MIN}em;
+  top: ${-TABLE_Y_MIN}em;
+  width: ${width}em;
+  height: ${height}em;
   z-index: 50;
-  transform-style: preserve-3d;
-  font-size: 0.3em;
+  transition: transform ${PANEL_TRANSITION_MS}ms ease;
 `
 
-const clickableCss = css`
-  cursor: pointer;
+const positionCss = (x: number, y: number) => css`
+  transform: translate(-50%, -50%) translate3d(${x}em, ${y}em, 0);
 `
-
-const previewTrayCss = css`
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  transform: translateY(-0.5em) translateZ(100em);
-  z-index: 60;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  background: rgba(21, 35, 88, 0.9);
-  border: 1px solid rgba(245, 200, 66, 0.3);
-  border-radius: 0 0 0.8em 0.8em;
-  box-shadow: 0 0.3em 0.8em rgba(0, 0, 0, 0.6);
-`
-
-const previewTrayVisibleCss = css`
-  opacity: 1;
-  transform: translateY(0.3em) translateZ(100em);
-  pointer-events: auto;
-`
-
-const panelPosition = (playerCount: number, index: number) => {
-  const { top, left } = getPanelCssPosition(index, playerCount)
-  return css`
-    top: ${top}em;
-    left: ${left}em;
-  `
-}

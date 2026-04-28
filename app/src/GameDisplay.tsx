@@ -6,7 +6,7 @@ import { TABLE_X_MAX, TABLE_X_MIN, TABLE_Y_MAX, TABLE_Y_MIN } from './panels/Pan
 import { PlayerPanels } from './panels/PlayerPanels'
 
 export function GameDisplay() {
-  const margin = { top: 7, left: 0, right: 0, bottom: 0 }
+  const margin = { top: 6, left: 0, right: 0, bottom: 0 }
   const { show: showOddOrEven, dismiss: dismissOddOrEven } = useOddOrEvenDialog()
   return (
     <>
