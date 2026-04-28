@@ -5,13 +5,14 @@ import { usePlayerId, useRules } from '@gamepark/react-game'
 import { MaterialRules } from '@gamepark/rules-api'
 import { useEffect, useRef, useState } from 'react'
 
-// Opens once at game start when the variant is enabled. No persistence:
-// refreshing while still at game-start re-shows it; once any card is
-// face-up in a pyramid, it never auto-opens again.
+// Auto-opens once at game start when the variant is enabled (and only for an
+// actual player, not a spectator). Refreshing while still at game-start
+// re-shows it; once any card is face-up in a pyramid, it never auto-opens
+// again. The bottom-right indicator can re-open it manually any time.
 export const useOddOrEvenDialog = () => {
   const rules = useRules<MaterialRules>()
   const playerId = usePlayerId()
-  const variantOn = !!playerId && rules?.remind(MemoryType.OddOrEvenOptionEnabled) === true
+  const variantOn = rules?.remind(MemoryType.OddOrEvenOptionEnabled) === true
 
   const gameNotStarted = !!rules && rules.material(MaterialType.NumberCard)
     .location(LocationType.Pyramid)
@@ -22,13 +23,14 @@ export const useOddOrEvenDialog = () => {
   const hasAutoShown = useRef(false)
 
   useEffect(() => {
-    if (variantOn && gameNotStarted && !hasAutoShown.current) {
+    if (variantOn && !!playerId && gameNotStarted && !hasAutoShown.current) {
       hasAutoShown.current = true
       setShow(true)
     }
-  }, [variantOn, gameNotStarted])
+  }, [variantOn, playerId, gameNotStarted])
 
+  const open = () => setShow(true)
   const dismiss = () => setShow(false)
 
-  return { show, dismiss }
+  return { show, dismiss, open, variantOn }
 }

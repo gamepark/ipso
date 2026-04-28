@@ -53,10 +53,14 @@
   "oddOrEven": "Fila par o impar",
   "oddOrEven.help": "Las reglas permanecen sin cambios. Después del recuento de puntos habitual, añade 1 punto por carta si una fila está compuesta únicamente por cartas pares o únicamente por cartas impares.",
   "oddOrEven.dialog.title": "Variante: Fila par o impar",
-  "oddOrEven.dialog.intro": "La variante <bold>«Fila par o impar»</bold> está activada en esta partida.",
+  "oddOrEven.dialog.intro": "La variante <bold>«Fila par o impar»</bold> está <bold>activada</bold> en esta partida.",
+  "oddOrEven.dialog.intro.disabled": "La variante <bold>«Fila par o impar»</bold> está <bold>desactivada</bold> en esta partida.",
   "oddOrEven.dialog.rule": "Las reglas permanecen sin cambios. Después del recuento de puntos habitual, <bold>añade 1 punto por carta</bold> si una fila está compuesta <bold>únicamente por cartas pares</bold> o <bold>únicamente por cartas impares</bold>.",
   "oddOrEven.dialog.example": "Ejemplo: una fila <bold>4 – 8 – 20 – 42</bold> (todas pares) gana <bold>+4 puntos</bold> además del recuento habitual.",
   "oddOrEven.dialog.ok": "Entendido",
+  "oddOrEven.indicator": "Par / Impar",
+  "oddOrEven.indicator.aria.enabled": "Variante Par / Impar activada — haz clic para ver las reglas",
+  "oddOrEven.indicator.aria.disabled": "Variante Par / Impar desactivada — haz clic para ver las reglas",
 
   "last-turn.title": "Último turno",
   "last-turn.intro": "Tus 14 cartas están reveladas, es tu <bold>último turno</bold> antes del recuento final. Tienes dos opciones con tu <bold>carta Estrella</bold>:",
@@ -69,9 +73,5 @@
   "game-over.score.tiebreaker": "(desempate)",
   "game-over.score.type.star-card": "<starcard/>",
   "game-over.score.type.total": "Total",
-  "game-over.score.points": "{points, plural, one{# punto} other{# puntos}}",
-
-  "view.display-at": "Mostrar en",
-  "view.left": "Izquierda",
-  "view.right": "Derecha"
+  "game-over.score.points": "{points, plural, one{# punto} other{# puntos}}"
 }

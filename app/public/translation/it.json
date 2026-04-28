@@ -53,10 +53,14 @@
   "oddOrEven": "Riga pari o dispari",
   "oddOrEven.help": "Le regole rimangono invariate. Dopo il conteggio dei punti normale, aggiungi 1 punto per carta se una riga è composta interamente da carte pari o interamente da carte dispari.",
   "oddOrEven.dialog.title": "Variante: Riga pari o dispari",
-  "oddOrEven.dialog.intro": "La variante <bold>«Riga pari o dispari»</bold> è attivata per questa partita.",
+  "oddOrEven.dialog.intro": "La variante <bold>«Riga pari o dispari»</bold> è <bold>attivata</bold> per questa partita.",
+  "oddOrEven.dialog.intro.disabled": "La variante <bold>«Riga pari o dispari»</bold> è <bold>disattivata</bold> per questa partita.",
   "oddOrEven.dialog.rule": "Le regole rimangono invariate. Dopo il conteggio dei punti normale, <bold>aggiungi 1 punto per carta</bold> se una riga è composta <bold>interamente da carte pari</bold> o <bold>interamente da carte dispari</bold>.",
   "oddOrEven.dialog.example": "Esempio: una riga <bold>4 – 8 – 20 – 42</bold> (tutte pari) guadagna <bold>+4 punti</bold> in aggiunta al punteggio normale.",
   "oddOrEven.dialog.ok": "Capito",
+  "oddOrEven.indicator": "Pari / Dispari",
+  "oddOrEven.indicator.aria.enabled": "Variante Pari / Dispari attivata — clicca per vedere le regole",
+  "oddOrEven.indicator.aria.disabled": "Variante Pari / Dispari disattivata — clicca per vedere le regole",
 
   "last-turn.title": "Ultimo turno",
   "last-turn.intro": "Tutte le 14 carte sono rivelate, è il tuo <bold>ultimo turno</bold> prima del conteggio finale. Hai due opzioni per la tua <bold>carta Stella</bold>:",
@@ -69,9 +73,5 @@
   "game-over.score.tiebreaker": "(spareggio)",
   "game-over.score.type.star-card": "<starcard/>",
   "game-over.score.type.total": "Totale",
-  "game-over.score.points": "{points, plural, one{# punto} other{# punti}}",
-
-  "view.display-at": "Mostra a",
-  "view.left": "Sinistra",
-  "view.right": "Destra"
+  "game-over.score.points": "{points, plural, one{# punto} other{# punti}}"
 }

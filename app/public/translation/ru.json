@@ -53,10 +53,14 @@
   "oddOrEven": "Чётный или нечётный ряд",
   "oddOrEven.help": "Правила остаются без изменений. После обычного подсчёта очков добавьте 1 очко за карту, если ряд состоит исключительно из чётных или исключительно из нечётных карт.",
   "oddOrEven.dialog.title": "Вариант: чётный или нечётный ряд",
-  "oddOrEven.dialog.intro": "Вариант <bold>«Чётный или нечётный ряд»</bold> включён в этой партии.",
+  "oddOrEven.dialog.intro": "Вариант <bold>«Чётный или нечётный ряд»</bold> <bold>включён</bold> в этой партии.",
+  "oddOrEven.dialog.intro.disabled": "Вариант <bold>«Чётный или нечётный ряд»</bold> <bold>выключен</bold> в этой партии.",
   "oddOrEven.dialog.rule": "Правила остаются без изменений. После обычного подсчёта очков <bold>добавьте 1 очко за карту</bold>, если ряд состоит <bold>исключительно из чётных карт</bold> или <bold>исключительно из нечётных карт</bold>.",
   "oddOrEven.dialog.example": "Пример: ряд <bold>4 – 8 – 20 – 42</bold> (все чётные) приносит <bold>+4 очка</bold> сверх обычного подсчёта.",
   "oddOrEven.dialog.ok": "Понятно",
+  "oddOrEven.indicator": "Чёт / Нечёт",
+  "oddOrEven.indicator.aria.enabled": "Вариант Чёт / Нечёт включён — нажмите, чтобы увидеть правила",
+  "oddOrEven.indicator.aria.disabled": "Вариант Чёт / Нечёт выключен — нажмите, чтобы увидеть правила",
 
   "last-turn.title": "Последний ход",
   "last-turn.intro": "Все 14 ваших карт открыты — это ваш <bold>последний ход</bold> перед итоговым подсчётом. У вас есть два варианта с <bold>картой Звезды</bold>:",
@@ -69,9 +73,5 @@
   "game-over.score.tiebreaker": "(тай-брейк)",
   "game-over.score.type.star-card": "<starcard/>",
   "game-over.score.type.total": "Итого",
-  "game-over.score.points": "{points, plural, one{# очко} few{# очка} many{# очков} other{# очка}}",
-
-  "view.display-at": "Отобразить у",
-  "view.left": "Слева",
-  "view.right": "Справа"
+  "game-over.score.points": "{points, plural, one{# очко} few{# очка} many{# очков} other{# очка}}"
 }

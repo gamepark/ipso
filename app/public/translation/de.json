@@ -53,10 +53,14 @@
   "oddOrEven": "Gerade oder ungerade Reihe",
   "oddOrEven.help": "Die Regeln bleiben unverändert. Nach der normalen Wertung erhalten Sie 1 zusätzlichen Punkt pro Karte, wenn eine Reihe ausschließlich aus geraden oder ausschließlich aus ungeraden Karten besteht.",
   "oddOrEven.dialog.title": "Variante: Gerade oder ungerade Reihe",
-  "oddOrEven.dialog.intro": "Die Variante <bold>„Gerade oder ungerade Reihe“</bold> ist für diese Partie aktiviert.",
+  "oddOrEven.dialog.intro": "Die Variante <bold>„Gerade oder ungerade Reihe“</bold> ist für diese Partie <bold>aktiviert</bold>.",
+  "oddOrEven.dialog.intro.disabled": "Die Variante <bold>„Gerade oder ungerade Reihe“</bold> ist für diese Partie <bold>deaktiviert</bold>.",
   "oddOrEven.dialog.rule": "Die Regeln bleiben unverändert. Nach der normalen Wertung erhalten Sie <bold>1 zusätzlichen Punkt pro Karte</bold>, wenn eine Reihe <bold>ausschließlich aus geraden Karten</bold> oder <bold>ausschließlich aus ungeraden Karten</bold> besteht.",
   "oddOrEven.dialog.example": "Beispiel: eine Reihe <bold>4 – 8 – 20 – 42</bold> (alle gerade) bringt <bold>+4 Punkte</bold> zusätzlich zur normalen Wertung.",
   "oddOrEven.dialog.ok": "Verstanden",
+  "oddOrEven.indicator": "Gerade / Ungerade",
+  "oddOrEven.indicator.aria.enabled": "Variante Gerade / Ungerade aktiviert — klicken, um die Regeln anzuzeigen",
+  "oddOrEven.indicator.aria.disabled": "Variante Gerade / Ungerade deaktiviert — klicken, um die Regeln anzuzeigen",
 
   "last-turn.title": "Letzter Zug",
   "last-turn.intro": "Alle 14 Karten sind aufgedeckt — dies ist Ihr <bold>letzter Zug</bold> vor der Schlusswertung. Sie haben zwei Möglichkeiten mit Ihrer <bold>Sternkarte</bold>:",
@@ -69,9 +73,5 @@
   "game-over.score.tiebreaker": "(Gleichstand)",
   "game-over.score.type.star-card": "<starcard/>",
   "game-over.score.type.total": "Gesamt",
-  "game-over.score.points": "{points, plural, one{# Punkt} other{# Punkte}}",
-
-  "view.display-at": "Anzeigen bei",
-  "view.left": "Links",
-  "view.right": "Rechts"
+  "game-over.score.points": "{points, plural, one{# Punkt} other{# Punkte}}"
 }

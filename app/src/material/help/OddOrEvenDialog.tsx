@@ -1,5 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { RulesDialog, ThemeButton } from '@gamepark/react-game'
 import { FC } from 'react'
 import { Trans, useTranslation } from 'react-i18next'
@@ -9,16 +11,22 @@ import { fontDisplay } from '../../theme/typography'
 type Props = {
   open: boolean
   onClose: () => void
+  variantOn: boolean
 }
 
-export const OddOrEvenDialog: FC<Props> = ({ open, onClose }) => {
+export const OddOrEvenDialog: FC<Props> = ({ open, onClose, variantOn }) => {
   const { t } = useTranslation()
+  const introKey = variantOn ? 'oddOrEven.dialog.intro' : 'oddOrEven.dialog.intro.disabled'
   return (
     <RulesDialog open={open} close={onClose}>
       <div css={contentCss}>
         <h2>{t('oddOrEven.dialog.title')}</h2>
         <p css={introCss}>
-          <Trans i18nKey="oddOrEven.dialog.intro" components={{ bold: <strong /> }} />
+          <FontAwesomeIcon
+            icon={variantOn ? faCheck : faXmark}
+            css={introIconCss(variantOn)}
+          />
+          <Trans i18nKey={introKey} components={{ bold: <strong /> }} />
         </p>
         <p css={ruleCss}>
           <Trans i18nKey="oddOrEven.dialog.rule" components={{ bold: <strong /> }} />
@@ -58,6 +66,12 @@ const introCss = css`
   margin: 0 0 0.8em;
 
   strong, b { color: ${colors.goldDeep}; font-weight: 700; }
+`
+
+const introIconCss = (variantOn: boolean) => css`
+  margin-right: 0.5em;
+  font-size: 1.1em;
+  color: ${variantOn ? '#1f8a3a' : '#b53a2a'};
 `
 
 const ruleCss = css`

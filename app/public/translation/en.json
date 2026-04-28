@@ -53,10 +53,14 @@
   "oddOrEven": "Odd and even rows",
   "oddOrEven.help": "The rules remain unchanged. After the regular scoring, add 1 point per card for any row that contains all odd or all even numbers.",
   "oddOrEven.dialog.title": "Variant: Odd and even rows",
-  "oddOrEven.dialog.intro": "The <bold>\"Odd and even rows\"</bold> variant is enabled for this game.",
+  "oddOrEven.dialog.intro": "The <bold>\"Odd and even rows\"</bold> variant is <bold>enabled</bold> for this game.",
+  "oddOrEven.dialog.intro.disabled": "The <bold>\"Odd and even rows\"</bold> variant is <bold>disabled</bold> for this game.",
   "oddOrEven.dialog.rule": "The rules remain unchanged. After the regular scoring, <bold>add 1 point per card</bold> for any row that contains <bold>all odd numbers</bold> or <bold>all even numbers</bold>.",
   "oddOrEven.dialog.example": "Example: a row <bold>4 – 8 – 20 – 42</bold> (all even) scores <bold>+4 points</bold> on top of the regular score.",
   "oddOrEven.dialog.ok": "Got it",
+  "oddOrEven.indicator": "Odd / Even",
+  "oddOrEven.indicator.aria.enabled": "Odd / Even variant enabled — click to view the rules",
+  "oddOrEven.indicator.aria.disabled": "Odd / Even variant disabled — click to view the rules",
 
   "last-turn.title": "Last turn",
   "last-turn.intro": "All 14 of your cards are face up — this is your <bold>last turn</bold> before final scoring. You have two options with your <bold>Star card</bold>:",
@@ -69,9 +73,5 @@
   "game-over.score.tiebreaker": "(tie-breaker)",
   "game-over.score.type.star-card": "<starcard/>",
   "game-over.score.type.total": "Total",
-  "game-over.score.points": "{points, plural, one{# point} other{# points}}",
-
-  "view.display-at": "Display at",
-  "view.left": "Left",
-  "view.right": "Right"
+  "game-over.score.points": "{points, plural, one{# point} other{# points}}"
 }
