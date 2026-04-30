@@ -2,7 +2,7 @@
 import { css, keyframes } from '@emotion/react'
 import { IpsoRules } from '@gamepark/ipso/IpsoRules'
 import { Player } from '@gamepark/react-client'
-import { Avatar, getRelativePlayerIndex, PlayerTimer, useMaterialContext, usePlayerName, useRules } from '@gamepark/react-game'
+import { Avatar, getRelativePlayerIndex, PlayerTimer, useMaterialContext, usePlayerName, usePlayerTime, useRules } from '@gamepark/react-game'
 import { blinkOnRunningTimeout } from '@gamepark/react-game/dist/components/PlayerTimer/PlayerTimer'
 import { faStopwatch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -26,6 +26,8 @@ export const IpsoPlayerPanel: FC<IpsoPlayerPanelProps> = ({ player, panelHeight,
   const playerName = usePlayerName(player.id)
   const isTurnToPlay = rules.isTurnToPlay(player.id)
   const isOver = rules.isOver()
+  const playerTime = usePlayerTime(player.id)
+  const showTimer = !isOver && playerTime !== undefined
   const gradientIndex = getRelativePlayerIndex(context, player.id) % playerGradients.length
 
   return (
@@ -36,7 +38,7 @@ export const IpsoPlayerPanel: FC<IpsoPlayerPanelProps> = ({ player, panelHeight,
       </div>
       <div css={infoCss}>
         <span css={nameCss} title={playerName}>{playerName}</span>
-        {!isOver && (
+        {showTimer && (
           <div css={timerRowCss}>
             <FontAwesomeIcon icon={faStopwatch} css={timerIconCss} />
             <PlayerTimer playerId={player.id} css={timerCss} customStyle={[blinkOnRunningTimeout]} />
