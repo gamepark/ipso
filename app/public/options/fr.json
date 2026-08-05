@@ -1,0 +1,4 @@
+{
+  "option.oddOrEven": "Bonus pair ou impair",
+  "option.oddOrEven.help": "Lorsque cette option est activée, les joueurs marquent des points bonus pour les lignes dont tous les numéros sont pairs ou tous impairs."
+}

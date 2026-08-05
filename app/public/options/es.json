@@ -1,0 +1,4 @@
+{
+  "option.oddOrEven": "Bonificación de pares o impares",
+  "option.oddOrEven.help": "Cuando esta opción está activada, los jugadores ganan puntos adicionales por líneas en las que todos los números son pares o todos impares."
+}

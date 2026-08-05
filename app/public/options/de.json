@@ -1,0 +1,4 @@
+{
+  "option.oddOrEven": "Bonus für gerade oder ungerade",
+  "option.oddOrEven.help": "Wenn diese Option aktiviert ist, erhalten Spieler Bonuspunkte für Linien, in denen alle Zahlen gerade oder alle Zahlen ungerade sind."
+}

@@ -1,0 +1,4 @@
+{
+  "option.oddOrEven": "Odd or even bonus",
+  "option.oddOrEven.help": "When enabled, players score bonus points for lines where all numbers are odd or all numbers are even."
+}
