@@ -1,4 +1,4 @@
-import { IpsoOptionsSpec } from '@gamepark/ipso/IpsoOptions'
+import { IpsoOptionsSpecV2 } from '@gamepark/ipso/IpsoOptions'
 import { IpsoRules } from '@gamepark/ipso/IpsoRules'
 import { IpsoSetup } from '@gamepark/ipso/IpsoSetup'
 import { BottomBarNavigation, GameProvider } from '@gamepark/react-game'
@@ -19,7 +19,7 @@ createRoot(document.getElementById('root')!).render(
     <GameProvider
       game="ipso"
       Rules={IpsoRules}
-      optionsSpec={IpsoOptionsSpec}
+      optionsSpec={IpsoOptionsSpecV2}
       GameSetup={IpsoSetup}
       material={Material}
       locators={Locators}
