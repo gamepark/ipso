@@ -34,7 +34,7 @@ export const IpsoPlayerPanel: FC<IpsoPlayerPanelProps> = ({ player, panelHeight,
     <div css={[panelCss(panelHeight), panelGradientCss(gradientIndex), isTurnToPlay && activePanelCss, isViewed && viewedPanelCss, isClickable && clickablePanelCss]}>
       <div css={avatarWrapCss}>
         {isTurnToPlay && <div css={activeRingCss} />}
-        <Avatar playerId={player.id} css={avatarCss} />
+        <Avatar playerId={player.id} css={avatarCss} speechBubble />
       </div>
       <div css={infoCss}>
         <span css={nameCss} title={playerName}>{playerName}</span>
@@ -105,6 +105,7 @@ const avatarWrapCss = css`
 `
 
 const avatarCss = css`
+  position: relative;
   width: 100%;
   height: 100%;
   border-radius: 50%;
